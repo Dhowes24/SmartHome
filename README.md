@@ -13,4 +13,4 @@ https://docs.google.com/document/d/1v4Ta3T3lsxlfebAUdePCav_91UK6pSoab9muTx_xOIk/
 ### Use Case
 https://drive.google.com/file/d/1lyczQb34oAUq6Xd4ioJHbeB8wJe7C72u/view?usp=sharing
 
-### Class Digram
+### Class Digaram
