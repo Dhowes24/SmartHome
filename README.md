@@ -17,6 +17,6 @@ https://drive.google.com/file/d/1lyczQb34oAUq6Xd4ioJHbeB8wJe7C72u/view?usp=shari
 https://drive.google.com/file/d/1lW9VD-O9xoosBA_uYNH5dZKhjOzqkhEz/view?usp=sharing
 
 ### Dividing up the Current Sprint:
-* Room Creation - 1 One Person
+* Room Creation - 1 Person
 * Appliance, Lighting, Temperature Creation - 1 Person
 * Schedule Setup - 2 People
