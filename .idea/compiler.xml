@@ -9,5 +9,19 @@
         <module name="SmartHome" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="libraries (1)" target="1.5" />
+      <module name="libraries (10)" target="1.5" />
+      <module name="libraries (11)" target="1.5" />
+      <module name="libraries (12)" target="1.5" />
+      <module name="libraries (2)" target="1.5" />
+      <module name="libraries (3)" target="1.5" />
+      <module name="libraries (4)" target="1.5" />
+      <module name="libraries (5)" target="1.5" />
+      <module name="libraries (6)" target="1.5" />
+      <module name="libraries (7)" target="1.5" />
+      <module name="libraries (8)" target="1.5" />
+      <module name="libraries (9)" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
