@@ -1,16 +1,19 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 public class Room {
 
+    HashMap<String, Light> lightMap;
+
     public Room(String name){
         String roomName = name;
         String ID = UUID.randomUUID().toString();
+
         //Arraylist<'ApplianceObject'> applianceList = new ArrayList<'ApplianceObject'>();
         //Arraylist<'lightObject'> applianceList = new ArrayList<'lightObject'>();
         //Thermostat nearestThermostat = nearestThermostat;
-
     }
 
     /**
@@ -44,10 +47,19 @@ public class Room {
      * add a light to the light with a unique name
      * @param name
      */
-    public void addLight(String name){
-        if(checkLightList(name)){
+    public void addLight(String name, Boolean pinRequired, Boolean isDimable){
+        if (containedInLightList(name)){
             //add light
+            lightMap.put(name, Light(name, pinRequired, isDimable));
         }
+    }
+
+    /**
+     * remove light from list for this room by unique name
+     * @param name
+     */
+    public void removeLight(String name){
+        lightMap.remove(name);
     }
 
     /**
@@ -55,7 +67,7 @@ public class Room {
      * @param amount
      */
     public void adjustLight(int amount, String name){
-        if(checkLightList(name)){
+        if (containedInLightList(name)){
 
         }
     }
@@ -119,9 +131,12 @@ public class Room {
      * @param name
      * @return
      */
-    public boolean checkLightList(String name){
+    public boolean containedInLightList(String name){
 
-        return true;
+        if (lightMap.containsKey(name)) {
+            return true;
+        }
+        return false;
     }
 
 }
