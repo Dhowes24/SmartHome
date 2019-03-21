@@ -15,17 +15,20 @@ public class Room {
 
         lightMap = new HashMap<>();
         applianceMap = new HashMap<>();
+        // TODO: must get user's preference for starting temp or ask them for a temp when creating a room
+        // TODO: must also ask user if thermostat should require pin
+        thermostat = new Temperature(65, true);
     }
 
     /**
      * Add appliance to list for this room by unique name
      * @param name
      */
-    public void addAppliance(String name){
-        if(checkApplianceList(name)){
-            //add appliance
+    public void addAppliance(String name, Boolean status, Boolean isRequired){
+        if(containedInApplianceList(name)){
+            applianceMap.put(name, new Appliance(name, status, isRequired));
         }
-
+        // TODO: throw exception or somehow handle receiving a new name for the appliance
     }
 
     /**
@@ -33,7 +36,7 @@ public class Room {
      * @param name
      */
     public void removeAppliance(String name) {
-
+        applianceMap.remove(name);
     }
 
     /**
@@ -41,7 +44,7 @@ public class Room {
      * @param name
      */
     public void changeApplianceStatus(String name){
-
+        applianceMap.get(name).changeStatus();
     }
 
     /**
@@ -50,9 +53,9 @@ public class Room {
      */
     public void addLight(String name, Boolean pinRequired, Boolean isDimable){
         if (containedInLightList(name)){
-            //add light
             lightMap.put(name, new Light(name, pinRequired, isDimable));
         }
+        // TODO: throw exception or somehow handle receiving a new name for the light
     }
 
     /**
@@ -100,7 +103,7 @@ public class Room {
      * @param status
      */
     public void addApplianceToSchedule(String applianceID, List daysOfWeek, int time, boolean status){
-
+        // TODO
     }
 
     /**
@@ -114,7 +117,7 @@ public class Room {
      * @param status
      */
     public void addLightToSchedule(String applianceID, List daysOfWeek, int time, boolean status){
-
+        // TODO
     }
 
     /**
@@ -122,9 +125,15 @@ public class Room {
      * @param name
      * @return
      */
-    public boolean checkApplianceList(String name){
+    public boolean containedInApplianceList(String name){
 
-        return true;
+        if (applianceMap == null) {
+            return false;
+        }
+        if (applianceMap.containsKey(name)) {
+            return true;
+        }
+        return false;
     }
 
     /**
