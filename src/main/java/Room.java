@@ -6,6 +6,7 @@ import java.util.UUID;
 public class Room {
 
     HashMap<String, Light> lightMap;
+    HashMap<String, Appliance> applianceMap;
 
     public Room(String name){
         String roomName = name;
