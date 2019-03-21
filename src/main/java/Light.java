@@ -50,7 +50,7 @@ public class Light {
      * Sets a new value to the preferred amount
      * @param newAmount - the new amount of the preferred amount
      */
-    public void setPrefferedAmount(int newAmount){
+    public void setPreferredAmount(double newAmount){
         if(amountIsValid(newAmount)){
             this.preferredAmount = newAmount;
         }
