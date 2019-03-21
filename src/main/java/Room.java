@@ -7,6 +7,7 @@ public class Room {
 
     HashMap<String, Light> lightMap;
     HashMap<String, Appliance> applianceMap;
+    Temperature thermostat;
 
     public Room(String name){
         String roomName = name;
@@ -32,7 +33,7 @@ public class Room {
      * remove appliance from list for this room by unique name
      * @param name
      */
-    public void removeAppliance(String name){
+    public void removeAppliance(String name) {
 
     }
 
@@ -51,7 +52,7 @@ public class Room {
     public void addLight(String name, Boolean pinRequired, Boolean isDimable){
         if (containedInLightList(name)){
             //add light
-            lightMap.put(name, Light(name, pinRequired, isDimable));
+            lightMap.put(name, new Light(name, pinRequired, isDimable));
         }
     }
 
@@ -77,8 +78,8 @@ public class Room {
      * check temperature of thermostat nearest to room
      * @return
      */
-    public int checkTemp(){
-        return 0;
+    public double checkTemp(){
+        return thermostat.getTemp();
     }
 
     /**
@@ -86,7 +87,7 @@ public class Room {
      * @param amount
      */
     public void adjustTemp(int amount){
-
+        thermostat.setTemp(amount);
     }
 
     /**
