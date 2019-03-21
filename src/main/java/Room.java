@@ -13,9 +13,8 @@ public class Room {
         String roomName = name;
         String ID = UUID.randomUUID().toString();
 
-        //Arraylist<'ApplianceObject'> applianceList = new ArrayList<'ApplianceObject'>();
-        //Arraylist<'lightObject'> applianceList = new ArrayList<'lightObject'>();
-        //Thermostat nearestThermostat = nearestThermostat;
+        lightMap = new HashMap<>();
+        applianceMap = new HashMap<>();
     }
 
     /**
@@ -135,6 +134,9 @@ public class Room {
      */
     public boolean containedInLightList(String name){
 
+        if (lightMap == null) {
+            return false;
+        }
         if (lightMap.containsKey(name)) {
             return true;
         }

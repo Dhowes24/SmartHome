@@ -14,7 +14,7 @@ public class Light {
         this.amount = 0.0;
         this.isPinRequired = pin;
         this.dimable=dimable;
-        if(amountIsValid(preference && this.dimable==true)){
+        if(amountIsValid(preference) && this.dimable){
             this.preferredAmount = preference;
         }
         else{
@@ -27,6 +27,7 @@ public class Light {
         this.amount = 0.0;
         this.isPinRequired = pin;
         this.dimable = dimable;
+        this.preferredAmount=1.0;
     }
 
     /**
