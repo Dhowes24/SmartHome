@@ -3,10 +3,11 @@ public class Temperature {
     private double temperature;
     private boolean isPinRequired;
 
+
     public Temperature(double temp, boolean preferrences){
-        if(isAmountValid(temp))
-        this.temperature = temp;
-        this.isPinRequired = preferrences;
+            this.temperature = temp;
+            this.isPinRequired = preferrences;
+
     }
 
     public double getTemp(){return this.temperature;}

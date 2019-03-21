@@ -1,3 +1,6 @@
+import com.fasterxml.jackson.databind.deser.std.StringArrayDeserializer;
+
+
 public class Light {
 
     private String ID;
