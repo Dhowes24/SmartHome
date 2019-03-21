@@ -13,7 +13,7 @@ public Appliance(String name, boolean status, boolean isPinRequired) {
 
 public boolean changeStatus() {
 
-
+    return false;
 }
 
 
@@ -24,6 +24,7 @@ public boolean getStatus() {
 
 public boolean changePinRequirments() {
 
+    return false;
 }
 
 

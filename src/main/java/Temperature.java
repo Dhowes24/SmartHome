@@ -11,7 +11,6 @@ public class Temperature {
     public Temperature(double temp, boolean preferences){
             this.temperature = temp;
             this.isPinRequired = preferences;
-
     }
 
     /**
