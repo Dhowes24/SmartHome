@@ -67,9 +67,9 @@ public class Room {
      * change the light value from 0-100 for a specific light by name
      * @param amount
      */
-    public void adjustLight(int amount, String name){
+    public void adjustLight(double amount, String name){
         if (containedInLightList(name)){
-
+            lightMap.get(name).dim(amount);
         }
     }
 
