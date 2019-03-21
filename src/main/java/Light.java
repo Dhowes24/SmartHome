@@ -1,3 +1,6 @@
+import com.fasterxml.jackson.databind.deser.std.StringArrayDeserializer;
+
+
 public class Light {
 
     private String ID;
@@ -11,14 +14,19 @@ public class Light {
         this.amount = 0.0;
         this.isPinRequired = pin;
         this.dimable=dimable;
-        if(amountIsValid(preference)){
+        if(amountIsValid(preference && this.dimable==true)){
             this.preferredAmount = preference;
         }
         else{
             this.preferredAmount = 1.0;
         }
+    }
 
-
+    public Light(String name, boolean pin, boolean dimable){
+        this.ID = name;
+        this.amount = 0.0;
+        this.isPinRequired = pin;
+        this.dimable = dimable;
     }
 
     /**
