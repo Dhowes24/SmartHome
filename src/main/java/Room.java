@@ -25,8 +25,8 @@ public class Room {
      * @param name
      */
     public void addAppliance(String name, Boolean status, Boolean isRequired){
-        if(containedInApplianceList(name)){
-            applianceMap.put(name, new Appliance(name, status, isRequired));
+        if(!containedInApplianceList(name)){
+            this.applianceMap.put(name, new Appliance(name, status, isRequired));
         }
         // TODO: throw exception or somehow handle receiving a new name for the appliance
     }
@@ -36,7 +36,8 @@ public class Room {
      * @param name
      */
     public void removeAppliance(String name) {
-        applianceMap.remove(name);
+        if(containedInApplianceList(name)){
+            applianceMap.remove(name);}
     }
 
     /**
@@ -44,7 +45,9 @@ public class Room {
      * @param name
      */
     public void changeApplianceStatus(String name){
-        applianceMap.get(name).changeStatus();
+        if(containedInApplianceList(name)){
+            applianceMap.get(name).changeStatus();
+        }
     }
 
     /**

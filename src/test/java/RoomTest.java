@@ -9,19 +9,28 @@ public class RoomTest {
     @Test
     public void addApplianceTest(){
         Room room = new Room("testRoom");
-
+        room.addAppliance("TV", false,false);
+        assertTrue(room.applianceMap.containsKey("TV"));
+        assertFalse(room.applianceMap.containsKey("NotMyTV"));
 
     }
 
     @Test
     public void removeApplianceTest(){
         Room room = new Room("testRoom");
+        room.addAppliance("TV", false,false);
+        assertTrue(room.applianceMap.containsKey("TV"));
+        room.removeAppliance("TV");
+        assertFalse(room.applianceMap.containsKey("TV"));
 
     }
 
     @Test
     public void changeApplianceStatusTest(){
         Room room = new Room("testRoom");
+        room.addAppliance("TV", false,false);
+        room.changeApplianceStatus("TV");
+        //TODO once you can get appliance status
 
     }
 
