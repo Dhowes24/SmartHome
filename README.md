@@ -21,3 +21,5 @@ Sprint Goal: Control Basic Smart Objects and Basic Room Development
 * Lighting - Michael & Anthony #23
 * Appliances - Brien #24
 * Room Creation and Temperature Control - Derek #22 & #28
+
+https://docs.google.com/document/d/1b4l3O6fSpTePNwdlTZORBB_x_38ZZ1OA-1My_oOsXrI/edit
