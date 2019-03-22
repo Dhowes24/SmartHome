@@ -22,7 +22,6 @@
       <module name="libraries (7)" target="1.5" />
       <module name="libraries (8)" target="1.5" />
       <module name="libraries (9)" target="1.5" />
-      <module name="SmartHome" target="1.10" />
     </bytecodeTargetLevel>
   </component>
 </project>
