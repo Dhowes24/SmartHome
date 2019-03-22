@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+import java.lang.String;
+import java.lang.Boolean;
 
 public class Room {
 
@@ -26,7 +28,7 @@ public class Room {
      */
     public void addAppliance(String name, Boolean status, Boolean isRequired){
         if(!containedInApplianceList(name)){
-            this.applianceMap.put(name, new Appliance(name, status, isRequired));
+            this.applianceMap.put(name, new Appliance(name, isRequired));
         }
         // TODO: throw exception or somehow handle receiving a new name for the appliance
     }

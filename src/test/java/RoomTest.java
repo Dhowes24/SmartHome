@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RoomTest {
 
-    @Test
+   @Test
     public void addApplianceTest(){
         Room room = new Room("testRoom");
         room.addAppliance("TV", false,false);
@@ -14,6 +14,7 @@ public class RoomTest {
         assertFalse(room.applianceMap.containsKey("NotMyTV"));
 
     }
+
 
     @Test
     public void removeApplianceTest(){
