@@ -5,23 +5,53 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ApplianceTest {
 
     @Test
-    void Appliance() {
+    void constructorTest() {
+        Appliance washer = new Appliance("washer", false);
+        assertNotNull(washer);
+
 
     }
 
     @Test
-    void chnageStatusTest() {
+    void changeStatusTest() {
+        Appliance washer = new Appliance("washer", false);
+        washer.changeStatus();
+        assertTrue(washer.getStatus());
+
 
     }
 
     @Test
-    void getStatus() {
+    void getStatusTest() {
+        Appliance washer = new Appliance("washer", false);
+        assertFalse(washer.getStatus());
+
+
+
+    }
+
+
+    @Test
+    void getUserPrefTest() {
+        Appliance washer = new Appliance("washer", false);
+        assertFalse(washer.getUserPref());
+
+
 
     }
 
     @Test
-    void changePinRequirementsTest() {
+    void getIDTest() {
+        Appliance washer = new Appliance("washer", false);
+        assertEquals("washer", washer.getID());
 
+    }
+
+    @Test
+    void changeUserPref() {
+        Appliance washer = new Appliance("washer", false);
+        washer.changeUserPref();
+        assertTrue(washer.getUserPref());
 
     }
 }
