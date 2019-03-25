@@ -22,4 +22,11 @@ Sprint Goal: Control Basic Smart Objects and Basic Room Development
 * Appliances - Brien #24
 * Room Creation and Temperature Control - Derek #22 & #28
 
+### Sprint Review:
 https://docs.google.com/document/d/1b4l3O6fSpTePNwdlTZORBB_x_38ZZ1OA-1My_oOsXrI/edit
+
+### Sprint Retrospective
+https://docs.google.com/document/d/1Ed1Lvy9yZWcXNR_SbuSYlIIIsL0DN4lybuczPYA2_QI/edit?usp=sharing
+
+### Sprint Review Week 1
+https://docs.google.com/document/d/1b4l3O6fSpTePNwdlTZORBB_x_38ZZ1OA-1My_oOsXrI/edit?usp=sharing
