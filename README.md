@@ -17,7 +17,7 @@ https://drive.google.com/file/d/1lyczQb34oAUq6Xd4ioJHbeB8wJe7C72u/view?usp=shari
 https://drive.google.com/file/d/1lW9VD-O9xoosBA_uYNH5dZKhjOzqkhEz/view?usp=sharing
 
 ### Dividing up the Current Sprint:
-Sprint Goal: Create the Command Line Interface along with User Preferences, Schedule Creation, and basic Emergency Services functionality
+Sprint Goal: Create the Command Line Interface along with User Preferences, Schedule Creation, and basic Emergency Services functionality.
 * Command Line Interface -
 * User Preferences -
 * Schedule Creation -
