@@ -25,14 +25,12 @@ public class LightTest {
     @Test
     public void getAmount(){ Assert.assertEquals(l.getCurrIntensity(),0, 0.01);}
     @Test
-    public void getPreferreedAmountTest(){Assert.assertEquals(l.getDefaultAmount(),0.75,0.01);}
+    public void getDefaultAmountTest(){Assert.assertEquals(l.getDefaultAmount(),0.75,0.01);}
 
 
     //Setter Tests
-    //TODO
     @Test
-    public void setPreferredAmountTest(){
-
+    public void setDefaultAmountTest(){
         //Invalid Amounts
         l.setDefaultAmount(10.0);
         Assert.assertEquals(l.getDefaultAmount(),.75, 0.01);
@@ -47,7 +45,6 @@ public class LightTest {
         l.setDefaultAmount(.55);
         Assert.assertEquals(l.getDefaultAmount(),.55, 0.01);
     }
-
 
     //Light Control Tests
     @Test
@@ -67,7 +64,7 @@ public class LightTest {
     }
 
 
-    //Permison's Control Testing
+    //Permission Control Testing
     @Test
     public void changePreferenceTest(){
         //Change

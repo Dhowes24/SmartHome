@@ -8,6 +8,8 @@ public class TemperatureTest {
     @Test
     public void TemperatureTest(){
         Assert.assertNotNull(t);
+        Assert.assertEquals(67,t.getTemp(),0.00);
+        Assert.assertEquals(true, t.getIsPinRequired());
     }
 
     //Getter Tests

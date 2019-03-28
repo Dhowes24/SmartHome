@@ -9,8 +9,15 @@ public class Temperature {
      * @param preferences boolean - whether or not it will require a key input
      */
     public Temperature(double temp, boolean preferences){
-            this.temperature = temp;
-            this.isPinRequired = preferences;
+            if(isAmountValid(temp)){
+                this.temperature = temp;
+                this.isPinRequired = preferences;
+            }
+            else{
+                this.temperature = 60;
+                this.isPinRequired = preferences;
+            }
+
     }
 
     /**
