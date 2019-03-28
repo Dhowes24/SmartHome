@@ -9,9 +9,9 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
 
 ## Sprint One
 * ### Sprint Goal: Control Basic Smart Objects and Basic Room Development
-  * Lighting - Michael & Anthony #23
-  * Appliances - Brien #24
-  * Room Creation and Temperature Control - Derek #22 & #28
+  * Lighting - Michael & Anthony
+  * Appliances - Brien
+  * Room Creation and Temperature Control - Derek
  
 * ### Narratives and Scenarios
   * https://docs.google.com/document/d/1v4Ta3T3lsxlfebAUdePCav_91UK6pSoab9muTx_xOIk/edit?usp=sharing
