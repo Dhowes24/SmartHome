@@ -44,7 +44,7 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
   * https://drive.google.com/file/d/1lyczQb34oAUq6Xd4ioJHbeB8wJe7C72u/view?usp=sharing
   
 * ### Class Digaram
-  *
+  * https://drive.google.com/file/d/1_z4tRJmCQpUy4fn9fPD-eTqCWFVL5T-i/view?usp=sharing
 
 * ### Sprint Review Week 2:
   * N/A
