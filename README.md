@@ -9,9 +9,9 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
 
 ## Sprint One
 * ### Sprint Goal: Control Basic Smart Objects and Basic Room Development
- * Lighting - Michael & Anthony #23
- * Appliances - Brien #24
- * Room Creation and Temperature Control - Derek #22 & #28
+  * Lighting - Michael & Anthony #23
+  * Appliances - Brien #24
+  * Room Creation and Temperature Control - Derek #22 & #28
  
 * ### Narratives and Scenarios
   * https://docs.google.com/document/d/1v4Ta3T3lsxlfebAUdePCav_91UK6pSoab9muTx_xOIk/edit?usp=sharing
@@ -21,23 +21,33 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
 
 * ### Class Digaram
   * https://drive.google.com/file/d/1lW9VD-O9xoosBA_uYNH5dZKhjOzqkhEz/view?usp=sharing
+  
+* ### Sprint Review Week 1:
+  * https://docs.google.com/document/d/1b4l3O6fSpTePNwdlTZORBB_x_38ZZ1OA-1My_oOsXrI/edit?usp=sharing
 
+* ### Sprint Retrospective Week 1:
+  * https://docs.google.com/document/d/1Ed1Lvy9yZWcXNR_SbuSYlIIIsL0DN4lybuczPYA2_QI/edit?usp=sharing
+
+
+## Sprint Two
 ### Dividing up the Current Sprint:
-Sprint Goal: Create the Command Line Interface along with User Preferences, Schedule Creation, and basic Emergency Services functionality.
-* Command Line Interface -
-* User Preferences -
-* Schedule Creation -
-* Emergency Service -
+* ### Sprint Goal: Create the Command Line Interface along with User Preferences, Schedule Creation, and basic Emergency Services functionality.
+  * Command Line Interface - Brien, Anthony, Michael
+  * User Creation - Derek
+  * Schedule Creation - Derek
+  * Emergency Services - Anthony
 
-### Sprint Review Week 1:
-https://docs.google.com/document/d/1b4l3O6fSpTePNwdlTZORBB_x_38ZZ1OA-1My_oOsXrI/edit?usp=sharing
+* ### Narratives and Scenarios
+  * https://docs.google.com/document/d/1v4Ta3T3lsxlfebAUdePCav_91UK6pSoab9muTx_xOIk/edit?usp=sharing
 
-### Sprint Retrospective Week 1:
-https://docs.google.com/document/d/1Ed1Lvy9yZWcXNR_SbuSYlIIIsL0DN4lybuczPYA2_QI/edit?usp=sharing
+* ### Use Case
+  * https://drive.google.com/file/d/1lyczQb34oAUq6Xd4ioJHbeB8wJe7C72u/view?usp=sharing
+  
+* ### Class Digaram
+  *
 
-### Sprint Review Week 2:
-N/A
+* ### Sprint Review Week 2:
+  * N/A
 
-### Sprint Retrospective Week 2:
-N/A
-
+* ### Sprint Retrospective Week 2:
+  * N/A
