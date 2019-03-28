@@ -8,6 +8,11 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
 
 
 ## Sprint One
+* ### Sprint Goal: Control Basic Smart Objects and Basic Room Development
+ * Lighting - Michael & Anthony #23
+ * Appliances - Brien #24
+ * Room Creation and Temperature Control - Derek #22 & #28
+ 
 * ### Narratives and Scenarios
   * https://docs.google.com/document/d/1v4Ta3T3lsxlfebAUdePCav_91UK6pSoab9muTx_xOIk/edit?usp=sharing
 
@@ -15,7 +20,7 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
   * https://drive.google.com/file/d/1lyczQb34oAUq6Xd4ioJHbeB8wJe7C72u/view?usp=sharing
 
 * ### Class Digaram
- * https://drive.google.com/file/d/1lW9VD-O9xoosBA_uYNH5dZKhjOzqkhEz/view?usp=sharing
+  * https://drive.google.com/file/d/1lW9VD-O9xoosBA_uYNH5dZKhjOzqkhEz/view?usp=sharing
 
 ### Dividing up the Current Sprint:
 Sprint Goal: Create the Command Line Interface along with User Preferences, Schedule Creation, and basic Emergency Services functionality.
