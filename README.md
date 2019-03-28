@@ -41,7 +41,7 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
   * https://docs.google.com/document/d/1v4Ta3T3lsxlfebAUdePCav_91UK6pSoab9muTx_xOIk/edit?usp=sharing
 
 * ### Use Case
-  * https://drive.google.com/file/d/1lyczQb34oAUq6Xd4ioJHbeB8wJe7C72u/view?usp=sharing
+  * https://drive.google.com/file/d/1oHaJzGF9k0vg5Mr3ZYiPL_hq_MIRuOH6/view?usp=sharing
   
 * ### Class Digaram
   * https://drive.google.com/file/d/1_z4tRJmCQpUy4fn9fPD-eTqCWFVL5T-i/view?usp=sharing
