@@ -1,33 +1,30 @@
-import com.fasterxml.jackson.databind.deser.std.StringArrayDeserializer;
-
-
 public class Light {
 
     private String ID;
-    private double amount;
+    private double currIntensity;
     private boolean isPinRequired;
-    private double preferredAmount;
-    private boolean dimable;
+    private double defaultAmount;
+    private boolean isDimmable;
 
-    public Light(String name, boolean pin, double preference, boolean dimable){
+    public Light(String name, boolean pin, double preference, boolean isDimmable){
         this.ID = name;
-        this.amount = 0.0;
+        this.currIntensity = 0.0;
         this.isPinRequired = pin;
-        this.dimable=dimable;
-        if(amountIsValid(preference) && this.dimable){
-            this.preferredAmount = preference;
+        this.isDimmable=isDimmable;
+        if(amountIsValid(preference) && this.isDimmable){
+            this.defaultAmount = preference;
         }
         else{
-            this.preferredAmount = 1.0;
+            this.defaultAmount = 1.0;
         }
     }
 
-    public Light(String name, boolean pin, boolean dimable){
+    public Light(String name, boolean pin, boolean isDimmable){
         this.ID = name;
-        this.amount = 0.0;
+        this.currIntensity = 0.0;
         this.isPinRequired = pin;
-        this.dimable = dimable;
-        this.preferredAmount=1.0;
+        this.isDimmable = isDimmable;
+        this.defaultAmount =1.0;
     }
 
     /**
@@ -36,9 +33,9 @@ public class Light {
     public String getID(){return this.ID;}
 
     /**
-     * @return double - the current amount the light is operating on
+     * @return double - the current currIntensity the light is operating on
      */
-    public double getAmount(){return this.amount;}
+    public double getCurrIntensity(){return this.currIntensity;}
 
     /**
      * @return boolean - the current user preferences for the light
@@ -46,53 +43,53 @@ public class Light {
     public boolean getPreference(){return this.isPinRequired;}
 
     /**
-     * @return double - the current preferred amount of the light
+     * @return double - the current preferred currIntensity of the light
      */
-    public double getPreferredAmount(){return this.preferredAmount;}
+    public double getDefaultAmount(){return this.defaultAmount;}
 
     /**
      * @return boolean - whether the light is dimable or not
      */
-    public boolean getDimable(){return this.dimable;}
+    public boolean getDimmable(){return this.isDimmable;}
 
     /**
-     * Sets a new value to the preferred amount
-     * @param newAmount - the new amount of the preferred amount
+     * Sets a new value to the preferred currIntensity
+     * @param newAmount - the new currIntensity of the preferred currIntensity
      */
-    public void setPreferredAmount(double newAmount){
+    public void setDefaultAmount(double newAmount){
         if(amountIsValid(newAmount)){
-            this.preferredAmount = newAmount;
+            this.defaultAmount = newAmount;
         }
     }
 
     /**
-     * Turns the lights amount to the current preferred amount
+     * Turns the lights currIntensity to the current preferred currIntensity
      */
     public void turnOn(){
-        this.amount=this.preferredAmount;
+        this.currIntensity =this.defaultAmount;
     }
 
     /**
-     * Turns the lights amount to zero turning it off
+     * Turns the lights currIntensity to zero turning it off
      */
     public void turnOff(){
-        this.amount=0.0;
+        this.currIntensity =0.0;
     }
 
     /**
-     * Dims the light up or down to the new amount
-     * @param newAmount - the new amount that the light should be at
+     * Dims the light up or down to the new currIntensity
+     * @param newAmount - the new currIntensity that the light should be at
      */
     public void dim(double newAmount){
         if(amountIsValid(newAmount)){
-            this.amount = newAmount;
+            this.currIntensity = newAmount;
         }
     }
 
     /**
-     * Checks to see if an amount passed in by the user is valid (Between 0 and 1 inclusive)
-     * @param amount double - the amount being checked
-     * @return boolean - whether it is a valid amount or not
+     * Checks to see if an currIntensity passed in by the user is valid (Between 0 and 1 inclusive)
+     * @param amount double - the currIntensity being checked
+     * @return boolean - whether it is a valid currIntensity or not
      */
     public static boolean amountIsValid(double amount){
         if(amount>=0.0 && amount <=1.0){

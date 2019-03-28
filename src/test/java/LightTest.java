@@ -17,11 +17,11 @@ public class LightTest {
     @Test
     public void getPinTest(){ Assert.assertEquals(l.getPreference(),true);}
     @Test
-    public void getDimableTest(){ Assert.assertEquals(l.getDimable(),true);}
+    public void getDimmableTest(){ Assert.assertEquals(l.getDimmable(),true);}
     @Test
-    public void getAmount(){ Assert.assertEquals(l.getAmount(),0, 0.01);}
+    public void getAmount(){ Assert.assertEquals(l.getCurrIntensity(),0, 0.01);}
     @Test
-    public void getPreferreedAmountTest(){Assert.assertEquals(l.getPreferredAmount(),0.75,0.01);}
+    public void getPreferreedAmountTest(){Assert.assertEquals(l.getDefaultAmount(),0.75,0.01);}
 
 
     //Setter Tests
@@ -30,18 +30,18 @@ public class LightTest {
     public void setPreferredAmountTest(){
 
         //Invalid Amounts
-        l.setPreferredAmount(10.0);
-        Assert.assertEquals(l.getPreferredAmount(),.75, 0.01);
-        l.setPreferredAmount(-1);
-        Assert.assertEquals(l.getPreferredAmount(),.75, 0.01);
+        l.setDefaultAmount(10.0);
+        Assert.assertEquals(l.getDefaultAmount(),.75, 0.01);
+        l.setDefaultAmount(-1);
+        Assert.assertEquals(l.getDefaultAmount(),.75, 0.01);
 
         //Valid Amounts
-        l.setPreferredAmount(.00);
-        Assert.assertEquals(l.getPreferredAmount(),.00, 0.01);
-        l.setPreferredAmount(1.00);
-        Assert.assertEquals(l.getPreferredAmount(),1.0, 0.01);
-        l.setPreferredAmount(.55);
-        Assert.assertEquals(l.getPreferredAmount(),.55, 0.01);
+        l.setDefaultAmount(.00);
+        Assert.assertEquals(l.getDefaultAmount(),.00, 0.01);
+        l.setDefaultAmount(1.00);
+        Assert.assertEquals(l.getDefaultAmount(),1.0, 0.01);
+        l.setDefaultAmount(.55);
+        Assert.assertEquals(l.getDefaultAmount(),.55, 0.01);
     }
 
 
@@ -49,17 +49,17 @@ public class LightTest {
     @Test
     public void turnLightsOnTest(){
         l.turnOn();
-        Assert.assertEquals(l.getAmount(),.75,0.01);
+        Assert.assertEquals(l.getCurrIntensity(),.75,0.01);
     }
     @Test
     public void turnLightsOffTest(){
         l.turnOff();
-        Assert.assertEquals(l.getAmount(),0.0,0.00);
+        Assert.assertEquals(l.getCurrIntensity(),0.0,0.00);
     }
     @Test
     public void dimTest(){
         l.dim(.96);
-        Assert.assertEquals(l.getAmount(),.96,.01);
+        Assert.assertEquals(l.getCurrIntensity(),.96,.01);
     }
 
 
