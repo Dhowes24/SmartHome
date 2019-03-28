@@ -3,12 +3,16 @@ import org.junit.Test;
 
 public class LightTest {
 
-    public Light l = new Light("lamp", true,0.75,true);
+    public Light l = new Light("lamp", true, 0.75, true);
 
     //Constructor Test
     @Test
     public void LightTest(){
         Assert.assertNotNull(l);
+        Assert.assertEquals("lamp", l.getID());
+        Assert.assertEquals(true, l.getPreference());
+        Assert.assertEquals(0.75, l.getDefaultAmount(),0.00);
+        Assert.assertEquals(true, l.getDimmable());
     }
 
     //Getter Tests

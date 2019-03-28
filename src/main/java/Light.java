@@ -6,13 +6,13 @@ public class Light {
     private double defaultAmount;
     private boolean isDimmable;
 
-    public Light(String name, boolean pin, double preference, boolean isDimmable){
+    public Light(String name, boolean pin, double defaultAmountt, boolean isDimmable){
         this.ID = name;
         this.currIntensity = 0.0;
         this.isPinRequired = pin;
         this.isDimmable=isDimmable;
-        if(amountIsValid(preference) && this.isDimmable){
-            this.defaultAmount = preference;
+        if(amountIsValid(defaultAmount) && this.isDimmable){
+            this.defaultAmount = defaultAmountt;
         }
         else{
             this.defaultAmount = 1.0;
@@ -24,7 +24,7 @@ public class Light {
         this.currIntensity = 0.0;
         this.isPinRequired = pin;
         this.isDimmable = isDimmable;
-        this.defaultAmount =1.0;
+        this.defaultAmount = 1.0;
     }
 
     /**
@@ -73,7 +73,7 @@ public class Light {
      * Turns the lights currIntensity to zero turning it off
      */
     public void turnOff(){
-        this.currIntensity =0.0;
+        this.currIntensity=0.0;
     }
 
     /**
