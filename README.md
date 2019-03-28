@@ -9,10 +9,10 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
 
 ## Sprint One
 * ### Narratives and Scenarios
-** https://docs.google.com/document/d/1v4Ta3T3lsxlfebAUdePCav_91UK6pSoab9muTx_xOIk/edit?usp=sharing
+* * https://docs.google.com/document/d/1v4Ta3T3lsxlfebAUdePCav_91UK6pSoab9muTx_xOIk/edit?usp=sharing
 
 * ### Use Case
-** https://drive.google.com/file/d/1lyczQb34oAUq6Xd4ioJHbeB8wJe7C72u/view?usp=sharing
+* * https://drive.google.com/file/d/1lyczQb34oAUq6Xd4ioJHbeB8wJe7C72u/view?usp=sharing
 
 ### Class Digaram
 https://drive.google.com/file/d/1lW9VD-O9xoosBA_uYNH5dZKhjOzqkhEz/view?usp=sharing
