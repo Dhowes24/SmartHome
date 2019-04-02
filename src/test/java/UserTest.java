@@ -55,9 +55,9 @@ public class UserTest {
         testHouse.addRoom("testRoom1");
         Room testRoom = testHouse.accessRoom("testRoom1");
 
-        testRoom.addAppliance("Test TV", false, false);
-        testRoom.addAppliance("Coffee Maker", false, false);
-        testRoom.addAppliance("Toilet", false, false);
+//        testRoom.addAppliance("Test TV", false, false);
+//        testRoom.addAppliance("Coffee Maker", false, false);
+//        testRoom.addAppliance("Toilet", false, false);
 
         masterUser.getRoomApplianceList("testRoom1");
 
