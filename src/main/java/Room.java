@@ -26,7 +26,7 @@ public class Room {
      * Add appliance to list for this room by unique name
      * @param name
      */
-    public void addAppliance(String name, Boolean status, Boolean isRequired){
+    public void addAppliance(String name, Boolean isRequired){
         if(!containedInApplianceList(name)){
             this.applianceMap.put(name, new Appliance(name, isRequired));
         }
