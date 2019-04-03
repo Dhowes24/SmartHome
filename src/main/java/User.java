@@ -15,6 +15,8 @@ public class User {
 
     }
 
+
+
     /**
      * Creates a user and adds them to the house user list
      * Can set preferences permissions in user creation

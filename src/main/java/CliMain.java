@@ -1,8 +1,11 @@
-import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 import java.lang.String;
 import java.io.FileReader;
-import java.util.Iterator;
-import java.util.Map;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;// in play 2.3
 
 
 
@@ -34,26 +37,33 @@ public class CliMain extends Room {
                 pinS = s.nextLine();
             }
             Integer pin = Integer.parseInt(pinS);
+            Boolean successfulSignIn = false;
+            while(!successfulSignIn){
+                try{
+                    successfulSignIn = signIn(username,pin);
+                }
+                catch(Exception e){
+                    System.out.println("ERROR: "+e);
+                }
+                if(!successfulSignIn){
+                    System.out.println();
+                    System.out.println("Error: Failed log in.");
+                    System.out.println("Please enter the proper credentials");
+                    System.out.println();
 
-            while (!signIn(username, pin)) {
-                //Get the User Name
-                System.out.println();
-                System.out.println("Error: Failed log in.");
-                System.out.println("Please enter the proper credentials");
-                System.out.println();
+                    System.out.print("Please enter your username: ");
+                    username = s.nextLine();
 
-                System.out.print("Please enter your username: ");
-                username = s.nextLine();
-
-                //Get the Pin
-                System.out.print("Please enter your pin: ");
-                pinS = s.nextLine();
-                while (!integerCheck(pinS)) {
-                    System.out.println("Error: type in a integer value.");
+                    //Get the Pin
                     System.out.print("Please enter your pin: ");
                     pinS = s.nextLine();
+                    while (!integerCheck(pinS)) {
+                        System.out.println("Error: type in a integer value.");
+                        System.out.print("Please enter your pin: ");
+                        pinS = s.nextLine();
+                    }
+                    pin = Integer.parseInt(pinS);
                 }
-                pin = Integer.parseInt(pinS);
             }
 
             //TODO read in the house from the JSON
@@ -194,10 +204,19 @@ public class CliMain extends Room {
 
 
     //TODO read in the user from the JSON
-    public static boolean signIn(String username, Integer pin){
-        if(username.equals("brien") && pin == 69){
+    public static boolean signIn(String username, Integer pin)throws IOException {
+        try{
+            System.out.println("it got here");
+            ObjectMapper mapper = new ObjectMapper();
+            List<User> myObjects = mapper.readValue("/src/main/files/users.json", new TypeReference<List<User>>(){});
+            for (int i = 0; i < myObjects.size(); i++) {
+                System.out.println(myObjects.get(i).Name);
+            }
+            System.out.println("It got here too");
+
+
             return true;
-        }else{
+        } catch(Exception e){
             return false;
         }
     }
