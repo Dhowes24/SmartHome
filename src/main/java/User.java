@@ -6,6 +6,7 @@ public class User {
     //Preferences preferences;
     //Permissions permissions;
 
+
     public User(House house, String Name){
         //Preferences preferences = new Preferences();
         //Permissions permissions = new Permissions();
@@ -74,8 +75,13 @@ public class User {
      * @return
      */
     public HashMap getRoomLightList(String roomName){
-        return House.accessRoom(roomName).lightMap;
+        if(House.roomList.containsKey(roomName)){
+            return House.accessRoom(roomName).lightMap;
+        }
+        else{
+            return null;
+        }
+
 
     }
-
 }

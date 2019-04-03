@@ -12,6 +12,7 @@ public class CliMain extends Room {
     public static boolean signedIn = false;
     public static Scanner s = new Scanner(System.in);
 
+    //Initial CLI
     public static void run(){
         while(running) {
             signedIn=false;
@@ -64,9 +65,8 @@ public class CliMain extends Room {
         }
     }
 
-
+    //Basic Menu CLI
     public static void basicMenu(User u){
-
         //Run until they sign in
         while(signedIn) {
             System.out.println();
@@ -113,6 +113,7 @@ public class CliMain extends Room {
 
             }else if (selection == 5) {
                 //User CLI
+                userCLI(u);
 
             }else if (selection == 6) {
                 //Scheduling CLI
@@ -132,6 +133,65 @@ public class CliMain extends Room {
         }
     }
 
+    //User CLI
+    public static void userCLI(User u){
+        boolean run = true;
+        while(run) {
+            System.out.println("User Menu");
+            System.out.println("---------");
+            System.out.println("1. Create User");
+            System.out.println("2. Delete User");
+            System.out.println("3. Print Room List");
+            System.out.println("4. Get Room Appliances");
+            System.out.println("5. Get Room Lights");
+            System.out.println("6. Return");
+            System.out.print("Please enter a digit 1-6: ");
+            String selectionS = s.nextLine();
+            while(!integerCheck(selectionS )){
+                System.out.println();
+                System.out.println("Error: type in a integer value.");
+                System.out.print("Please enter a value 1-6: ");
+                selectionS = s.nextLine();
+            }
+            System.out.println();
+            Integer selection = Integer.parseInt(selectionS);
+            if(selection==1){
+                System.out.print("Please enter the name for the new user: ");
+                String userToAdd = s.nextLine();
+                User newUser = new User(u.House,userToAdd);
+                System.out.println("You have entered "+ userToAdd+" as a new user in this house.");
+                System.out.println();
+            }else if(selection==2){
+                System.out.print("Please enter the name for the user to delete: ");
+                String userToDelete = s.nextLine();
+                u.deleteUser(userToDelete);
+                System.out.println("You have removed " + userToDelete+ " as a user in this house.");
+                System.out.println();
+            }else if(selection==3){
+                System.out.println(u.printRoomList());
+                System.out.println();
+            }else if(selection==4){
+                System.out.print("Please enter the room in the house you would like to get appliances for: ");
+                String roomName = s.nextLine();
+                System.out.println(u.getRoomApplianceList(roomName));
+                System.out.println();
+            }else if(selection==5){
+                System.out.print("Please enter the room in the house you would like to get lights for: ");
+                String roomName = s.nextLine();
+                System.out.println(u.getRoomLightList(roomName));
+                System.out.println();
+            }else if(selection==6){
+                run = false;
+            }else{
+                System.out.println("Error: Enter a value between 1 and 6.");
+            }
+        }
+    }
+
+
+
+
+
 
     //TODO read in the user from the JSON
     public static boolean signIn(String username, Integer pin){
@@ -142,11 +202,6 @@ public class CliMain extends Room {
         }
     }
 
-    /**
-     * Checks to see if the input was an integer
-     * @param s - the string being looked at
-     * @return boolean - whether it is an integer or not
-     */
     public static boolean integerCheck(String s){
         try {
             Integer.parseInt(s);
