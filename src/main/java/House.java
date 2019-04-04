@@ -16,6 +16,32 @@ public class House {
 
     public void runCLI() {
 
+        System.out.println("Would you like to 1) Create a new room or 2) Navigate to a room");
+
+        String selection = s.nextLine();
+
+        while (!integerCheck(selection)) {
+            System.out.println("Error: type in an integer value");
+            System.out.println("Please enter 1 or 2");
+            selection = s.nextLine();
+        }
+
+        Integer sInt = Integer.parseInt(selection);
+
+        if (sInt == 1) {
+
+        } else {
+
+        }
+
+    }
+
+    public void createRoomCLI() {
+
+    }
+
+    public void navigateRoomsCLI() {
+
         System.out.println("Your Rooms:");
         printRooms();
         System.out.println("Which room would you like to go to? (Enter the corresponding number)");
