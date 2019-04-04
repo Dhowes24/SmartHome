@@ -23,6 +23,14 @@ public class HouseTest {
     }
 
     @Test
+    public void cliTest(){
+        House h = new House();
+        h.addRoom("Kitchen");
+        h.addRoom("Master Bedroom");
+        h.runCLI();
+    }
+
+    @Test
     public void printScheduleListTest(){
 
     }

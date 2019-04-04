@@ -86,7 +86,7 @@ public class CliMain extends Room {
             System.out.println("1. Lighting");
             System.out.println("2. Appliances");
             System.out.println("3. Temperature");
-            System.out.println("4. Rooms");
+            System.out.println("4. House");
             System.out.println("5. Users");
             System.out.println("6. Scheduling");
             System.out.println("7. Contact Emergency Services");
@@ -119,7 +119,7 @@ public class CliMain extends Room {
                 //Temperature CLI
 
             }else if (selection == 4) {
-                //Room CLI
+                //House CLI
 
             }else if (selection == 5) {
                 //User CLI
