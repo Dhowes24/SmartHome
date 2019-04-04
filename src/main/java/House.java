@@ -35,7 +35,6 @@ public class House {
         } else {
             // TODO: GO BACK
         }
-
     }
 
     public void createRoomCLI() {
@@ -70,7 +69,7 @@ public class House {
 
         Integer sInt = Integer.parseInt(selection);
 
-        currentRoom = roomList.get(getKey(sInt-1));
+        currentRoom = roomList.get(getKey(sInt-1)); // remove 1 because it was added for user interface earlier
     }
 
     public void printRooms() {
