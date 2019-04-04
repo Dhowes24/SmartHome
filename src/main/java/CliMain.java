@@ -119,7 +119,7 @@ public class CliMain extends Room {
                 //Temperature CLI
 
             }else if (selection == 4) {
-                //Room CLI
+                //Rooms CLI
 
             }else if (selection == 5) {
                 //User CLI
