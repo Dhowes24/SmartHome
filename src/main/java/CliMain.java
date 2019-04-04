@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.lang.String;
+import java.lang.Boolean;
 import java.io.FileReader;
 import java.util.Iterator;
 import java.util.Map;
@@ -103,7 +104,7 @@ public class CliMain extends Room {
                 //Lighting CLI
 
             }else if (selection == 2) {
-                //Appliance CLI
+                applianceMenu();
 
             }else if (selection == 3) {
                 //Temperature CLI
@@ -130,6 +131,21 @@ public class CliMain extends Room {
                 System.out.println("Error: Enter a value between 1 and 9.");
             }
         }
+    }
+
+    public static void applianceMenu() {
+
+        System.out.println("Appliance Menu");
+        System.out.println("--------------");
+        System.out.println("1 - Add an appliance");
+        System.out.println("2 - Remove an appliance");
+        System.out.println("3 - Check the status");
+        System.out.println("4 - Turn appliance on");
+        System.out.println("5 - Turn appliance off");
+        System.out.println("6 - Modify user preferences");
+        System.out.println("7 - Return to main menu");
+        System.out.println("-----------------------");
+        System.out.println(" ");
     }
 
 

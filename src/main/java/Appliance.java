@@ -20,6 +20,12 @@ public Appliance(String name, boolean pin ) {
     }
 }
 
+public Appliance() {
+    this.ID = "default";
+    this.status = false;
+    this.userPref = true;
+}
+
 //returns the ID of the appliance
 public String getID() {
     return this.ID;
@@ -57,8 +63,5 @@ public void changeUserPref() {
         this.userPref = true;
     }
 }
-
-
-
 
 }
