@@ -8,6 +8,9 @@ git # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLi
 .idea/**/dictionaries
 .idea/**/shelf
 .idea/**/misc.xml
+.idea/
+
+target/
 
 # Generated files
 .idea/**/contentModel.xml

@@ -7,7 +7,9 @@ public class ApplianceTest {
     @Test
     void constructorTest() {
         Appliance washer = new Appliance("washer", false);
-        assertNotNull(washer);
+        assertEquals("washer", washer.getID());
+        assertFalse(washer.getUserPref());
+        assertFalse(washer.getStatus());
 
 
     }

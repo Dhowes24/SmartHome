@@ -9,11 +9,13 @@ public class Room {
 
     HashMap<String, Light> lightMap;
     HashMap<String, Appliance> applianceMap;
-    Temperature thermostat;
+    private Temperature thermostat;
+    private String roomName;
+    private String ID;
 
     public Room(String name){
-        String roomName = name;
-        String ID = UUID.randomUUID().toString();
+        this.roomName = name;
+        this.ID = UUID.randomUUID().toString();
 
         lightMap = new HashMap<>();
         applianceMap = new HashMap<>();
@@ -22,11 +24,27 @@ public class Room {
         thermostat = new Temperature(65, true);
     }
 
+    public Room() {
+
+        this.ID = UUID.randomUUID().toString();
+
+        lightMap = new HashMap<>();
+        applianceMap = new HashMap<>();
+        // TODO: must get user's preference for starting temp or ask them for a temp when creating a room
+        // TODO: must also ask user if thermostat should require pin
+        thermostat = new Temperature(65, true);
+
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
     /**
      * Add appliance to list for this room by unique name
      * @param name
      */
-    public void addAppliance(String name, Boolean status, Boolean isRequired){
+    public void addAppliance(String name, Boolean isRequired){
         if(!containedInApplianceList(name)){
             this.applianceMap.put(name, new Appliance(name, isRequired));
         }
