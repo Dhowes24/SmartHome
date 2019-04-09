@@ -16,10 +16,10 @@ public class WeekDay {
 
     }
 
-    public void addObjectToSchedule(String ID, String time, boolean statusTo){
+    public void addObjectToSchedule(String ID, String time, boolean statusTo, Integer type){
 
         if(checkIfTimeValid(time)){
-        ScheduleItem newScheduleItem =  new ScheduleItem(time, statusTo);
+        ScheduleItem newScheduleItem =  new ScheduleItem(time, statusTo, type);
         daySchedule.put(ID, newScheduleItem);}
     }
 

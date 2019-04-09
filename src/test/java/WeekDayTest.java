@@ -10,12 +10,12 @@ public class WeekDayTest {
     public void addObjectToScheduleTest(){
         WeekDay testWeekDay = new WeekDay();
 
-        testWeekDay.addObjectToSchedule("ToasterID", "12:45", true);
+        testWeekDay.addObjectToSchedule("ToasterID", "12:45", true,1);
         assertTrue(testWeekDay.daySchedule.containsKey("ToasterID"));
         Assert.assertEquals(testWeekDay.daySchedule.get("ToasterID").Time, "12:45");
         Assert.assertEquals(testWeekDay.daySchedule.get("ToasterID").StatusTo, true);
 
-        testWeekDay.addObjectToSchedule("WontWorKID", "132:45", true);
+        testWeekDay.addObjectToSchedule("WontWorKID", "132:45", true,1);
         assertFalse(testWeekDay.daySchedule.containsKey("WontWorkID"));
 
     }
@@ -23,7 +23,7 @@ public class WeekDayTest {
     @Test
     public void removeObjectFromScheduleTest(){
         WeekDay testWeekDay = new WeekDay();
-        testWeekDay.addObjectToSchedule("ToasterID", "12:45", true);
+        testWeekDay.addObjectToSchedule("ToasterID", "12:45", true,1);
         Assert.assertEquals(testWeekDay.daySchedule.get("ToasterID").Time, "12:45");
         testWeekDay.removeObjectFromSchedule("ToasterID", "12:45");
         //TODO check how to see if that key value is now gone
