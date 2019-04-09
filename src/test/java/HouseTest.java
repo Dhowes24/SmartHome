@@ -27,7 +27,7 @@ public class HouseTest {
         House h = new House();
         h.addRoom("Kitchen");
         h.addRoom("Master Bedroom");
-        h.runCLI();
+        h.houseCLI();
     }
 
     @Test
