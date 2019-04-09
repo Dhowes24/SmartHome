@@ -31,10 +31,10 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
 
 ## Sprint Two
 ### Dividing up the Current Sprint:
-* ### Sprint Goal: Create the Command Line Interface along with User Preferences, Schedule Creation, and basic Emergency Services functionality.
+* ### Sprint Goal: Create the Command Line Interface along with User Preferences, MasterSchedule Creation, and basic Emergency Services functionality.
   * Command Line Interface - Brien, Anthony, Michael
   * User Creation - Derek
-  * Schedule Creation - Derek
+  * MasterSchedule Creation - Derek
   * Emergency Services - Anthony
 
 * ### Narratives and Scenarios

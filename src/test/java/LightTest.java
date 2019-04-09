@@ -76,20 +76,4 @@ public class LightTest {
         Assert.assertEquals(l.getPreference(),true);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
