@@ -70,6 +70,7 @@ public class House {
         Integer sInt = Integer.parseInt(selection);
 
         currentRoom = roomList.get(getKey(sInt-1)); // remove 1 because it was added for user interface earlier
+        // TODO: Show CLI options for a Room
     }
 
     public void printRooms() {
