@@ -16,28 +16,42 @@ public class House {
 
     public void runCLI() {
 
-        System.out.println("Would you like to 1) Create a new room or 2) Navigate to a room");
+        System.out.println("Would you like to 1) Create a new room, 2) Navigate to a room, or 3) Go back");
 
         String selection = s.nextLine();
 
         while (!integerCheck(selection)) {
             System.out.println("Error: type in an integer value");
-            System.out.println("Please enter 1 or 2");
+            System.out.println("Please enter 1, 2, or 3");
             selection = s.nextLine();
         }
 
         Integer sInt = Integer.parseInt(selection);
 
         if (sInt == 1) {
-
+            createRoomCLI();
+        } else if (sInt == 2){
+            navigateRoomsCLI();
         } else {
-
+            // TODO: GO BACK
         }
-
     }
 
     public void createRoomCLI() {
 
+        System.out.println("Please enter the name of the room you would like to create:\n");
+        String selection = s.nextLine();
+        System.out.println("Please confirm the name of the room you would like to create:\n");
+        String selection2 = s.nextLine();
+
+        if (selection != selection2) {
+            System.out.println("Your names do not match");
+            createRoomCLI();
+        } else {
+            addRoom(selection);
+            System.out.println("Your room has been created!");
+            runCLI();
+        }
     }
 
     public void navigateRoomsCLI() {
@@ -55,7 +69,8 @@ public class House {
 
         Integer sInt = Integer.parseInt(selection);
 
-        currentRoom = roomList.get(getKey(sInt-1));
+        currentRoom = roomList.get(getKey(sInt-1)); // remove 1 because it was added for user interface earlier
+        // TODO: Show CLI options for a Room
     }
 
     public void printRooms() {
