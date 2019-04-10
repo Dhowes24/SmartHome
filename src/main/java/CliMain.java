@@ -97,7 +97,7 @@ public class CliMain extends Room {
             System.out.println("Would you like to 1) Create a new room, 2) Navigate to a room, or 3) Go back");
             System.out.println("1. Create a new room");
             System.out.println("2. Navigate to a room");
-            System.out.println("3. Users");
+            System.out.println("3. User Options");
             System.out.println("4. Scheduling");
             System.out.println("5. Contact Emergency Services");
             System.out.println("6. Help");
@@ -119,26 +119,26 @@ public class CliMain extends Room {
             } else if (selection == 2) { // Navigate Room
                 navigateRoomsCLI();
 
-            } else if (selection == 3) { // User CLI
+            } else if (selection == 3) { // User Options CLI
                 userCLI();
 
-            } else if (selection == 4) {
-                //Scheduling CLI
+            } else if (selection == 4) { // Scheduling CLI
 
-            } else if (selection == 5) {
-                //Emergency Services CLI
+            } else if (selection == 5) { // Emergency Services CLI
 
-            } else if (selection == 6) {
-                //Help CLI
+            } else if (selection == 6) { // Help CLI
 
-            } else if (selection == 7) {
+            } else if (selection == 7) { // Sign Off
                 System.out.println("Signing off...");
                 System.out.println();
-                signedIn=false;
-            } else {
+                signedIn = false;
+            } else { // Error
                 System.out.println("Error: Enter a value between 1 and 9.");
+                basicMenu();
             }
         }
+
+        run();
     }
 
     //Room CLI
