@@ -11,40 +11,40 @@ public class MasterSchedule {
 
     }
 
-    public void addScheduleItem(String Day, String itemID, String Time, Boolean StatusTo){
-        switch (Day){
-            case "Sunday":
-                Sunday.addObjectToSchedule(itemID,Time,StatusTo);
-            case "Monday":
-                Monday.addObjectToSchedule(itemID,Time,StatusTo);
-
-            case "Tuesday":
-                Tuesday.addObjectToSchedule(itemID,Time,StatusTo);
-
-            case "Wednesday":
-                Wednesday.addObjectToSchedule(itemID,Time,StatusTo);
-
-            case "Thursday":
-                Thursday.addObjectToSchedule(itemID,Time,StatusTo);
-
-            case "Friday":
-                Friday.addObjectToSchedule(itemID,Time,StatusTo);
-
-            case "Saturday":
-                Saturday.addObjectToSchedule(itemID,Time,StatusTo);
-
-            case "Weekdays":
-                Monday.addObjectToSchedule(itemID,Time,StatusTo);
-                Tuesday.addObjectToSchedule(itemID,Time,StatusTo);
-                Wednesday.addObjectToSchedule(itemID,Time,StatusTo);
-                Thursday.addObjectToSchedule(itemID,Time,StatusTo);
-                Friday.addObjectToSchedule(itemID,Time,StatusTo);
-
-            case "Weekends":
-                Sunday.addObjectToSchedule(itemID,Time,StatusTo);
-                Saturday.addObjectToSchedule(itemID,Time,StatusTo);
-
-        }
-    }
+//    public void addScheduleItem(String Day, String itemID, String Time, Boolean StatusTo){
+//        switch (Day){
+//            case "Sunday":
+//                Sunday.addObjectToSchedule(itemID,Time,StatusTo);
+//            case "Monday":
+//                Monday.addObjectToSchedule(itemID,Time,StatusTo);
+//
+//            case "Tuesday":
+//                Tuesday.addObjectToSchedule(itemID,Time,StatusTo);
+//
+//            case "Wednesday":
+//                Wednesday.addObjectToSchedule(itemID,Time,StatusTo);
+//
+//            case "Thursday":
+//                Thursday.addObjectToSchedule(itemID,Time,StatusTo);
+//
+//            case "Friday":
+//                Friday.addObjectToSchedule(itemID,Time,StatusTo);
+//
+//            case "Saturday":
+//                Saturday.addObjectToSchedule(itemID,Time,StatusTo);
+//
+//            case "Weekdays":
+//                Monday.addObjectToSchedule(itemID,Time,StatusTo);
+//                Tuesday.addObjectToSchedule(itemID,Time,StatusTo);
+//                Wednesday.addObjectToSchedule(itemID,Time,StatusTo);
+//                Thursday.addObjectToSchedule(itemID,Time,StatusTo);
+//                Friday.addObjectToSchedule(itemID,Time,StatusTo);
+//
+//            case "Weekends":
+//                Sunday.addObjectToSchedule(itemID,Time,StatusTo);
+//                Saturday.addObjectToSchedule(itemID,Time,StatusTo);
+//
+//        }
+//    }
 
 }

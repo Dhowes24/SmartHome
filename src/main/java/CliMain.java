@@ -1,15 +1,8 @@
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.lang.String;
-import java.io.FileReader;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;// in play 2.3
-
-
-
-public class CliMain extends Room {
+public class CliMain {
 
     private static boolean running = true;
     private static boolean signedIn = false;
@@ -112,7 +105,6 @@ public class CliMain extends Room {
 
             Integer selection = Integer.parseInt(sel);
 
-            //TODO send them to classes individual CLI's
             if (selection == 1) { // Create Room
                 createRoomCLI();
 
@@ -123,11 +115,11 @@ public class CliMain extends Room {
                 userCLI();
 
             } else if (selection == 4) { // Scheduling CLI
-
+                //TODO
             } else if (selection == 5) { // Emergency Services CLI
-
+                //TODO
             } else if (selection == 6) { // Help CLI
-
+                //TODO
             } else if (selection == 7) { // Sign Off
                 System.out.println("Signing off...");
                 System.out.println();
@@ -307,25 +299,21 @@ public class CliMain extends Room {
         }
     }
 
-
-
-
-
-
     //TODO read in the user from the JSON
     public static boolean signIn(String username, Integer pin)throws IOException {
+        List<User> userListOut = new ArrayList<User>();
         try{
-            System.out.println("it got here");
-            ObjectMapper mapper = new ObjectMapper();
-            List<User> myObjects = mapper.readValue("/src/main/files/users.json", new TypeReference<List<User>>(){});
-            for (int i = 0; i < myObjects.size(); i++) {
-                System.out.println(myObjects.get(i).Name);
-            }
-            System.out.println("It got here too");
-
-
-            return true;
+            userListOut = JsonUtil.listFromJsonFile("./src/main/files/usersList", User.class);
         } catch(Exception e){
+            return false;
+        }
+        if(userListOut.size()==0){return false;}
+        else{
+            for (int i = 0; i < userListOut.size(); i++) {
+                if ((userListOut.get(i).getName().equals(username)) && (userListOut.get(i).getPin().equals(pin))) {
+                    return true;
+                }
+            }
             return false;
         }
     }

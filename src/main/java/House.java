@@ -44,7 +44,6 @@ public class House {
         if(!roomList.containsKey(name)){
             Room newRoom = new Room(name);
             roomList.put(name, newRoom);
-            System.out.println(roomList.get(name).getRoomName());
         } else{
             //Return what ever we want to send back as an error
         }
