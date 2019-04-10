@@ -11,9 +11,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;// in play 2.3
 
 public class CliMain extends Room {
 
-    public static boolean running = true;
-    public static boolean signedIn = false;
-    public static Scanner s = new Scanner(System.in);
+    private static boolean running = true;
+    private static boolean signedIn = false;
+    private static Scanner s = new Scanner(System.in);
+
+    private static Room currentRoom;
+    private static House currentHouse;
+    private static User currentUser ;
 
     //Initial CLI
     public static void run(){
@@ -68,72 +72,66 @@ public class CliMain extends Room {
 
             //TODO read in the house from the JSON
             House h = new House();
-            User u = new User(h, username);
+            currentUser = new User(h, username);
             signedIn = true;
-            basicMenu(u);
+
+            startMenu();
 
         }
     }
 
+    public static void startMenu() {
+
+        System.out.println("Welcome to the Smart Home Main Menu!");
+        System.out.println("Feel free to navigate through the options!");
+        basicMenu();
+    }
+
     //Basic Menu CLI
-    public static void basicMenu(User u){
+    public static void basicMenu(){
+
         //Run until they sign in
         while(signedIn) {
-            System.out.println();
-            System.out.println("Welcome to the Smart Home Main Menu!");
-            System.out.println("Feel free to navigate through the options!");
-            System.out.println("------------------------------------------");
-            System.out.println("1. Lighting");
-            System.out.println("2. Appliances");
-            System.out.println("3. Temperature");
-            System.out.println("4. Rooms");
-            System.out.println("5. Users");
-            System.out.println("6. Scheduling");
-            System.out.println("7. Contact Emergency Services");
-            System.out.println("8. Help");
-            System.out.println("9. Sign Out");
-            System.out.println("------------------------------------------");
-            System.out.println();
-            System.out.print("What would you like to do: ");
 
-            //Check for valid input
-            String selectionS = s.nextLine();
-            while (!integerCheck(selectionS)) {
-                System.out.println();
-                System.out.println("Error: type in a integer value.");
-                System.out.print("Please enter a value 1-9: ");
-                selectionS = s.nextLine();
+            System.out.println("------------------------------------------");
+            System.out.println("Would you like to 1) Create a new room, 2) Navigate to a room, or 3) Go back");
+            System.out.println("1. Create a new room");
+            System.out.println("2. Navigate to a room");
+            System.out.println("3. Users");
+            System.out.println("4. Scheduling");
+            System.out.println("5. Contact Emergency Services");
+            System.out.println("6. Help");
+            System.out.println("7. Sign Out");
+
+            String sel = s.nextLine();
+
+            while (!integerCheck(sel)) {
+                System.out.println("Error: type in an integer value");
+                sel = s.nextLine();
             }
-            //Parse input to integer
-            Integer selection = Integer.parseInt(selectionS);
 
+            Integer selection = Integer.parseInt(sel);
 
             //TODO send them to classes individual CLI's
-            if (selection == 1) {
-                //Lighting CLI
+            if (selection == 1) { // Create Room
+                createRoomCLI();
 
-            }else if (selection == 2) {
-                //Appliance CLI
+            } else if (selection == 2) { // Navigate Room
+                navigateRoomsCLI();
 
-            }else if (selection == 3) {
-                //Temperature CLI
+            } else if (selection == 3) { // User CLI
+                userCLI();
 
-            }else if (selection == 4) {
-                //Rooms CLI
-
-            }else if (selection == 5) {
-                //User CLI
-                userCLI(u);
-
-            }else if (selection == 6) {
+            } else if (selection == 4) {
                 //Scheduling CLI
 
-            }else if (selection == 7) {
+            } else if (selection == 5) {
                 //Emergency Services CLI
-            }else if (selection == 8) {
+
+            } else if (selection == 6) {
                 //Help CLI
 
-            }else if (selection == 9) {
+            } else if (selection == 7) {
                 System.out.println("Signing off...");
                 System.out.println();
                 signedIn=false;
@@ -143,8 +141,119 @@ public class CliMain extends Room {
         }
     }
 
-    //User CLI
-    public static void userCLI(User u){
+    //Room CLI
+
+    public static void createRoomCLI() {
+
+        System.out.println("Please enter the name of the room you would like to create:");
+        String selection = s.nextLine();
+        System.out.println("Please confirm the name of the room you would like to create:");
+        String selection2 = s.nextLine();
+
+        if (selection.equals(selection2)) {
+            currentHouse.addRoom(selection);
+            System.out.println("Your room has been created!");
+            basicMenu();
+        } else {
+            System.out.println("Your names do not match");
+            createRoomCLI();
+        }
+    }
+
+    public static void navigateRoomsCLI() {
+
+        if (currentHouse.roomList.size() > 0) {
+            System.out.println("Your Rooms:");
+            currentHouse.printRooms();
+            System.out.println("Which room would you like to go to? (Enter the corresponding number)");
+
+            selectRoomCLI();
+        }
+
+        System.out.println("You have no rooms yet!");
+        basicMenu();
+    }
+
+    public static void selectRoomCLI() {
+
+        String selection = s.nextLine();
+
+        while (!integerCheck(selection)) {
+            System.out.println("Error: type in an integer value");
+            System.out.println("Please enter a value that corresponds to a room");
+            selection = s.nextLine();
+        }
+
+        Integer sInt = Integer.parseInt(selection);
+
+        if (sInt-1 >= currentHouse.roomList.size() || sInt == 0) {
+            System.out.println("Error: There is no room corresponding to number: " + sInt);
+            System.out.println("Please enter a value that corresponds to a room");
+            navigateRoomsCLI();
+        }
+
+        currentRoom = currentHouse.accessRoom(currentHouse.getKey(sInt-1)); // remove 1 because it was added for user interface earlier
+        roomStatusCLI();
+    }
+
+    public static void roomStatusCLI() {
+        System.out.println("\nCurrent Room: " + currentRoom.getRoomName());
+        System.out.println("Temperature: " + currentRoom.checkTemp());
+        System.out.println("Lights:\n");
+        currentRoom.printLights();
+        System.out.println("Appliances:\n");
+        currentRoom.printAppliances();
+
+        System.out.println("Which of the following actions would you like to perform?");
+        System.out.println("0. Go Back");
+        System.out.println("1. Add Appliance");
+        System.out.println("2. Remove Appliance");
+        System.out.println("3. Change Appliance Status");
+        System.out.println("4. Add Light");
+        System.out.println("5. Remove Light");
+        System.out.println("6. Adjust Light");
+        System.out.println("7. Adjust Temperature");
+
+        String selection = s.nextLine();
+
+        while (!integerCheck(selection)) {
+            System.out.println("Error: type in an integer value");
+            System.out.println("Please enter a value that corresponds to an option");
+            selection = s.nextLine();
+        }
+
+        Integer sInt = Integer.parseInt(selection);
+
+        if (sInt < 0 || sInt > 7) {
+            System.out.println("Error: Please select a valid option");
+            roomStatusCLI();
+        }
+
+        System.out.println(sInt);
+
+        if (sInt == 0) { // Go Back
+
+            basicMenu();
+
+        } else if (sInt == 1) { // Add Appliance
+
+        } else if (sInt == 2) { // Remove Appliance
+
+        } else if (sInt == 3) { // Change Appliance Status
+
+        } else if (sInt == 4) { // Add Light
+
+        } else if (sInt == 5) { // Remove Light
+
+        } else if (sInt == 6) { // Adjust Light
+
+        } else { // Adjust Temperature
+
+        }
+    }
+
+    // User CLI
+    public static void userCLI(){
         boolean run = true;
         while(run) {
             System.out.println("User Menu");
@@ -168,27 +277,27 @@ public class CliMain extends Room {
             if(selection==1){
                 System.out.print("Please enter the name for the new user: ");
                 String userToAdd = s.nextLine();
-                User newUser = new User(u.House,userToAdd);
+                User newUser = new User(currentUser.House,userToAdd);
                 System.out.println("You have entered "+ userToAdd+" as a new user in this house.");
                 System.out.println();
             }else if(selection==2){
                 System.out.print("Please enter the name for the user to delete: ");
                 String userToDelete = s.nextLine();
-                u.deleteUser(userToDelete);
+                currentUser.deleteUser(userToDelete);
                 System.out.println("You have removed " + userToDelete+ " as a user in this house.");
                 System.out.println();
             }else if(selection==3){
-                System.out.println(u.printRoomList());
+                System.out.println(currentUser.printRoomList());
                 System.out.println();
             }else if(selection==4){
                 System.out.print("Please enter the room in the house you would like to get appliances for: ");
                 String roomName = s.nextLine();
-                System.out.println(u.getRoomApplianceList(roomName));
+                System.out.println(currentUser.getRoomApplianceList(roomName));
                 System.out.println();
             }else if(selection==5){
                 System.out.print("Please enter the room in the house you would like to get lights for: ");
                 String roomName = s.nextLine();
-                System.out.println(u.getRoomLightList(roomName));
+                System.out.println(currentUser.getRoomLightList(roomName));
                 System.out.println();
             }else if(selection==6){
                 run = false;
