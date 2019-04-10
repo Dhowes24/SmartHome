@@ -1,15 +1,8 @@
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.lang.String;
-import java.io.FileReader;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;// in play 2.3
-
-
-
-public class CliMain extends Room {
+public class CliMain {
 
     private static boolean running = true;
     private static boolean signedIn = false;
@@ -113,10 +106,10 @@ public class CliMain extends Room {
             Integer selection = Integer.parseInt(sel);
 
             if (selection == 1) { // Create Room
-//                createRoomCLI();
+                createRoomCLI();
 
             } else if (selection == 2) { // Navigate Room
-//                navigateRoomsCLI();
+                navigateRoomsCLI();
 
             } else if (selection == 3) { // User Options CLI
                 userCLI();
@@ -340,4 +333,3 @@ public class CliMain extends Room {
 
 
 }
-
