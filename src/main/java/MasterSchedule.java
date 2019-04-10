@@ -11,38 +11,38 @@ public class MasterSchedule {
 
     }
 
-    public void addScheduleItem(String Day, String itemID, String Time, Boolean StatusTo){
+    public void addScheduleItem(String Day, String itemID, String Time, Boolean StatusTo, Integer type){
         switch (Day){
             case "Sunday":
-                Sunday.addObjectToSchedule(itemID,Time,StatusTo, 0);
+                Sunday.addObjectToSchedule(itemID,Time,StatusTo, type);
             case "Monday":
-                Monday.addObjectToSchedule(itemID,Time,StatusTo, 0);
+                Monday.addObjectToSchedule(itemID,Time,StatusTo, type);
 
             case "Tuesday":
-                Tuesday.addObjectToSchedule(itemID,Time,StatusTo, 0);
+                Tuesday.addObjectToSchedule(itemID,Time,StatusTo, type);
 
             case "Wednesday":
                 Wednesday.addObjectToSchedule(itemID,Time,StatusTo, 0);
 
             case "Thursday":
-                Thursday.addObjectToSchedule(itemID,Time,StatusTo, 0);
+                Thursday.addObjectToSchedule(itemID,Time,StatusTo, type);
 
             case "Friday":
-                Friday.addObjectToSchedule(itemID,Time,StatusTo, 0);
+                Friday.addObjectToSchedule(itemID,Time,StatusTo, type);
 
             case "Saturday":
-                Saturday.addObjectToSchedule(itemID,Time,StatusTo, 0);
+                Saturday.addObjectToSchedule(itemID,Time,StatusTo, type);
 
             case "Weekdays":
-                Monday.addObjectToSchedule(itemID,Time,StatusTo, 0);
-                Tuesday.addObjectToSchedule(itemID,Time,StatusTo, 0);
-                Wednesday.addObjectToSchedule(itemID,Time,StatusTo, 0);
-                Thursday.addObjectToSchedule(itemID,Time,StatusTo, 0);
-                Friday.addObjectToSchedule(itemID,Time,StatusTo, 0);
+                Monday.addObjectToSchedule(itemID,Time,StatusTo, type);
+                Tuesday.addObjectToSchedule(itemID,Time,StatusTo, type);
+                Wednesday.addObjectToSchedule(itemID,Time,StatusTo, type);
+                Thursday.addObjectToSchedule(itemID,Time,StatusTo, type);
+                Friday.addObjectToSchedule(itemID,Time,StatusTo, type);
 
             case "Weekends":
-                Sunday.addObjectToSchedule(itemID,Time,StatusTo, 0);
-                Saturday.addObjectToSchedule(itemID,Time,StatusTo, 0);
+                Sunday.addObjectToSchedule(itemID,Time,StatusTo, type);
+                Saturday.addObjectToSchedule(itemID,Time,StatusTo, type);
 
         }
     }
