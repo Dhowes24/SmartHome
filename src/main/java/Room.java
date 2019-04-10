@@ -44,6 +44,7 @@ public class Room {
      * Add appliance to list for this room by unique name
      * @param name
      */
+
     public void addAppliance(String name, Boolean isRequired){
         if(!containedInApplianceList(name)){
             this.applianceMap.put(name, new Appliance(name, isRequired));
@@ -175,4 +176,19 @@ public class Room {
         return false;
     }
 
+    public void printLights() {
+        for (Light light : lightMap.values()) {
+            System.out.println(light.getID() + ": " + light.getCurrIntensity());
+        }
+    }
+
+    public void printAppliances() {
+        for (Appliance app : applianceMap.values()) {
+            if (app.getStatus()) {
+                System.out.println(app.getID() + ": ON");
+            } else {
+                System.out.println(app.getID() + ": OFF");
+            }
+        }
+    }
 }
