@@ -189,12 +189,18 @@ public class CliMain {
     }
 
     public static void roomStatusCLI() {
+
         System.out.println("\nCurrent Room: " + currentRoom.getRoomName());
         System.out.println("Temperature: " + currentRoom.checkTemp());
-        System.out.println("Lights:\n");
-        currentRoom.printLights();
-        System.out.println("Appliances:\n");
-        currentRoom.printAppliances();
+
+        if (currentRoom.lightMap.size() > 0) {
+            System.out.println("Lights:\n");
+            currentRoom.printLights();
+        }
+        if (currentRoom.applianceMap.size() > 0) {
+            System.out.println("Appliances:\n");
+            currentRoom.printAppliances();
+        }
 
         System.out.println("Which of the following actions would you like to perform?");
         System.out.println("0. Go Back");
@@ -205,6 +211,7 @@ public class CliMain {
         System.out.println("5. Remove Light");
         System.out.println("6. Adjust Light");
         System.out.println("7. Adjust Temperature");
+        // TODO: Add Schedule option to each part above^^
 
         String selection = s.nextLine();
 
@@ -229,18 +236,155 @@ public class CliMain {
 
         } else if (sInt == 1) { // Add Appliance
 
+            createApplianceCLI();
+
         } else if (sInt == 2) { // Remove Appliance
+
+            removeApplianceCLI();
 
         } else if (sInt == 3) { // Change Appliance Status
 
+            if (currentRoom.applianceMap.size() > 0) {
+
+                currentRoom.printAppliances();
+                System.out.println("Which appliance would you like to modify?");
+                System.out.println("Please enter a name below");
+                //TODO
+            }
+
+            System.out.println("You have no appliances yet!");
+            roomStatusCLI();
+
         } else if (sInt == 4) { // Add Light
+
+            createLightCLI();
 
         } else if (sInt == 5) { // Remove Light
 
+            if (currentRoom.lightMap.size() > 0) {
+
+                currentRoom.printLights();
+                System.out.println("Which light would you like to remove?");
+                System.out.println("Please enter a name below");
+                //TODO
+            }
+
+            System.out.println("You have no lights yet!");
+            roomStatusCLI();
+
         } else if (sInt == 6) { // Adjust Light
+
+            if (currentRoom.lightMap.size() > 0) {
+
+                currentRoom.printLights();
+                System.out.println("Which light would you like to modify?");
+                System.out.println("Please enter a name below");
+                //TODO
+            }
+
+            System.out.println("You have no lights yet!");
+            roomStatusCLI();
 
         } else { // Adjust Temperature
 
+            System.out.println("Current Temperature: " + currentRoom.checkTemp());
+            System.out.println("What would you like to set the new temperature to?");
+            //TODO
+        }
+    }
+
+    public static void createApplianceCLI() {
+
+        System.out.println("Please enter the name of the appliance you would like to create:");
+        String selection = s.nextLine();
+        System.out.println("Please confirm the name of the appliance you would like to create:");
+        String selection2 = s.nextLine();
+
+        if (selection.equals(selection2)) {
+
+            System.out.println("Will this appliance require special permissions (Y/N)?"); // TODO
+            String sel = s.nextLine();
+
+            while (!sel.toLowerCase().equals("y") || !sel.toLowerCase().equals("n")) {
+                System.out.println("Error: please enter 'y' or 'n'");
+                sel = s.nextLine();
+            }
+
+            if (sel.toLowerCase().equals("y")) {
+                currentRoom.addAppliance(selection, true);
+            } else {
+                currentRoom.addAppliance(selection, false);
+            }
+            System.out.println("Your appliance has been created!");
+            roomStatusCLI();
+        } else {
+            System.out.println("Your names do not match");
+            createApplianceCLI();
+        }
+    }
+
+    public static void removeApplianceCLI() {
+
+        if (currentRoom.applianceMap.size() > 0) {
+
+            currentRoom.printAppliances();
+            System.out.println("Which appliance would you like to remove?");
+            System.out.println("Please enter a name below");
+            String selection = s.nextLine();
+            if (currentRoom.applianceMap.containsKey(selection)) {
+
+            } else {
+
+            }
+        }
+
+        System.out.println("You have no appliances yet!");
+        roomStatusCLI();
+    }
+
+    public static void createLightCLI() {
+
+        System.out.println("Please enter the name of the light you would like to create:");
+        String selection = s.nextLine();
+        System.out.println("Please confirm the name of the light you would like to create:");
+        String selection2 = s.nextLine();
+
+        if (selection.equals(selection2)) {
+
+            System.out.println("Will this light require special permissions (Y/N)?"); // TODO
+            String permSel = s.nextLine();
+
+            while (!permSel.toLowerCase().equals("y") || !permSel.toLowerCase().equals("n")) {
+                System.out.println("Error: please enter 'y' or 'n'");
+                permSel = s.nextLine();
+            }
+
+            System.out.println("Will this light be dimmable (Y/N)?");
+            String dimSel = s.nextLine();
+
+            while (!dimSel.toLowerCase().equals("y") || !dimSel.toLowerCase().equals("n")) {
+                System.out.println("Error: please enter 'y' or 'n'");
+                dimSel = s.nextLine();
+            }
+
+            if (permSel.toLowerCase().equals("y")) {
+                if (dimSel.toLowerCase().equals("y")) {
+                    currentRoom.addLight(selection, true, true);
+                } else {
+                    currentRoom.addLight(selection, true, false);
+                }
+            } else {
+                if (dimSel.toLowerCase().equals("y")) {
+                    currentRoom.addLight(selection, false, true);
+                } else {
+                    currentRoom.addLight(selection, false, false);
+                }
+            }
+            System.out.println("Your appliance has been created!");
+            roomStatusCLI();
+        } else {
+            System.out.println("Your names do not match");
+            createApplianceCLI();
         }
     }
 
@@ -299,7 +443,6 @@ public class CliMain {
         }
     }
 
-    //TODO read in the user from the JSON
     public static boolean signIn(String username, Integer pin)throws IOException {
         List<User> userListOut = new ArrayList<User>();
         try{
