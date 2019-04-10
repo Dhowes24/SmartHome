@@ -3,31 +3,36 @@ import java.util.HashMap;
 public class User {
     House House;
     String Name;
-    Integer Pin = 0;
+    Integer Pin=0;
     //Preferences preferences;
     //Permissions permissions;
 
     public User(){}
-
     public User(House house, String Name){
         //Preferences preferences = new Preferences();
         //Permissions permissions = new Permissions();
         this.House = house;
         this.Name = Name;
-    }
 
-    public User(House house, String name, Integer pin){
+    }
+    public User(House house, String Name, Integer pin){
         //Preferences preferences = new Preferences();
         //Permissions permissions = new Permissions();
         this.House = house;
         this.Name = Name;
         this.Pin = pin;
+
     }
 
+    public String getName(){return this.Name;}
+    public Integer getPin(){return this.Pin;}
+    public House getHouse(){return this.House;}
+
+    public void setName(String name){this.Name=name;}
+    public void setPin(Integer pin){this.Pin=pin;}
 
 
 
-    public
     /**
      * Creates a user and adds them to the house user list
      * Can set preferences permissions in user creation
