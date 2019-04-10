@@ -77,7 +77,13 @@ public class CliMain {
 
         System.out.println("Welcome to the Smart Home Main Menu!");
         System.out.println("Feel free to navigate through the options!");
-        basicMenu();
+        System.out.println("At any point, enter 'q' to exit an option you have selected. Enter 'c' to continue, or any key to quit.");
+        String selection = s.nextLine();
+        if (selection.toLowerCase().equals("c")) {
+            basicMenu();
+        } else {
+            System.exit(0);
+        }
     }
 
     //Basic Menu CLI
@@ -138,18 +144,24 @@ public class CliMain {
     public static void createRoomCLI() {
 
         System.out.println("Please enter the name of the room you would like to create:");
-        String selection = s.nextLine();
-        System.out.println("Please confirm the name of the room you would like to create:");
-        String selection2 = s.nextLine();
 
-        if (selection.equals(selection2)) {
-            currentHouse.addRoom(selection);
-            System.out.println("Your room has been created!");
-            basicMenu();
-        } else {
-            System.out.println("Your names do not match");
-            createRoomCLI();
+        while (!s.next().toLowerCase().equals("q")) {
+
+            String selection = s.nextLine();
+            System.out.println("Please confirm the name of the room you would like to create:");
+            String selection2 = s.nextLine();
+
+            if (selection.equals(selection2)) {
+                currentHouse.addRoom(selection);
+                System.out.println("Your room has been created!");
+                basicMenu();
+            } else {
+                System.out.println("Your names do not match");
+                createRoomCLI();
+            }
         }
+
+        basicMenu();
     }
 
     public static void navigateRoomsCLI() {
@@ -168,24 +180,29 @@ public class CliMain {
 
     public static void selectRoomCLI() {
 
-        String selection = s.nextLine();
+        while (!s.next().toLowerCase().equals("q")) {
 
-        while (!integerCheck(selection)) {
-            System.out.println("Error: type in an integer value");
-            System.out.println("Please enter a value that corresponds to a room");
-            selection = s.nextLine();
+            String selection = s.nextLine();
+
+            while (!integerCheck(selection)) {
+                System.out.println("Error: type in an integer value");
+                System.out.println("Please enter a value that corresponds to a room");
+                selection = s.nextLine();
+            }
+
+            Integer sInt = Integer.parseInt(selection);
+
+            if (sInt-1 >= currentHouse.roomList.size() || sInt == 0) {
+                System.out.println("Error: There is no room corresponding to number: " + sInt);
+                System.out.println("Please enter a value that corresponds to a room");
+                navigateRoomsCLI();
+            }
+
+            currentRoom = currentHouse.accessRoom(currentHouse.getKey(sInt-1)); // remove 1 because it was added for user interface earlier
+            roomStatusCLI();
         }
 
-        Integer sInt = Integer.parseInt(selection);
-
-        if (sInt-1 >= currentHouse.roomList.size() || sInt == 0) {
-            System.out.println("Error: There is no room corresponding to number: " + sInt);
-            System.out.println("Please enter a value that corresponds to a room");
-            navigateRoomsCLI();
-        }
-
-        currentRoom = currentHouse.accessRoom(currentHouse.getKey(sInt-1)); // remove 1 because it was added for user interface earlier
-        roomStatusCLI();
+        basicMenu();
     }
 
     public static void roomStatusCLI() {
@@ -244,16 +261,7 @@ public class CliMain {
 
         } else if (sInt == 3) { // Change Appliance Status
 
-            if (currentRoom.applianceMap.size() > 0) {
-
-                currentRoom.printAppliances();
-                System.out.println("Which appliance would you like to modify?");
-                System.out.println("Please enter a name below");
-                //TODO
-            }
-
-            System.out.println("You have no appliances yet!");
-            roomStatusCLI();
+            changeApplianceStatusCLI();
 
         } else if (sInt == 4) { // Add Light
 
@@ -296,31 +304,37 @@ public class CliMain {
     public static void createApplianceCLI() {
 
         System.out.println("Please enter the name of the appliance you would like to create:");
-        String selection = s.nextLine();
-        System.out.println("Please confirm the name of the appliance you would like to create:");
-        String selection2 = s.nextLine();
 
-        if (selection.equals(selection2)) {
+        while (!s.next().toLowerCase().equals("q")) {
 
-            System.out.println("Will this appliance require special permissions (Y/N)?"); // TODO
-            String sel = s.nextLine();
+            String selection = s.nextLine();
+            System.out.println("Please confirm the name of the appliance you would like to create:");
+            String selection2 = s.nextLine();
 
-            while (!sel.toLowerCase().equals("y") || !sel.toLowerCase().equals("n")) {
-                System.out.println("Error: please enter 'y' or 'n'");
-                sel = s.nextLine();
-            }
+            if (selection.equals(selection2)) {
 
-            if (sel.toLowerCase().equals("y")) {
-                currentRoom.addAppliance(selection, true);
+                System.out.println("Will this appliance require special permissions (Y/N)?"); // TODO
+                String sel = s.nextLine();
+
+                while (!sel.toLowerCase().equals("y") || !sel.toLowerCase().equals("n")) {
+                    System.out.println("Error: please enter 'y' or 'n'");
+                    sel = s.nextLine();
+                }
+
+                if (sel.toLowerCase().equals("y")) {
+                    currentRoom.addAppliance(selection, true);
+                } else {
+                    currentRoom.addAppliance(selection, false);
+                }
+                System.out.println("Your appliance has been created!");
+                roomStatusCLI();
             } else {
-                currentRoom.addAppliance(selection, false);
+                System.out.println("Your names do not match");
+                createApplianceCLI();
             }
-            System.out.println("Your appliance has been created!");
-            roomStatusCLI();
-        } else {
-            System.out.println("Your names do not match");
-            createApplianceCLI();
         }
+
+        roomStatusCLI();
     }
 
     public static void removeApplianceCLI() {
@@ -330,11 +344,69 @@ public class CliMain {
             currentRoom.printAppliances();
             System.out.println("Which appliance would you like to remove?");
             System.out.println("Please enter a name below");
-            String selection = s.nextLine();
-            if (currentRoom.applianceMap.containsKey(selection)) {
 
-            } else {
+            while (!s.next().toLowerCase().equals("q")) {
 
+                String selection = s.nextLine();
+
+                if (currentRoom.applianceMap.containsKey(selection)) {
+
+                    System.out.println("Would you like to delete the appliance: " + selection);
+                    System.out.println("Please enter 'Y' or 'N'");
+                    String sel = s.nextLine();
+
+                    while (!sel.toLowerCase().equals("y") || !sel.toLowerCase().equals("n")) {
+                        System.out.println("Error: please enter 'y' or 'n'");
+                        sel = s.nextLine();
+                    }
+
+                    if (sel.toLowerCase().equals("y")) {
+                        currentRoom.removeAppliance(selection);
+                    } else {
+                        roomStatusCLI();
+                    }
+                } else {
+                    System.out.println("This appliance does not exist");
+                    removeApplianceCLI();
+                }
+            }
+        }
+
+        System.out.println("You have no appliances yet!");
+        roomStatusCLI();
+    }
+
+    public static void changeApplianceStatusCLI() {
+
+        if (currentRoom.applianceMap.size() > 0) {
+
+            currentRoom.printAppliances();
+            System.out.println("Which appliance would you like to modify?");
+            System.out.println("Please enter a name below");
+
+            while (!s.next().toLowerCase().equals("q")) {
+
+                String selection = s.nextLine();
+                if (currentRoom.applianceMap.containsKey(selection)) {
+
+                    System.out.println("Would you like to modify the appliance: " + selection);
+                    System.out.println("Please enter 'Y' or 'N'");
+                    String sel = s.nextLine();
+
+                    while (!sel.toLowerCase().equals("y") || !sel.toLowerCase().equals("n")) {
+                        System.out.println("Error: please enter 'y' or 'n'");
+                        sel = s.nextLine();
+                    }
+
+                    if (sel.toLowerCase().equals("y")) {
+                        currentRoom.applianceMap.get(selection).changeStatus();
+                    } else {
+                        roomStatusCLI();
+                    }
+                } else {
+                    System.out.println("This appliance does not exist");
+                    changeApplianceStatusCLI();
+                }
             }
         }
 
