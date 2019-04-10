@@ -18,9 +18,10 @@ public class WeekDay {
 
     public void addObjectToSchedule(String ID, String time, boolean statusTo, Integer type){
 
-        if(checkIfTimeValid(time)){
-        ScheduleItem newScheduleItem =  new ScheduleItem(time, statusTo, type);
-        daySchedule.put(ID, newScheduleItem);}
+        if(checkIfTimeValid(time)) {
+            ScheduleItem newScheduleItem =  new ScheduleItem(time, statusTo, type);
+            daySchedule.put(ID, newScheduleItem);
+        }
     }
 
     public void removeObjectFromSchedule(String ID, String time){
