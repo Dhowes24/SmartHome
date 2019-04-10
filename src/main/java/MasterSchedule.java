@@ -22,7 +22,7 @@ public class MasterSchedule {
                 Tuesday.addObjectToSchedule(itemID,Time,StatusTo, type);
 
             case "Wednesday":
-                Wednesday.addObjectToSchedule(itemID,Time,StatusTo, 0);
+                Wednesday.addObjectToSchedule(itemID,Time,StatusTo, type);
 
             case "Thursday":
                 Thursday.addObjectToSchedule(itemID,Time,StatusTo, type);
