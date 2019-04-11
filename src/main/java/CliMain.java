@@ -502,9 +502,19 @@ public class CliMain {
             }
             else {
                 System.out.println("Light name you entered does not exist");
-                removeLightCLI();
             }
         }
+
+        System.out.println("Would you like to try again? Please type 'q' to quit this menu or type anything to continue': ");
+        String input = s.nextLine();
+        if (input.equals("q")) {
+            lightCLI();
+        }
+        else {
+            removeLightCLI();
+        }
+
+
     }
 
     // TODO: Anthony
@@ -512,7 +522,7 @@ public class CliMain {
 
         System.out.println("Please enter the name of the light you wish to adjust: ");
         String lightName = s.nextLine();
-        double amount = 0.0;
+        double amount;
         for (Light light : currentRoom.lightMap.values()) {
             if (lightName.equals(light.getID())) {
                 System.out.println("Enter the intensity you would like to set it to: ");
@@ -529,7 +539,14 @@ public class CliMain {
                 System.out.println("The name you entered does not exist");
             }
         }
-        adjustLightCLI();
+        System.out.println("Would you like to try again? Please type 'q' to quit this menu or type anything to continue': ");
+        String input = s.nextLine();
+        if (input.equals("q")) {
+            lightCLI();
+        }
+        else {
+            adjustLightCLI();
+        }
     }
 
     public static void addLightToScheduleCLI() {} // TODO: Michael
@@ -582,6 +599,15 @@ public class CliMain {
         }
         else {
             System.out.println("The number you entered is invalid");
+
+        }
+
+        System.out.println("Would you like to try again? Please type 'q' to quit this menu or type anything to continue': ");
+        String input = s.nextLine();
+        if (input.equals("q")) {
+            tempCLI();
+        }
+        else {
             adjustTempCLI();
         }
     }
