@@ -491,9 +491,27 @@ public class CliMain {
         }
     }
 
-    public static void removeLightCLI() {} // TODO: Anthony
+    // TODO: Anthony
+    public static void removeLightCLI() {
 
-    public static void adjustLightCLI() {} // TODO: Anthony
+        System.out.println("Please enter the name of the light you wish to remove: ");
+        String light = s.nextLine();
+        currentRoom.removeLight(light);
+    }
+
+    // TODO: Anthony
+    public static void adjustLightCLI() {
+
+        System.out.println("Please enter the name of the light you wish to adjust: ");
+        String lightName = s.nextLine();
+        System.out.println("Enter the intensity you would like to set it to: ");
+        String num = s.nextLine();
+        double amount = Double.parseDouble(num);
+        if (amount < 0.0) {
+            System.out.println();
+        }
+        currentRoom.adjustLight(amount, lightName);
+    }
 
     public static void addLightToScheduleCLI() {} // TODO: Michael
 
@@ -533,7 +551,21 @@ public class CliMain {
         }
     }
 
-    public static void adjustTempCLI() {} // TODO: Anthony
+    // TODO: Anthony
+    public static void adjustTempCLI() {
+
+        System.out.println("Please type the temperature you would like to set for this room: ");
+        String num = s.nextLine();
+        boolean check = integerCheck(num);
+        if (check) {
+            int amount = Integer.parseInt(num);
+            currentRoom.adjustTemp(amount);
+        }
+        else {
+            System.out.println("The number you entered is invalid");
+            adjustTempCLI();
+        }
+    }
 
     public static void addTempToScheduleCLI() {} // TODO: Michael
 
