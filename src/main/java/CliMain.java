@@ -101,7 +101,7 @@ public class CliMain {
             System.out.println("3. User Options");
             System.out.println("4. Scheduling");
             System.out.println("5. Contact Emergency Services");
-            System.out.println("6. Help");
+            System.out.println("6. Emergency Service");
             System.out.println("7. Sign Out");
 
             String sel = s.nextLine();
@@ -127,7 +127,7 @@ public class CliMain {
             } else if (selection == 5) { // Emergency Services CLI
                 //TODO
             } else if (selection == 6) { // Help CLI
-                //TODO
+                contactES();
             } else if (selection == 7) { // Sign Off
                 System.out.println("Signing off...");
                 System.out.println();
@@ -588,6 +588,44 @@ public class CliMain {
 
     public static void addTempToScheduleCLI() {} // TODO: Michael
 
+    public static void contactES(){
+        boolean running = true;
+        while(running){
+            System.out.println();
+            System.out.println("Contact Emergency Services");
+            System.out.println("--------------------------");
+            System.out.println("1. Police Department");
+            System.out.println("2. Fire Department");
+            System.out.println("3. Ambulance");
+            System.out.println("4. Return");
+            System.out.print("Who would you like to contact: ");
+
+            String sel = s.nextLine();
+            while (!integerCheck(sel, 4) ) {
+                System.out.println("Error: type in an integer value 1-4");
+                sel = s.nextLine();
+            }
+            Integer selI = Integer.parseInt(sel);
+
+            if(selI==1){
+                System.out.println("Contacting the Police Department right now.");
+                System.out.println();
+                running = false;
+            } else if(selI==2){
+                System.out.println("Contacting the Fire Department right now.");
+                System.out.println();
+                running = false;
+            } else if(selI==3){
+                System.out.println("Contacting Medical staff right now.");
+                System.out.println();
+                running = false;
+            } else if (selI == 4) {
+                running=false;
+            }
+
+        }
+    }
+
     // User CLI
     public static void userCLI(){
         boolean run = true;
@@ -669,6 +707,22 @@ public class CliMain {
             return false;
         }
     }
+
+    public static boolean integerCheck(String s, Integer bounds){
+        try {
+            Integer sInt = Integer.parseInt(s);
+            if(sInt <= bounds && sInt >=1){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(NumberFormatException e){
+            return false;
+        }
+
+    }
+
+
 
     public static void main(String[] args) {
         run();
