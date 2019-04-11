@@ -1,6 +1,8 @@
 # SmartHome
 Software Development Project
 
+[![CircleCI](https://circleci.com/gh/Dhowes24/SmartHome.svg?style=svg)](https://circleci.com/gh/Dhowes24/SmartHome)
+
 
 Smart Home Revision
 
