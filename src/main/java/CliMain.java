@@ -496,7 +496,15 @@ public class CliMain {
 
         System.out.println("Please enter the name of the light you wish to remove: ");
         String light = s.nextLine();
-        currentRoom.removeLight(light);
+        for (Light lights : currentRoom.lightMap.values()) {
+            if (light.equals(lights.getID())) {
+                currentRoom.removeLight(light);
+            }
+            else {
+                System.out.println("Light name you entered does not exist");
+                removeLightCLI();
+            }
+        }
     }
 
     // TODO: Anthony
@@ -504,13 +512,24 @@ public class CliMain {
 
         System.out.println("Please enter the name of the light you wish to adjust: ");
         String lightName = s.nextLine();
-        System.out.println("Enter the intensity you would like to set it to: ");
-        String num = s.nextLine();
-        double amount = Double.parseDouble(num);
-        if (amount < 0.0) {
-            System.out.println();
+        double amount = 0.0;
+        for (Light light : currentRoom.lightMap.values()) {
+            if (lightName.equals(light.getID())) {
+                System.out.println("Enter the intensity you would like to set it to: ");
+                String num = s.nextLine();
+                amount = Double.parseDouble(num);
+                if (amount < 0.0) {
+                    System.out.println("The value entered is invalid");
+                }
+                else {
+                    currentRoom.adjustLight(amount, lightName);
+                }
+            }
+            else {
+                System.out.println("The name you entered does not exist");
+            }
         }
-        currentRoom.adjustLight(amount, lightName);
+        adjustLightCLI();
     }
 
     public static void addLightToScheduleCLI() {} // TODO: Michael
