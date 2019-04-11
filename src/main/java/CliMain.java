@@ -101,7 +101,7 @@ public class CliMain {
             System.out.println("3. User Options");
             System.out.println("4. Scheduling");
             System.out.println("5. Contact Emergency Services");
-            System.out.println("6. Help");
+            System.out.println("6. Emergency Service");
             System.out.println("7. Sign Out");
 
             String sel = s.nextLine();
@@ -127,7 +127,7 @@ public class CliMain {
             } else if (selection == 5) { // Emergency Services CLI
                 //TODO
             } else if (selection == 6) { // Help CLI
-
+                contactES();
             } else if (selection == 7) { // Sign Off
                 System.out.println("Signing off...");
                 System.out.println();
