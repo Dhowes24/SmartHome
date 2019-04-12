@@ -37,10 +37,11 @@ public class RoomTest {
 
     @Test
     public void addLightTest(){
-       // TODO
-//        Room room = new Room("testRoom");
-//        room.addLight("a", false, true);
-//        assertEquals("a", room.lightMap.get("a").getID());
+
+       Room room = new Room("testRoom");
+       room.addLight("a", false, true);
+       assertEquals("a", room.lightMap.get("a").getID());
+       room.printLights();
     }
 
     @Test

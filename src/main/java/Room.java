@@ -76,7 +76,7 @@ public class Room {
      * @param name
      */
     public void addLight(String name, Boolean pinRequired, Boolean isDimable){
-        if (containedInLightList(name)){
+        if (!containedInLightList(name)){
             lightMap.put(name, new Light(name, pinRequired, isDimable));
         }
         // TODO: throw exception or somehow handle receiving a new name for the light
@@ -173,7 +173,9 @@ public class Room {
         if (lightMap.containsKey(name)) {
             return true;
         }
-        return false;
+        else {
+            return false;
+        }
     }
 
     public void printLights() {
