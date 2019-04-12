@@ -286,8 +286,8 @@ public class CliMain {
             selection = s.nextLine();
 
             while (!integerCheck(selection, 5)) {
-                System.out.println("Error: type in an integer value");
-                System.out.println("Please enter a value that corresponds to an option");
+                System.out.println("Error: type in an integer value.");
+                System.out.print("Please enter a value that corresponds to an option: ");
                 selection = s.nextLine();
             }
 
@@ -465,8 +465,8 @@ public class CliMain {
             selection = s.nextLine();
 
             while (!integerCheck(selection, 5)) {
-                System.out.println("Error: type in an integer value");
-                System.out.println("Please enter a value that corresponds to an option");
+                System.out.println("Error: type in an integer value.");
+                System.out.print("Please enter a value that corresponds to an option: ");
                 selection = s.nextLine();
             }
 
@@ -663,66 +663,70 @@ public class CliMain {
     public static void addLightToScheduleCLI() {} // TODO: Michael
 
     public static void tempCLI() {
+        boolean running=true;
+        String selection;
+        String sel;
+        int sInt;
 
-        System.out.println("Which of the following actions would you like to perform?");
-        System.out.println("0. Go Back");
-        System.out.println("1. Adjust Temperature");
-        System.out.println("2. Add Temperature Change to Schedule");
 
-        String selection = s.nextLine();
+        while(running){
+            System.out.println();
+            System.out.println("Temperature of " + currentRoom.getRoomName()+ ": " + currentRoom.checkTemp()+".");
+            System.out.println("1. Adjust Temperature");
+            System.out.println("2. Add Temperature Change to Schedule");
+            System.out.println("3. Return");
+            System.out.print("What would you like to do: ");
 
-        while (!integerCheck(selection)) {
-            System.out.println("Error: type in an integer value");
-            System.out.println("Please enter a value that corresponds to an option");
-            selection = s.nextLine();
+
+            selection=s.nextLine();
+
+            while (!integerCheck(selection, 3)){
+                System.out.println("Error: type in an integer value.");
+                System.out.print("Please enter a value that corresponds to an option: ");
+                selection = s.nextLine();
+            }
+
+            sInt = Integer.parseInt(selection);
+            if(sInt==1){
+                adjustTempCLI();
+            }
+            else if(sInt==2){
+                addTempToScheduleCLI();
+            }
+            else if(sInt==3){
+                running=false;
+            }
+
         }
 
-        Integer sInt = Integer.parseInt(selection);
-
-        if (sInt == 0) {
-
-            roomStatusCLI();
-
-        } else if (sInt == 1) { // Adjust Temperature
-
-            adjustTempCLI();
-
-        } else if (sInt == 2) { // Add Temperature Change to Schedule
-
-            addTempToScheduleCLI();
-
-         } else {
-
-            System.out.println("Error: Please select a valid option");
-            tempCLI();
-        }
     }
 
     // TODO: Anthony
     public static void adjustTempCLI() {
+        boolean running=true;
+        String selection;
+        int sInt;
+        while(running){
+            System.out.println();
+            System.out.print("Please enter the temperature you would like to set for this room (46-94):");
 
-        System.out.println("Please type the temperature you would like to set for this room: ");
-        String num = s.nextLine();
-        boolean check = integerCheck(num);
-        if (check) {
-            int amount = Integer.parseInt(num);
-            currentRoom.adjustTemp(amount);
-            System.out.println("Temperature has been set to " + amount);
-            System.out.println(" ");
-            tempCLI();
-        }
-        else {
-            System.out.println("The number you entered is invalid");
-            System.out.println("Would you like to try again?");
-            System.out.println("Please type 'y' if you would like to try entering a temperature again or 'n' to go back");
-            String ans = s.nextLine();
-            if (ans.equals("y")) {
-                adjustTempCLI();
+            selection = s.nextLine();
+            if(selection.equalsIgnoreCase("q")){
+                running=false;
             }
-            else {
-                tempCLI();
+            while(!(integerCheck(selection,46,94))){
+                System.out.println();
+                System.out.println("Error: type in an integer value (46-94).");
+                System.out.print("Please enter a correct value: ");
+                selection = s.nextLine();
+                if(selection.equalsIgnoreCase("q")){
+                    running=false;
+                }
             }
 
+            sInt = Integer.parseInt(selection);
+            currentRoom.adjustTemp(sInt);
+            running=false;
         }
     }
 
@@ -898,7 +902,7 @@ public class CliMain {
         if(userListOut.size()==0){return false;}
         else{
             for (int i = 0; i < userListOut.size(); i++) {
-                if ((userListOut.get(i).getName().equals(username)) && (userListOut.get(i).getPin().equals(pin))) {
+                if ((userListOut.get(i).getName().equalsIgnoreCase(username)) && (userListOut.get(i).getPin().equals(pin))) {
                     return true;
                 }
             }
@@ -919,6 +923,19 @@ public class CliMain {
         try {
             Integer sInt = Integer.parseInt(s);
             if(sInt <= bounds && sInt >=1){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(NumberFormatException e){
+            return false;
+        }
+
+    }
+    public static boolean integerCheck(String s, Integer lower, Integer upper){
+        try {
+            Integer sInt = Integer.parseInt(s);
+            if(sInt <= upper && sInt >=lower){
                 return true;
             }else{
                 return false;
