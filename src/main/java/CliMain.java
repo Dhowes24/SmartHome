@@ -105,7 +105,7 @@ public class CliMain {
             System.out.println("5. Contact Emergency Services");
             System.out.println("6. Help");
             System.out.println("7. Sign Out");
-            System.out.print("What would you like to do: ");
+            System.out.print("What would you like to do: " + "\n");
             String sel = s.nextLine();
 
             while (!integerCheck(sel,7)) {
@@ -707,19 +707,22 @@ public class CliMain {
         if (check) {
             int amount = Integer.parseInt(num);
             currentRoom.adjustTemp(amount);
-        }
-        else {
-            System.out.println("The number you entered is invalid");
-
-        }
-
-        System.out.println("Would you like to try again? Please type 'q' to quit this menu or type anything to continue': ");
-        String input = s.nextLine();
-        if (input.equals("q")) {
+            System.out.println("Temperature has been set to " + amount);
+            System.out.println(" ");
             tempCLI();
         }
         else {
-            adjustTempCLI();
+            System.out.println("The number you entered is invalid");
+            System.out.println("Would you like to try again?");
+            System.out.println("Please type 'y' if you would like to try entering a temperature again or 'n' to go back");
+            String ans = s.nextLine();
+            if (ans.equals("y")) {
+                adjustTempCLI();
+            }
+            else {
+                tempCLI();
+            }
+
         }
     }
 
