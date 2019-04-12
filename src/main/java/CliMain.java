@@ -599,6 +599,8 @@ public class CliMain {
 
                     if (sel.equalsIgnoreCase("y")) {
                         currentRoom.removeLight(selection);
+                        System.out.println("The light " + selection + " has been removed");
+                        System.out.println(" ");
                         running=false;
                     }
                 }
@@ -608,7 +610,6 @@ public class CliMain {
                 }
             }
         }
-        System.out.println("You have no lights yet!");
     }
 
     // TODO: Anthony
@@ -649,6 +650,8 @@ public class CliMain {
                         }
                         dim = Double.parseDouble(dimS);
                         currentRoom.lightMap.get(selection).dim(dim);
+                        System.out.println("The light " + selection + " has been dimmed to" + dim);
+                        System.out.println(" ");
                         running=false;
                     }
                 }
@@ -863,6 +866,9 @@ public class CliMain {
                 System.out.print("Please enter the name for the new user: ");
                 String userToAdd = s.nextLine();
                 User newUser = new User(currentUser.House,userToAdd);
+                System.out.println("Please enter a pin number for your account: ");
+                int pinNum = s.nextInt();
+                newUser.setPin(pinNum);
                 System.out.println("You have entered "+ userToAdd+" as a new user in this house.");
                 System.out.println();
             }else if(selection==2){
