@@ -52,4 +52,4 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
   * https://docs.google.com/document/d/116Nw41-rYq8LyNfBoqsMZNxm9JUFfngRC4qdIGI7q70/edit?usp=sharing
 
 * ### Sprint Retrospective Week 2:
-  * N/A
+  * https://docs.google.com/document/d/1OM7dvM1AjVTo7MXM90TZq4KE2HRRM93_6D0pd-PjXo4/edit?usp=sharing
