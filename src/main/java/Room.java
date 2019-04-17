@@ -52,6 +52,8 @@ public class Room {
         // TODO: throw exception or somehow handle receiving a new name for the appliance
     }
 
+
+
     /**
      * remove appliance from list for this room by unique name
      * @param name

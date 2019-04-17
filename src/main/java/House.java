@@ -74,15 +74,85 @@ public class House {
 
     }
 
-    public void changeHouseTemp(){
-
+    /**
+     * Iterates through every room and changes that rooms temperature
+     * @param newTemp - the new temperature of the rooms
+     */
+    public void changeHouseTemp(Integer newTemp){
+        Room r;
+        for (String key: roomList.keySet()){
+            r = roomList.get(key);
+            r.adjustTemp(newTemp);
+        }
+        System.out.println();
+        System.out.println("The temperature in every room is now set at "+newTemp+" degrees.");
+        System.out.println();
     }
 
-    public void turnAppliances(){
 
+    /**
+     * Iterates through every room, iterates through every appliance in the room and turns them off
+     */
+    public void turnOffAppliances(){
+        Room r;
+        HashMap<String, Appliance> applianceMap;
+        Appliance a;
+        for (String key: roomList.keySet()) {
+            r = roomList.get(key);
+            applianceMap = r.applianceMap;
+            for(String appliance: applianceMap.keySet()){
+                a = applianceMap.get(appliance);
+                if(a.getStatus()==true){
+                    a.changeStatus();
+                }
+            }
+        }
+        System.out.println();
+        System.out.println("All appliances have been turned off!");
+        System.out.println();
     }
 
+    /**
+     * Iterates through every room, iterates through every light in the room and turns them on
+     */
+    public void turnOnLights(){
+        Room r;
+        HashMap<String, Light> lightMap;
+        Light l;
+        for (String key: roomList.keySet()) {
+            r = roomList.get(key);
+            lightMap = r.lightMap;
+            for(String light: lightMap.keySet()){
+                l = lightMap.get(light);
+                l.turnOn();
+            }
+        }
+        System.out.println();
+        System.out.println("All lights have been turned on!");
+        System.out.println();
+    }
+
+    /**
+     * Iterates through every room, iterates through every light in the room and turns them off
+     */
     public void turnOffLights(){
-
+        Room r;
+        HashMap<String, Light> lightMap;
+        Light l;
+        for (String key: roomList.keySet()) {
+            r = roomList.get(key);
+            lightMap = r.lightMap;
+            for(String light: lightMap.keySet()){
+                l = lightMap.get(light);
+                l.turnOff();
+            }
+        }
+        System.out.println();
+        System.out.println("All lights have been turned off!");
+        System.out.println();
     }
+
+
+
+
 }

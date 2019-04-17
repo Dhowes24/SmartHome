@@ -67,8 +67,8 @@ public class CliMain {
             }
 
             //TODO read in the house from the JSON
-            House h = new House();
-            currentUser = new User(h, username);
+            currentHouse = new House();
+            currentUser = new User(currentHouse, username);
             signedIn = true;
             startMenu();
 
@@ -102,40 +102,35 @@ public class CliMain {
             System.out.println("2. Navigate to a room");
             System.out.println("3. User Options");
             System.out.println("4. Scheduling");
-            System.out.println("5. Contact Emergency Services");
-            System.out.println("6. Help");
-            System.out.println("7. Sign Out");
+            System.out.println("5. House Manipulation");
+            System.out.println("6. Contact Emergency Services");
+            System.out.println("7. Help");
+            System.out.println("8. Sign Out");
             System.out.print("What would you like to do: " + "\n");
             String sel = s.nextLine();
 
-            while (!integerCheck(sel,7)) {
+            while (!integerCheck(sel,8)) {
                 System.out.println();
-                System.out.print("Error: type in an integer value 1-7:");
+                System.out.print("Error: type in an integer value 1-8:");
                 sel = s.nextLine();
             }
             Integer selection = Integer.parseInt(sel);
 
             if (selection == 1) { // Create Room
                 createRoomCLI();
-            }
-            else if (selection == 2) { // Navigate Room
+            } else if (selection == 2) { // Navigate Room
                 navigateRoomsCLI();
-
-            }
-            else if (selection == 3) { // User Options CLI
+            } else if (selection == 3) { // User Options CLI
                 userCLI();
-
-            }
-            else if (selection == 4) { // Scheduling CLI
+            } else if (selection == 4) { // Scheduling CLI
                 //TODO
-            }
-            else if (selection == 5) { // Emergency Services CLI
+            } else if (selection == 5) {
+                houseManipulationCLI();
+            } else if (selection == 6) { // Emergency Services CLI
                 contactESCLI();
-            }
-            else if (selection == 6) { // Help CLI
+            } else if (selection == 7) { // Help CLI
                 helpCLI();
-            }
-            else if (selection == 7) { // Sign Off
+            } else if (selection == 8) { // Sign Off
                 System.out.println("Signing off...");
                 System.out.println();
                 signedIn = false;
@@ -735,8 +730,73 @@ public class CliMain {
 
     public static void addTempToScheduleCLI() {} // TODO: Michael
 
+    public static void houseManipulationCLI(){
+        boolean running = true;
+        String sel;
+        Integer selI;
+
+        while(running){
+            System.out.println();
+            System.out.println("House Manipulation");
+            System.out.println("------------------");
+            System.out.println("1. Turn ON all lights");
+            System.out.println("2. Turn OFF all lights");
+            System.out.println("3. Turn OFF all appliances");
+            System.out.println("4. Set house temperature");
+            System.out.println("5. Return");
+            System.out.print("What would you like to do: ");
+
+            sel = s.nextLine();
+            while(!integerCheck(sel, 5)){
+                System.out.print("Error: type in an integer value 1-5: ");
+                sel=s.nextLine();
+            }
+            selI = Integer.parseInt(sel);
+            if(selI==1){
+                currentHouse.turnOnLights();
+            }else if(selI==2){
+                currentHouse.turnOffLights();
+            }else if(selI==3){
+                currentHouse.turnOffAppliances();
+            }else if(selI==4){
+                changeHouseTempCLI();
+            }else if(selI==5){
+                running=false;
+            }
+        }
+    }
+
+    public static void changeHouseTempCLI(){
+        boolean running=true;
+        String selection;
+        int sInt;
+        while(running) {
+            System.out.println();
+            System.out.print("Please enter the temperature you would like to set for the house (46-94):");
+            selection = s.nextLine();
+            if (selection.equalsIgnoreCase("q")) {
+                running = false;
+            }
+            while(!(integerCheck(selection,46,94))){
+                System.out.println();
+                System.out.println("Error: type in an integer value (46-94).");
+                System.out.print("Please enter a correct value: ");
+                selection = s.nextLine();
+                if(selection.equalsIgnoreCase("q")){
+                    running=false;
+                }
+            }
+            sInt = Integer.parseInt(selection);
+            currentHouse.changeHouseTemp(sInt);
+            running=false;
+        }
+
+    }
+
     public static void contactESCLI(){
         boolean running = true;
+        String sel;
+        Integer selI;
         while(running){
             System.out.println();
             System.out.println("Contact Emergency Services");
@@ -747,12 +807,12 @@ public class CliMain {
             System.out.println("4. Return");
             System.out.print("Who would you like to contact: ");
 
-            String sel = s.nextLine();
+            sel = s.nextLine();
             while (!integerCheck(sel, 4) ) {
                 System.out.print("Error: type in an integer value 1-4: ");
                 sel = s.nextLine();
             }
-            Integer selI = Integer.parseInt(sel);
+            selI = Integer.parseInt(sel);
 
             if(selI==1){
                 System.out.println("Contacting the Police Department right now.");
@@ -772,6 +832,7 @@ public class CliMain {
 
         }
     }
+
 
     public static void helpCLI(){
         boolean running=true;
@@ -838,6 +899,8 @@ public class CliMain {
         }
 
     }
+
+
 
     // User CLI
     //TODO
