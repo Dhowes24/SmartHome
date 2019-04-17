@@ -74,15 +74,28 @@ public class House {
 
     }
 
-    public void changeHouseTemp(){
-
+    public void changeHouseTemp(Integer newTemp){
+        Integer count = 0;
+        for (String key: roomList.keySet()) {
+            roomList.get(key).adjustTemp(newTemp);
+            System.out.println(count+1 + ": " + key +", current temperature: " + roomList.get(key).checkTemp());
+            count++;
+        }
     }
 
     public void turnAppliances(){
 
     }
 
+    public void turnOnLights(){
+
+    }
+
     public void turnOffLights(){
+
+    }
+
+    public void turnOffAppliances(){
 
     }
 }
