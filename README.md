@@ -53,3 +53,12 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
 
 * ### Sprint Retrospective Week 2:
   * https://docs.google.com/document/d/1OM7dvM1AjVTo7MXM90TZq4KE2HRRM93_6D0pd-PjXo4/edit?usp=sharing
+  
+  ## Sprint Three
+### Dividing up the Current Sprint:
+* ### Sprint Goal: Dealing with file input / output and saving features of the house when the program ends. Also allowing for schedule management to deal with real time occurences as well as user tracking and smart activations.
+* ### Product Goal: A piece of software that manages and personalizes smart home features for users in a living space.
+  * File I/O - Brien, Derek
+  * Scheduling Real Time - Derek
+  * Smart Activations - Anthony, Brien
+  * Preference & CLI Work - Michael, Derek
