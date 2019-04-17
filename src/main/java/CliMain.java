@@ -67,8 +67,8 @@ public class CliMain {
             }
 
             //TODO read in the house from the JSON
-            House h = new House();
-            currentUser = new User(h, username);
+            currentHouse = new House();
+            currentUser = new User(currentHouse, username);
             signedIn = true;
             startMenu();
 
