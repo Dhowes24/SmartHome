@@ -65,8 +65,15 @@ public class House {
     }
 
     public static void addUser(User user){
-        if(!userList.containsKey(user.Name))
+
+        if(userList.containsKey(user.Name)){
+            System.out.println("User already exists!");
+        }else {
+            System.out.println("Added user.");
             userList.put(user.Name, user);
+        }
+
+
     }
 
 

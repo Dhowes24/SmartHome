@@ -847,7 +847,7 @@ public class CliMain {
             System.out.println("5. Contact Emergency Services");
             System.out.println("6. Return");
             System.out.println();
-            System.out.print("With what would you like help with?");
+            System.out.print("With what would you like help with: ");
             String sel = s.nextLine();
             while (!integerCheck(sel, 6) ) {
                 System.out.print("Error: type in an integer value 1-6:");
@@ -905,8 +905,13 @@ public class CliMain {
     // User CLI
     //TODO
     public static void userCLI(){
-        boolean run = true;
-        while(run) {
+        boolean running = true;
+        String sel;
+        Integer selI;
+
+
+        while(running) {
+            System.out.println();
             System.out.println("User Menu");
             System.out.println("---------");
             System.out.println("1. Create User");
@@ -916,49 +921,137 @@ public class CliMain {
             System.out.println("5. Get Room Lights");
             System.out.println("6. Return");
             System.out.print("Please enter a digit 1-6: ");
-            String selectionS = s.nextLine();
-            while(!integerCheck(selectionS )){
-                System.out.println();
-                System.out.println("Error: type in a integer value.");
-                System.out.print("Please enter a value 1-6: ");
-                selectionS = s.nextLine();
+            sel = s.nextLine();
+            while (!integerCheck(sel, 6) ) {
+                System.out.print("Error: type in an integer value 1-6: ");
+                sel = s.nextLine();
             }
             System.out.println();
-            Integer selection = Integer.parseInt(selectionS);
-            if(selection==1){
-                System.out.print("Please enter the name for the new user: ");
-                String userToAdd = s.nextLine();
-                User newUser = new User(currentUser.House,userToAdd);
-                System.out.println("Please enter a pin number for your account: ");
-                int pinNum = s.nextInt();
-                newUser.setPin(pinNum);
-                System.out.println("You have entered "+ userToAdd+" as a new user in this house.");
-                System.out.println();
-            }else if(selection==2){
-                System.out.print("Please enter the name for the user to delete: ");
-                String userToDelete = s.nextLine();
-                currentUser.deleteUser(userToDelete);
-                System.out.println("You have removed " + userToDelete+ " as a user in this house.");
-                System.out.println();
-            }else if(selection==3){
+            selI = Integer.parseInt(sel);
+            if(selI==1){
+                addUserCLI();
+            } else if (selI==2){
+                deleteUserCLI();
+            } else if (selI==3){
                 System.out.println(currentUser.printRoomList());
-                System.out.println();
-            }else if(selection==4){
-                System.out.print("Please enter the room in the house you would like to get appliances for: ");
+            } else if (selI==4){
                 String roomName = s.nextLine();
                 System.out.println(currentUser.getRoomApplianceList(roomName));
-                System.out.println();
-            }else if(selection==5){
-                System.out.print("Please enter the room in the house you would like to get lights for: ");
+            } else if (selI==5){
                 String roomName = s.nextLine();
                 System.out.println(currentUser.getRoomLightList(roomName));
-                System.out.println();
-            }else if(selection==6){
-                run = false;
-            }else{
-                System.out.println("Error: Enter a value between 1 and 6.");
+            } else if (selI==6){
+                running=false;
             }
         }
+    }
+
+    public static void addUserCLI(){
+        boolean running = true;
+        String sel;
+        String sel2;
+        String pinS;
+        String pin2S;
+        Integer pin;
+        Integer pin2;
+        User userToAdd;
+
+        while(running){
+            System.out.println();
+            System.out.print("Please enter the name of the user you want to create: ");
+            sel = s.nextLine();
+            if(sel.equalsIgnoreCase("q")){
+                break;
+            }
+
+            System.out.print("Please re-enter the name of the user you want to create: ");
+            sel2 = s.nextLine();
+            if(sel2.equalsIgnoreCase("q")){
+                break;
+            }
+
+            while(!sel.equalsIgnoreCase(sel2)){
+                System.out.println();
+                System.out.println("Error names do not match...");
+                System.out.println();
+
+                System.out.print("Please enter the name of the user you want to create: ");
+                sel = s.nextLine();
+                if(sel.equalsIgnoreCase("q")){
+                    running = false;
+                }
+
+                System.out.print("Please re-enter the name of the user you want to create: ");
+                sel2 = s.nextLine();
+                if(sel2.equalsIgnoreCase("q")){
+                    break;
+                }
+            }
+
+            System.out.print("Please enter a numerical pin: ");
+            pinS = s.nextLine();
+            if(pinS.equalsIgnoreCase("q")){
+                break;
+            }
+            while(!integerCheck(pinS)){
+                System.out.print("Error: please enter a numerical pin: ");
+                pinS = s.nextLine();
+                if(pinS.equalsIgnoreCase("q")){
+                    break;
+                }
+            }
+            System.out.print("Please confirm your pin entry: ");
+            pin2S = s.nextLine();
+            if(pin2S.equalsIgnoreCase("q")){
+                break;
+            }
+            while(!integerCheck(pinS)){
+                System.out.print("Error: please enter a numerical pin: ");
+                pinS = s.nextLine();
+                if(pin2S.equalsIgnoreCase("q")){
+                    break;
+                }
+            }
+
+            while(!pinS.equalsIgnoreCase(pin2S)){
+                System.out.println();
+                System.out.println("Pins do not match.");
+                System.out.println();
+                System.out.print("Please enter a numerical pin: ");
+                pinS = s.nextLine();
+                if(pinS.equalsIgnoreCase("q")){
+                    break;
+                }
+                while(!integerCheck(pinS)){
+                    System.out.print("Error: please enter a numerical pin: ");
+                    pinS = s.nextLine();
+                    if(pinS.equalsIgnoreCase("q")){
+                        break;
+                    }
+                }
+                System.out.print("Please confirm your pin entry: ");
+                pin2S = s.nextLine();
+                if(pin2S.equalsIgnoreCase("q")){
+                    break;
+                }
+                while(!integerCheck(pinS)){
+                    System.out.print("Error: please enter a numerical pin: ");
+                    pinS = s.nextLine();
+                    if(pin2S.equalsIgnoreCase("q")){
+                        break;
+                    }
+                }
+
+            }
+            pin = Integer.parseInt(pinS);
+            userToAdd = new User(currentHouse, sel, pin);
+            currentHouse.addUser(userToAdd);
+            running = false;
+        }
+
+    }
+    public static void deleteUserCLI(){
+
     }
 
     public static boolean signIn(String username, Integer pin)throws IOException {
@@ -987,7 +1080,6 @@ public class CliMain {
             return false;
         }
     }
-
     public static boolean integerCheck(String s, Integer bounds){
         try {
             Integer sInt = Integer.parseInt(s);
@@ -1014,7 +1106,6 @@ public class CliMain {
         }
 
     }
-
     public static boolean doubleCheck(String s, Double bounds){
         try{
             Double sDouble = Double.parseDouble(s);
