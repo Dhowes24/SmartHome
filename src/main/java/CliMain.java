@@ -933,10 +933,9 @@ public class CliMain {
             } else if (selI==2){
                 deleteUserCLI();
             } else if (selI==3){
-                System.out.println(currentUser.printRoomList());
+                currentHouse.printRooms();
             } else if (selI==4){
-                String roomName = s.nextLine();
-                System.out.println(currentUser.getRoomApplianceList(roomName));
+                currentHouse.printAppliances();
             } else if (selI==5){
                 String roomName = s.nextLine();
                 System.out.println(currentUser.getRoomLightList(roomName));

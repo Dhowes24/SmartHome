@@ -76,6 +76,25 @@ public class House {
 
     }
 
+    //TODO
+    public static void printAppliances(){
+        Room r;
+        System.out.println("Printing Appliance's in House");
+        System.out.println("-----------------------------");
+        for (String key: roomList.keySet()){
+            r = roomList.get(key);
+            for(String appliance: r.applianceMap.keySet()){
+                System.out.println("Room: "+ key + "\tAppliance: "+appliance);
+            }
+        }
+
+    }
+
+    public static void printLights(){
+
+    }
+
+
 
     public void printScheduleList(){
 
