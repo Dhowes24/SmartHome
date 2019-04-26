@@ -9,7 +9,7 @@ public class UserTest {
 
     @Test
     public void createUserTest(){
-        User masterUser = new User(testHouse,"TestMaster");
+        User masterUser = new User("TestMaster");
         masterUser.createUser("TestUser");
 
         assertTrue(testHouse.userList.containsKey("TestUser"));
@@ -22,7 +22,7 @@ public class UserTest {
 
     @Test
     public void deleteUserTest(){
-        User masterUser = new User(testHouse, "TestMaster");
+        User masterUser = new User("TestMaster");
         masterUser.createUser("TestUser");
 
         assertTrue(testHouse.userList.containsKey("TestUser"));
@@ -36,7 +36,7 @@ public class UserTest {
 
     @Test
     public void printRoomListTest(){
-        User masterUser = new User(testHouse, "TestMaster");
+        User masterUser = new User("TestMaster");
 
         testHouse.addRoom("testRoom1");
         testHouse.addRoom("testRoom2");
@@ -50,7 +50,7 @@ public class UserTest {
 
     @Test
     public void getRoomApplianceList(){
-        User masterUser = new User(testHouse, "TestMaster");
+        User masterUser = new User("TestMaster");
 
         testHouse.addRoom("testRoom1");
         Room testRoom = testHouse.accessRoom("testRoom1");
@@ -68,7 +68,7 @@ public class UserTest {
 
     @Test
     public void getRoomLightList(){
-        User masterUser = new User(testHouse, "TestMaster");
+        User masterUser = new User("TestMaster");
 
         testHouse.addRoom("testRoom1");
         Room testRoom = testHouse.accessRoom("testRoom1");

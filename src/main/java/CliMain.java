@@ -68,7 +68,7 @@ public class CliMain {
 
             //TODO read in the house from the JSON
             currentHouse = new House();
-            currentUser = new User(currentHouse, username);
+            currentUser = new User(username);
             signedIn = true;
             startMenu();
 
@@ -1044,7 +1044,7 @@ public class CliMain {
 
             }
             pin = Integer.parseInt(pinS);
-            userToAdd = new User(currentHouse, sel, pin);
+            userToAdd = new User(sel, pin);
             currentHouse.addUser(userToAdd);
             running = false;
         }
@@ -1068,11 +1068,11 @@ public class CliMain {
         else{
             for (int i = 0; i < userListOut.size(); i++) {
                 if ((userListOut.get(i).getName().equalsIgnoreCase(username)) && (userListOut.get(i).getPin().equals(pin))) {
-                    u = new User(currentHouse, userListOut.get(i).getName(), userListOut.get(i).getPin());
+                    u = new User(userListOut.get(i).getName(), userListOut.get(i).getPin());
                     currentHouse.addUserFromLogin(u);
                     ifExists=true;
                 } else{
-                    u = new User(currentHouse, userListOut.get(i).getName(), userListOut.get(i).getPin());
+                    u = new User(userListOut.get(i).getName(), userListOut.get(i).getPin());
                     currentHouse.addUserFromLogin(u);
                 }
             }
@@ -1087,11 +1087,7 @@ public class CliMain {
 
 
         try {
-
-//            for (int i = 0; i < userList.size(); i++) {
-//                JsonUtil.toJsonString(userList.get(i).getName());
-//            }
-            JsonUtil.toJsonFile("./src/main/files/test", userList);
+            JsonUtil.toJsonFile("./src/main/files/usersList", userList);
         } catch (Exception e){
             System.out.println(e);
         }
