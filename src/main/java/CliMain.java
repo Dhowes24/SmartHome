@@ -133,6 +133,7 @@ public class CliMain {
             } else if (selection == 8) { // Sign Off
                 System.out.println("Signing off...");
                 System.out.println();
+                saveUsers();
                 signedIn = false;
             }
         }
@@ -977,7 +978,7 @@ public class CliMain {
                 System.out.print("Please enter the name of the user you want to create: ");
                 sel = s.nextLine();
                 if(sel.equalsIgnoreCase("q")){
-                    running = false;
+                   break;
                 }
 
                 System.out.print("Please re-enter the name of the user you want to create: ");
@@ -1054,20 +1055,45 @@ public class CliMain {
     }
 
     public static boolean signIn(String username, Integer pin)throws IOException {
-        List<User> userListOut = new ArrayList<User>();
+        List<User> userListOut;
+        User u;
+        boolean ifExists=false;
         try{
             userListOut = JsonUtil.listFromJsonFile("./src/main/files/usersList", User.class);
         } catch(Exception e){
+            System.out.println(e);
             return false;
         }
         if(userListOut.size()==0){return false;}
         else{
             for (int i = 0; i < userListOut.size(); i++) {
                 if ((userListOut.get(i).getName().equalsIgnoreCase(username)) && (userListOut.get(i).getPin().equals(pin))) {
-                    return true;
+                    u = new User(currentHouse, userListOut.get(i).getName(), userListOut.get(i).getPin());
+                    currentHouse.addUserFromLogin(u);
+                    ifExists=true;
+                } else{
+                    u = new User(currentHouse, userListOut.get(i).getName(), userListOut.get(i).getPin());
+                    currentHouse.addUserFromLogin(u);
                 }
             }
-            return false;
+            return ifExists;
+        }
+    }
+
+    public static void saveUsers(){
+        HashMap<String,User> userMap = currentHouse.getUserList();
+        List<User> userList = new ArrayList<>(userMap.values());
+
+
+
+        try {
+
+//            for (int i = 0; i < userList.size(); i++) {
+//                JsonUtil.toJsonString(userList.get(i).getName());
+//            }
+            JsonUtil.toJsonFile("./src/main/files/test", userList);
+        } catch (Exception e){
+            System.out.println(e);
         }
     }
 
