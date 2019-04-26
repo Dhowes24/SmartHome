@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.lang.String;
 
@@ -659,7 +660,8 @@ public class CliMain {
         }
     }
 
-    public static void addLightToScheduleCLI() {} // TODO: Michael
+    // TODO: Michael
+    public static void addLightToScheduleCLI() {}
 
     public static void tempCLI() {
         boolean running=true;
@@ -729,8 +731,10 @@ public class CliMain {
         }
     }
 
-    public static void addTempToScheduleCLI() {} // TODO: Michael
+    // TODO: Michael
+    public static void addTempToScheduleCLI() {}
 
+    //DONE
     public static void houseManipulationCLI(){
         boolean running = true;
         String sel;
@@ -767,6 +771,7 @@ public class CliMain {
         }
     }
 
+    //DONE
     public static void changeHouseTempCLI(){
         boolean running=true;
         String selection;
@@ -794,6 +799,7 @@ public class CliMain {
 
     }
 
+    //DONE
     public static void contactESCLI(){
         boolean running = true;
         String sel;
@@ -834,7 +840,7 @@ public class CliMain {
         }
     }
 
-
+    //DONE
     public static void helpCLI(){
         boolean running=true;
         while(running) {
@@ -901,10 +907,7 @@ public class CliMain {
 
     }
 
-
-
-    // User CLI
-    //TODO
+    // TODO: Brien
     public static void userCLI(){
         boolean running = true;
         String sel;
@@ -946,6 +949,7 @@ public class CliMain {
         }
     }
 
+    //DONE
     public static void addUserCLI(){
         boolean running = true;
         String sel;
@@ -1050,10 +1054,13 @@ public class CliMain {
         }
 
     }
+
+    // TODO: Brien
     public static void deleteUserCLI(){
 
     }
 
+    //DONE
     public static boolean signIn(String username, Integer pin)throws IOException {
         List<User> userListOut;
         User u;
@@ -1080,6 +1087,7 @@ public class CliMain {
         }
     }
 
+    //DONE
     public static void saveUsers(){
         HashMap<String,User> userMap = currentHouse.getUserList();
         List<User> userList = new ArrayList<>(userMap.values());
@@ -1090,6 +1098,17 @@ public class CliMain {
             JsonUtil.toJsonFile("./src/main/files/usersList", userList);
         } catch (Exception e){
             System.out.println(e);
+        }
+    }
+
+    public static House loadHouse() {
+        House h;
+        try {
+            h = JsonUtil.fromJsonFile("./src/main/files/house", House.class);
+            return h;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
         }
     }
 
@@ -1142,7 +1161,8 @@ public class CliMain {
     }
 
     public static void main(String[] args) {
-        run();
+        System.out.println(loadHouse());
+//        run();
 
     }
 

@@ -1,6 +1,6 @@
 {
-  "house":{
-    "rooms": [
+  "House":{
+    "Room": [
       {
         "name": "Kitchen",
 
@@ -37,6 +37,35 @@
         ],
 
         "temperature": 65
+      },
+      {
+        "name": "Bathroom",
+
+        "appliances": [
+          {
+            "name": "Sink",
+            "status": "off"
+          },
+          {
+            "name": "Toilet",
+            "status": "on"
+          }
+        ],
+
+        "lights": [
+          {
+            "name": "Toilet Light",
+            "defaultAmount": 1,
+            "isDimmable": "no"
+          },
+          {
+            "name": "Ceiling",
+            "defaultAmount": 0.80,
+            "isDimmable": "yes"
+          }
+        ],
+
+        "temperature": 20
       }
     ]
   }
