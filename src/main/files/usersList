@@ -2,6 +2,9 @@
   "name" : "Anthony",
   "pin" : 0
 }, {
+  "name" : "test",
+  "pin" : 12
+}, {
   "name" : "Brien",
   "pin" : 1111
 }, {

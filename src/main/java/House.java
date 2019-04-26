@@ -19,6 +19,7 @@ public class House {
         }
     }
 
+    public static HashMap<String, User> getUserList(){return userList;}
     public static String getKey(Integer index) {
 
         Integer count = 0;
@@ -65,9 +66,44 @@ public class House {
     }
 
     public static void addUser(User user){
-        if(!userList.containsKey(user.Name))
+
+        if(userList.containsKey(user.Name)){
+            System.out.println("User already exists!");
+        }else {
+            System.out.println("Added user.");
             userList.put(user.Name, user);
+        }
+
+
     }
+
+    public static void addUserFromLogin(User user){
+
+        if(!userList.containsKey(user.Name)) {
+            userList.put(user.Name, user);
+        }
+
+
+    }
+
+    //TODO
+    public static void printAppliances(){
+        Room r;
+        System.out.println("Printing Appliance's in House");
+        System.out.println("-----------------------------");
+        for (String key: roomList.keySet()){
+            r = roomList.get(key);
+            for(String appliance: r.applianceMap.keySet()){
+                System.out.println("Room: "+ key + "\tAppliance: "+appliance);
+            }
+        }
+
+    }
+
+    public static void printLights(){
+
+    }
+
 
 
     public void printScheduleList(){

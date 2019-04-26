@@ -1,24 +1,18 @@
 import java.util.HashMap;
 
 public class User {
-    House House;
     String Name;
     Integer Pin=0;
     //Preferences preferences;
     //Permissions permissions;
 
     public User(){}
-    public User(House house, String Name){
-        //Preferences preferences = new Preferences();
-        //Permissions permissions = new Permissions();
-        this.House = house;
-        this.Name = Name;
-
+    public User(String name){
+        this.Name = name;
     }
-    public User(House house, String Name, Integer pin){
+    public User(String Name, Integer pin){
         //Preferences preferences = new Preferences();
         //Permissions permissions = new Permissions();
-        this.House = house;
         this.Name = Name;
         this.Pin = pin;
 
@@ -26,7 +20,6 @@ public class User {
 
     public String getName(){return this.Name;}
     public Integer getPin(){return this.Pin;}
-    public House getHouse(){return this.House;}
 
     public void setName(String name){this.Name=name;}
     public void setPin(Integer pin){this.Pin=pin;}
@@ -40,9 +33,9 @@ public class User {
      * @return
      */
     public String createUser(String Name){
-        if(!this.House.userList.containsKey(Name)) {
-            User newUser = new User(this.House, Name);
-            this.House.addUser(newUser);
+        if(!House.userList.containsKey(Name)) {
+            User newUser = new User(Name);
+            House.addUser(newUser);
             return ("User successfully created");
         }
         else{
@@ -57,8 +50,8 @@ public class User {
      * @return
      */
     public String deleteUser(String Name){
-        if(this.House.userList.containsKey(Name)){
-            this.House.userList.remove(Name);
+        if(House.userList.containsKey(Name)){
+            House.userList.remove(Name);
             return ("User successfully deleted");
         }
         else{
