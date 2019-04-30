@@ -77,9 +77,9 @@ public class Room {
      * add a light to the light with a unique name
      * @param name
      */
-    public void addLight(String name, Boolean pinRequired, Boolean isDimable){
+    public void addLight(String name, Boolean isDimable){
         if (!containedInLightList(name)){
-            lightMap.put(name, new Light(name, pinRequired, isDimable));
+            lightMap.put(name, new Light(name, isDimable));
         }
         // TODO: throw exception or somehow handle receiving a new name for the light
     }

@@ -3,14 +3,15 @@ import org.junit.Test;
 
 public class LightTest {
 
-    public Light l = new Light("lamp", true, 0.75, true);
+    public Light l = new Light("lamp", 0.75, true);
 
     //Constructor Test
     @Test
     public void LightTest(){
+        User testUser = new User();
         Assert.assertNotNull(l);
         Assert.assertEquals("lamp", l.getID());
-        Assert.assertEquals(true, l.getPreference());
+        Assert.assertEquals(1.0, l.getPreference(testUser),0.00);
         Assert.assertEquals(0.75, l.getDefaultAmount(),0.00);
         Assert.assertEquals(true, l.getDimmable());
     }
@@ -18,8 +19,6 @@ public class LightTest {
     //Getter Tests
     @Test
     public void getIDTest(){ Assert.assertEquals(l.getID(),"lamp");}
-    @Test
-    public void getPinTest(){ Assert.assertEquals(l.getPreference(),true);}
     @Test
     public void getDimmableTest(){ Assert.assertEquals(l.getDimmable(),true);}
     @Test
@@ -67,13 +66,30 @@ public class LightTest {
     //Permission Control Testing
     @Test
     public void changePreferenceTest(){
-        //Change
-        l.changeIsPinRequired();
-        Assert.assertEquals(l.getPreference(),false);
+        User testUser = new User();
+        Light testLight = new Light("light", true);
 
-        //Change back
-        l.changeIsPinRequired();
-        Assert.assertEquals(l.getPreference(),true);
+        Assert.assertEquals(1.0,testLight.getPreference(testUser), 0.00);
+
+        testLight.changeUserPref(testUser,0.5);
+
+
+        Assert.assertEquals(0.5,testLight.getPreference(testUser), 0.00);
+
+    }
+
+    @Test
+    public void setToPreferenceTest(){
+        User testUser = new User();
+        Light testLight = new Light("light", true);
+
+        Assert.assertEquals(1.0,testLight.getPreference(testUser), 0.00);
+
+        testLight.changeUserPref(testUser,0.5);
+        testLight.setToPreference(testUser);
+
+        Assert.assertEquals(0.5,testLight.getCurrIntensity(), 0.00);
+
     }
 
 }

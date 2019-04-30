@@ -39,7 +39,7 @@ public class RoomTest {
     public void addLightTest(){
 
        Room room = new Room("testRoom");
-       room.addLight("a", false, true);
+       room.addLight("a", false);
        assertEquals("a", room.lightMap.get("a").getID());
        room.printLights();
     }

@@ -57,10 +57,9 @@ public boolean getStatus() {
 
 //changes the user preference of the appliance
 public void changeUserPref(User user, boolean preference) {
-    if(!this.preferences.containsKey(user)){
+    if (!this.preferences.containsKey(user)) {
         this.preferences.put(user, preference);
-    }
-    else{
+    } else {
         this.preferences.replace(user, preference);
     }
 }

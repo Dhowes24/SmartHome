@@ -513,17 +513,6 @@ public class CliMain {
 
                 if (selection.equalsIgnoreCase(selection2)) {
 
-                    //Permissions
-                    System.out.print("Will this light require special permissions (Y/N): "); //
-                    sel = s.nextLine();
-                    while (!sel.equalsIgnoreCase("y") && !sel.equalsIgnoreCase("n")) {
-                        System.out.println("Error: please enter 'y' or 'n'");
-                        sel = s.nextLine();
-                        if(sel.equalsIgnoreCase("q")){
-                            running=false;
-                        }
-                    }
-
                     //Dimming
                     System.out.print("Is this light dimmable (Y/N): "); // TODO
                     sel2 = s.nextLine();
@@ -535,26 +524,16 @@ public class CliMain {
                         }
                     }
 
-                    if(sel.equalsIgnoreCase("y")){
                         //yy
                         if(sel2.equalsIgnoreCase("y")){
-                            currentRoom.addLight(selection, true, true);
+                            currentRoom.addLight(selection, true);
                         }
-                        //yn
-                        else{
-                            currentRoom.addLight(selection, true, false);
-                        }
-                    }
-                    else{
-                        //ny
-                        if(sel2.equalsIgnoreCase("y")){
-                            currentRoom.addLight(selection, false, true);
-                        }
+
                         //nn
                         else{
-                            currentRoom.addLight(selection, false, false);
+                            currentRoom.addLight(selection, false);
                         }
-                    }
+
                     System.out.println();
                     System.out.println("Your light " + selection + " has been created!");
                     running = false;

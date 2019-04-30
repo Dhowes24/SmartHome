@@ -73,9 +73,9 @@ public class UserTest {
         testHouse.addRoom("testRoom1");
         Room testRoom = testHouse.accessRoom("testRoom1");
 
-        testRoom.addLight("TV light", false, false);
-        testRoom.addLight("Coffee Maker light", false, false);
-        testRoom.addLight("Toilet light", false, false);
+        testRoom.addLight("TV light", false);
+        testRoom.addLight("Coffee Maker light", false);
+        testRoom.addLight("Toilet light", false);
 
         masterUser.getRoomLightList("testRoom1");
 
