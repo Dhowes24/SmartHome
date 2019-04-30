@@ -47,7 +47,7 @@ public class Room {
 
     public void addAppliance(String name, Boolean isRequired){
         if(!containedInApplianceList(name)){
-            this.applianceMap.put(name, new Appliance(name, isRequired));
+            this.applianceMap.put(name, new Appliance(name));
         }
         // TODO: throw exception or somehow handle receiving a new name for the appliance
     }
