@@ -1,23 +1,23 @@
+import java.util.HashMap;
+
 public class Temperature {
 
     private double temperature;
-    private boolean isPinRequired;
+    private HashMap<User, Double> preferences;
+
 
 
     /**
      * @param temp double - the temperature the room will be at
-     * @param preferences boolean - whether or not it will require a key input
      */
-    public Temperature(double temp, boolean preferences){
+    public Temperature(double temp){
             if(isAmountValid(temp)){
                 this.temperature = temp;
-                this.isPinRequired = preferences;
             }
             else{
                 this.temperature = 60;
-                this.isPinRequired = preferences;
             }
-
+        this.preferences = new HashMap<>();
     }
 
     /**
@@ -25,10 +25,6 @@ public class Temperature {
      */
     public double getTemp(){return this.temperature;}
 
-    /**
-     * @return boolean - whether or not there is a required pin on changing the temp
-     */
-    public boolean getIsPinRequired(){return this.isPinRequired;}
 
     /**
      * Changes the current temperature of the room if it is a valid input
@@ -38,13 +34,6 @@ public class Temperature {
         if(isAmountValid(newTemp)){
             this.temperature=newTemp;
         }
-    }
-
-    /**
-     * Changes the current status of the pin requirement to the opposite
-     */
-    public void changePinRequired(){
-        this.isPinRequired = !this.isPinRequired;
     }
 
     /**
@@ -59,5 +48,43 @@ public class Temperature {
         else{
             return false;
         }
+    }
+
+    /**
+     * Sets the preference of a user to another number
+     * @param user
+     * @param amount
+     */
+    public void setTempPreference(User user, double amount){
+        if(this.preferences.containsKey(user) && isAmountValid(amount)){
+            this.preferences.replace(user, amount);
+        }
+        else if (!this.preferences.containsKey(user)){
+            this.preferences.put(user,amount);
+        }
+    }
+
+    /**
+     * Set current temperature to preference
+     * @param user
+     */
+    public void setToPreference(User user){
+        if(!this.preferences.containsKey(user)){
+            this.preferences.put(user, 60.0);
+        }
+        setTemp(this.preferences.get(user));
+
+    }
+
+    /**
+     * get preferences for specific user
+     * @param user
+     * @return
+     */
+    public double getPreference (User user){
+        if(!this.preferences.containsKey(user)){
+            this.preferences.put(user, 60.0);
+        }
+        return this.preferences.get(user);
     }
 }
