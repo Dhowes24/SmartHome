@@ -1,23 +1,20 @@
+import java.util.HashMap;
+
 public class Appliance {
 
 private String ID;
 private boolean status;
-private boolean userPref;
+
+private HashMap<User, Boolean> preferences;
 
 /**
  *Creates a new appliance.
  * @param name
- * @param pin
  */
-public Appliance(String name, boolean pin ) {
+public Appliance(String name) {
     this.ID = name;
     this.status = false;
-    if (pin) {
-        this.userPref = true;
-    }
-    else {
-        this.userPref = false;
-    }
+    this.preferences = new HashMap<>();
 }
 
 //returns the ID of the appliance
@@ -26,8 +23,18 @@ public String getID() {
 }
 
 //returns a boolean representing if that appliance has a user preference
-public boolean getUserPref() {
-    return this.userPref;
+public boolean getUserPref(User user) {
+    if(!this.preferences.containsKey(user)){
+        this.preferences.put(user, false);
+    }
+    return this.preferences.get(user);
+}
+
+public void setToPreference(User user){
+    if(!this.preferences.containsKey(user)){
+        this.preferences.put(user, false);
+    }
+    this.status = preferences.get(user);
 }
 
 
@@ -49,12 +56,11 @@ public boolean getStatus() {
 
 
 //changes the user preference of the appliance
-public void changeUserPref() {
-    if (userPref) {
-        this.userPref = false;
-    }
-    else {
-        this.userPref = true;
+public void changeUserPref(User user, boolean preference) {
+    if (!this.preferences.containsKey(user)) {
+        this.preferences.put(user, preference);
+    } else {
+        this.preferences.replace(user, preference);
     }
 }
 

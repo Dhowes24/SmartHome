@@ -21,7 +21,7 @@ public class Room {
         applianceMap = new HashMap<>();
         // TODO: must get user's preference for starting temp or ask them for a temp when creating a room
         // TODO: must also ask user if thermostat should require pin
-        thermostat = new Temperature(65, true);
+        thermostat = new Temperature(65);
     }
 
     public Room() {
@@ -32,7 +32,7 @@ public class Room {
         applianceMap = new HashMap<>();
         // TODO: must get user's preference for starting temp or ask them for a temp when creating a room
         // TODO: must also ask user if thermostat should require pin
-        thermostat = new Temperature(65, true);
+        thermostat = new Temperature(65);
 
     }
 
@@ -47,7 +47,7 @@ public class Room {
 
     public void addAppliance(String name, Boolean isRequired){
         if(!containedInApplianceList(name)){
-            this.applianceMap.put(name, new Appliance(name, isRequired));
+            this.applianceMap.put(name, new Appliance(name));
         }
         // TODO: throw exception or somehow handle receiving a new name for the appliance
     }
@@ -77,9 +77,9 @@ public class Room {
      * add a light to the light with a unique name
      * @param name
      */
-    public void addLight(String name, Boolean pinRequired, Boolean isDimable){
+    public void addLight(String name, Boolean isDimable){
         if (!containedInLightList(name)){
-            lightMap.put(name, new Light(name, pinRequired, isDimable));
+            lightMap.put(name, new Light(name, isDimable));
         }
         // TODO: throw exception or somehow handle receiving a new name for the light
     }
