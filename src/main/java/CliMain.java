@@ -214,6 +214,65 @@ public class CliMain {
         }
     }
 
+    public static void scheduleCLI() {
+
+        boolean running = true;
+        String selection;
+
+        System.out.println();
+        System.out.println("Schedule Adjust:");
+        System.out.println("-----------------");
+        while (running) {
+            System.out.println();
+            System.out.println("Would you like to 1. add or 2. remove an item from the schedule?");
+
+            selection = s.nextLine();
+
+            if(selection.equalsIgnoreCase("q")){
+                running=false;
+            }
+            else if (selection.equals("1")){
+                addToScheduleAPI();
+            }
+            else if (selection.equals("2")){
+                //removeFromScheduleAPI();
+            } else {
+                System.out.println("Please select a proper option");
+                System.out.println();
+            }
+        }
+    }
+
+    public static void addToScheduleAPI() {
+
+        boolean running = true;
+        String selection;
+
+        System.out.println();
+
+        while (running) {
+            System.out.println("Which of the following items would you like to add to the schedule?");
+            System.out.println("1. Lights");
+            System.out.println("2. Appliances");
+            System.out.println("3. Thermostat");
+
+            selection = s.nextLine();
+
+            if (selection.equalsIgnoreCase("q")) {
+                running = false;
+            } else if (selection.equals("1")) {
+                addLightToScheduleCLI();
+            } else if (selection.equals("2")) {
+                addApplianceToScheduleCLI();
+            } else if (selection.equals("3")) {
+                addTempToScheduleCLI();
+            } else {
+                System.out.println("Please select a proper option");
+                System.out.println();
+            }
+        }
+    }
+
     //DONE
     public static void roomStatusCLI() {
         boolean running = true;
@@ -813,7 +872,6 @@ public class CliMain {
         }
     }
 
-
     public static void helpCLI(){
         boolean running=true;
         while(running) {
@@ -879,7 +937,6 @@ public class CliMain {
         }
 
     }
-
 
 
     // User CLI
