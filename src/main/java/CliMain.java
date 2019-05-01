@@ -77,20 +77,20 @@ public class CliMain {
 
     public static void startMenu() {
         System.out.println();
-        System.out.println("Welcome to the Smart Home Main Menu!");
-        System.out.println("Feel free to navigate through the options!");
-        System.out.println("At any point, enter 'q' to exit an option you have selected. Enter 'c' to continue, or any key to quit.");
-        String selection = s.nextLine();
-        if (selection.toLowerCase().equals("c")) {
-            basicMenu();
-        } else {
-            System.exit(0);
-        }
+        System.out.println("Welcome to Smart Home!\n");
+        basicMenu();
+//        System.out.println("Feel free to navigate through the options!");
+//        System.out.println("At any point, enter 'q' to exit an option you have selected. Enter 'c' to continue, or any key to quit.");
+//        String selection = s.nextLine();
+//        if (selection.toLowerCase().equals("c")) {
+//            basicMenu();
+//        } else {
+//            System.exit(0);
+//        }
     }
 
     //Basic Menu CLI
     public static void basicMenu(){
-
 
         //Run until they sign in
         while(signedIn) {
@@ -101,17 +101,16 @@ public class CliMain {
             System.out.println("1. Create a new room");
             System.out.println("2. Navigate to a room");
             System.out.println("3. User Options");
-            System.out.println("4. Scheduling");
-            System.out.println("5. House Manipulation");
-            System.out.println("6. Contact Emergency Services");
-            System.out.println("7. Help");
-            System.out.println("8. Sign Out");
+            System.out.println("4. House Manipulation");
+            System.out.println("5. Contact Emergency Services");
+            System.out.println("6. Help");
+            System.out.println("7. Sign Out");
             System.out.print("What would you like to do: " + "\n");
             String sel = s.nextLine();
 
-            while (!integerCheck(sel,8)) {
+            while (!integerCheck(sel,7)) {
                 System.out.println();
-                System.out.print("Error: type in an integer value 1-8:");
+                System.out.print("Error: type in an integer value 1-7:");
                 sel = s.nextLine();
             }
             Integer selection = Integer.parseInt(sel);
@@ -122,15 +121,13 @@ public class CliMain {
                 navigateRoomsCLI();
             } else if (selection == 3) { // User Options CLI
                 userCLI();
-            } else if (selection == 4) { // Scheduling CLI
-                //TODO
-            } else if (selection == 5) {
+            } else if (selection == 4) {
                 houseManipulationCLI();
-            } else if (selection == 6) { // Emergency Services CLI
+            } else if (selection == 5) { // Emergency Services CLI
                 contactESCLI();
-            } else if (selection == 7) { // Help CLI
+            } else if (selection == 6) { // Help CLI
                 helpCLI();
-            } else if (selection == 8) { // Sign Off
+            } else if (selection == 7) { // Sign Off
                 System.out.println("Signing off...");
                 System.out.println();
                 saveUsers();
@@ -236,13 +233,14 @@ public class CliMain {
             System.out.println("1. Go To Appliance Menu");
             System.out.println("2. Go To Light Menu");
             System.out.println("3. Go To Temperature Menu");
-            System.out.println("4. Return");
+            System.out.println("4. Add To Schedule");
+            System.out.println("5. Return");
             System.out.print("What would you like to do: ");
 
             selection = s.nextLine();
 
-            while (!integerCheck(selection, 4)) {
-                System.out.println("Error: type in an integer value 1-4.");
+            while (!integerCheck(selection, 5)) {
+                System.out.println("Error: type in an integer value 1-5.");
                 System.out.print("Please enter a value that corresponds to an option: ");
                 selection = s.nextLine();
             }
@@ -258,10 +256,76 @@ public class CliMain {
                 tempCLI();
             }
             else if (sInt == 4) {
+                scheduleCLI();
+            } else if (sInt == 5) {
                 running = false;
             }
         }
+        navigateRoomsCLI();
     }
+
+    public static void scheduleCLI() {
+
+        boolean running = true;
+        String selection;
+
+        System.out.println();
+        System.out.println("Schedule Adjust:");
+        System.out.println("-----------------");
+        while (running) {
+            System.out.println("Would you like to 1. add or 2. remove an item from the schedule?");
+
+            selection = s.nextLine();
+
+            if(selection.equalsIgnoreCase("q")){
+                running=false;
+            }
+            else if (selection.equals("1")){
+                addToScheduleAPI();
+            }
+            else if (selection.equals("2")){
+                removeFromScheduleAPI();
+            } else {
+                System.out.println("Please select a proper option");
+                System.out.println();
+            }
+        }
+    }
+
+    public static void addToScheduleAPI() {
+
+        boolean running = true;
+        String selection;
+
+        System.out.println();
+
+        while (running) {
+            System.out.println("Which of the following items would you like to add to the schedule?");
+            System.out.println("1. Lights");
+            System.out.println("2. Appliances");
+            System.out.println("3. Thermostat");
+
+            selection = s.nextLine();
+
+            if (selection.equalsIgnoreCase("q")) {
+                running = false;
+            } else if (selection.equals("1")) {
+                addLightToScheduleCLI();
+            } else if (selection.equals("2")) {
+                addApplianceToScheduleCLI();
+            } else if (selection.equals("3")) {
+                addTempToScheduleCLI();
+            } else {
+                System.out.println("Please select a proper option");
+                System.out.println();
+            }
+        }
+    }
+
+    public static void removeFromScheduleAPI() {
+
+
+    } // TODO: Michael
 
     //DONE
     public static void applianceCLI() {
@@ -366,7 +430,6 @@ public class CliMain {
         if (currentRoom.applianceMap.size() > 0) {
             while(running) {
 
-                System.out.println("Choose an appliance to remove.");
                 currentRoom.printAppliances();
                 System.out.print("Please enter the name of the item you wish to remove: ");
                 selection = s.nextLine();
@@ -440,7 +503,147 @@ public class CliMain {
         System.out.println("You have no appliances yet!");
     }
 
-    public static void addApplianceToScheduleCLI() {} // TODO: Michael
+    public static void addApplianceToScheduleCLI() {
+
+        boolean running = true;
+        String objSel;
+        String daySel;
+        String hourSel;
+        String minSel;
+        String APMSel;
+        String statusSel;
+
+        String daySelected;
+        String timeSelected;
+        String APMSelected;
+        String objSelected;
+        Boolean statusSelected;
+
+        System.out.println();
+        System.out.println("Add Appliance To Schedule:");
+        System.out.println("-----------------");
+
+        if (currentRoom.applianceMap.size() > 0) {
+            while(running) {
+                currentRoom.printAppliances();
+                System.out.print("Please enter the name of the item you wish to add to the schedule: ");
+                objSel = s.nextLine();
+
+                if(objSel.equalsIgnoreCase("q")){
+                    running=false;
+                }
+                else if (currentRoom.applianceMap.containsKey(objSel)) {
+
+                    System.out.print(objSel + "Would you like to add this appliance to the schedule? (Y/N): ");
+                    String sel = s.nextLine();
+
+                    while (!sel.equalsIgnoreCase("y") && !sel.equalsIgnoreCase("n")){
+                        System.out.print("Error: please enter 'y' or 'n': ");
+                        sel = s.nextLine();
+                    }
+
+                    if (sel.equalsIgnoreCase("y")) {
+
+                        objSelected = objSel;
+
+                        System.out.println("Please enter the following schedule option you would like:");
+                        System.out.println("0. Return");
+                        System.out.println("1. Monday");
+                        System.out.println("2. Tuesday");
+                        System.out.println("3. Wednesday");
+                        System.out.println("4. Thursday");
+                        System.out.println("5. Friday");
+                        System.out.println("6. Saturday");
+                        System.out.println("7. Sunday");
+                        System.out.println("8. Weekdays");
+                        System.out.println("9. Weekends");
+                        daySel = s.nextLine();
+
+                        while (!integerCheck(daySel,7)) {
+                            System.out.println();
+                            System.out.print("Error: type in an integer value 1-7:");
+                            daySel = s.nextLine();
+                        }
+
+                        daySelected = daySel;
+
+                        System.out.println("What hour would you like to schedule this for? Please enter a number between 1 and 12");
+                        hourSel = s.nextLine();
+
+                        while (!integerCheck(hourSel, 1,12)) {
+                            System.out.println();
+                            System.out.print("Error: type in an integer value 1-12:");
+                            hourSel = s.nextLine();
+                        }
+
+                        if (Integer.parseInt(hourSel) < 10) {
+                            hourSel = "0" + hourSel;
+                        }
+
+                        System.out.println("What minute would you like to schedule this for? Please enter a number between 0 and 59");
+                        minSel = s.nextLine();
+
+                        while (!integerCheck(minSel, 1,12)) {
+                            System.out.println();
+                            System.out.print("Error: type in an integer value 0-59:");
+                            minSel = s.nextLine();
+                        }
+
+                        if (Integer.parseInt(minSel) < 10) {
+                            minSel = "0" + minSel;
+                        }
+
+                        System.out.println("Would you like this to go off at " + hourSel + ":" + minSel + " PM or AM?");
+                        System.out.println("Please enter 'a' or 'p'");
+                        APMSel = s.nextLine();
+
+                        while (!APMSel.equalsIgnoreCase("a") && !APMSel.equalsIgnoreCase("p")){
+                            System.out.print("Error: please enter 'a' or 'p': ");
+                            APMSel = s.nextLine();
+                        }
+
+                        if (APMSel.equals("a")) {
+                            APMSelected = "AM";
+                        } else {
+                            APMSelected = "PM";
+                        }
+
+                        if (APMSelected.equals("AM")) {
+                            timeSelected = hourSel + ":" + minSel;
+                        } else {
+                            Integer newHour = Integer.parseInt(hourSel) + 12;
+                            timeSelected = newHour + ":" + minSel;
+                        }
+
+                        System.out.println("Would you like to schedule this object to be turned on or off?");
+                        System.out.println("Please enter 'on' or 'off'");
+                        statusSel = s.nextLine();
+
+                        while (!statusSel.equalsIgnoreCase("on") && !statusSel.equalsIgnoreCase("off")){
+                            System.out.print("Error: please enter 'on' or 'off': ");
+                            statusSel = s.nextLine();
+                        }
+
+                        if (statusSel.equals("on")) {
+                            statusSelected = true;
+                        } else {
+                            statusSelected = false;
+                        }
+
+                        currentRoom.addApplianceToSchedule(objSelected, daySelected, timeSelected, statusSelected);
+
+                        running = false;
+                    }
+                    running = false;
+                }
+                else {
+                    System.out.println("This appliance does not exist!");
+                    System.out.println();
+                }
+            }
+        }
+        System.out.println("You have no appliances yet!");
+    }
 
     //DONE
     public static void lightCLI() {
@@ -638,7 +841,20 @@ public class CliMain {
         }
     }
 
-    public static void addLightToScheduleCLI() {} // TODO: Michael
+    public static void addLightToScheduleCLI() { // TODO: Michael
+
+        /*
+        1. get String day with options: sunday, monday, tuesday,
+        wednesday, thursday, friday, saturday, weekdays, and weekends
+
+        2. get time as string HH:MM 24 Hour
+
+        3. get itemID
+
+        4. get statusTo boolean, so on or off
+        */
+
+    }
 
     public static void tempCLI() {
         boolean running=true;
@@ -708,7 +924,19 @@ public class CliMain {
         }
     }
 
-    public static void addTempToScheduleCLI() {} // TODO: Michael
+    public static void addTempToScheduleCLI() { // TODO: Michael
+
+        /*
+        1. get String day with options: sunday, monday, tuesday,
+        wednesday, thursday, friday, saturday, weekdays, and weekends
+
+        2. get time as string HH:MM 24 Hour
+
+        3. get itemID
+
+        4. get statusTo boolean, so on or off
+        */
+    }
 
     public static void houseManipulationCLI(){
         boolean running = true;
@@ -813,7 +1041,6 @@ public class CliMain {
         }
     }
 
-
     public static void helpCLI(){
         boolean running=true;
         while(running) {
@@ -879,7 +1106,6 @@ public class CliMain {
         }
 
     }
-
 
 
     // User CLI

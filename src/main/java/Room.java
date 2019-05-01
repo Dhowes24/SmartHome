@@ -120,29 +120,29 @@ public class Room {
 
     /**
      * add appliance to schedule by name,
-     * enter a 7-long binary list to designate days you wish the action to go off,
-     * a time of those days you want the action to go off,
+     * enter a day, weekdays, or weekends,
+     * a time of those days you want the action to go off in 24 hour HH:MM format,
      * and what status change you want to happen (False = off, True = on)
      * @param applianceID
-     * @param daysOfWeek
+     * @param day
      * @param time
      * @param status
      */
-    public void addApplianceToSchedule(String applianceID, List daysOfWeek, int time, boolean status){
+    public void addApplianceToSchedule(String applianceID, String day, String time, boolean status){
         // TODO
     }
 
     /**
      * add light to schedule by name,
-     * enter a 7-long binary list to designate days you wish the action to go off,
-     * a time of those days you want the action to go off,
+     * enter a day, weekdays, or weekends,
+     *      * a time of those days you want the action to go off in 24 hour HH:MM format,
      * and what status change you want to happen (False = off, True = on)
      * @param applianceID
      * @param daysOfWeek
      * @param time
      * @param status
      */
-    public void addLightToSchedule(String applianceID, List daysOfWeek, int time, boolean status){
+    public void addLightToSchedule(String applianceID, List daysOfWeek, String time, boolean status){
         // TODO
     }
 
