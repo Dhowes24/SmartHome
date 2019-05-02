@@ -335,7 +335,7 @@ public class CliMain {
 
         while(running) {
             System.out.println();
-            System.out.println("Appliances in room - " + currentRoom.getRoomName()+ ":");
+            System.out.println("Appliance Menu - " + currentRoom.getRoomName()+ ":");
             System.out.println("1. Add Appliance");
             System.out.println("2. Remove Appliance");
             System.out.println("3. Change Appliance Status");
@@ -513,10 +513,10 @@ public class CliMain {
         String APMSel;
         String statusSel;
 
+        String objSelected;
         String daySelected;
         String timeSelected;
         String APMSelected;
-        String objSelected;
         Boolean statusSelected;
 
         System.out.println();
@@ -526,7 +526,7 @@ public class CliMain {
         if (currentRoom.applianceMap.size() > 0) {
             while(running) {
                 currentRoom.printAppliances();
-                System.out.print("Please enter the name of the item you wish to add to the schedule: ");
+                System.out.println("Please enter the name of the item you wish to add to the schedule: ");
                 objSel = s.nextLine();
 
                 if(objSel.equalsIgnoreCase("q")){
@@ -538,7 +538,7 @@ public class CliMain {
                     String sel = s.nextLine();
 
                     while (!sel.equalsIgnoreCase("y") && !sel.equalsIgnoreCase("n")){
-                        System.out.print("Error: please enter 'y' or 'n': ");
+                        System.out.println("Error: please enter 'y' or 'n': ");
                         sel = s.nextLine();
                     }
 
@@ -559,7 +559,7 @@ public class CliMain {
                         System.out.println("9. Weekends");
                         daySel = s.nextLine();
 
-                        while (!integerCheck(daySel,7)) {
+                        while (!integerCheck(daySel, 0,9)) {
                             System.out.println();
                             System.out.print("Error: type in an integer value 1-7:");
                             daySel = s.nextLine();
@@ -630,8 +630,11 @@ public class CliMain {
                             statusSelected = false;
                         }
 
+                        //TODO:
                         currentRoom.addApplianceToSchedule(objSelected, daySelected, timeSelected, statusSelected);
 
+                        System.out.println("This appliance has been added to the schedule!");
+                        System.out.println("Summary: " + objSelected + " - " + daySelected + " - " + timeSelected + " - " + statusSel);
                         running = false;
                     }
                     running = false;
@@ -659,13 +662,13 @@ public class CliMain {
             System.out.println("3. Adjust Light");
             System.out.println("4. Add Light Change to Schedule");
             System.out.println("5. Return");
-            System.out.print("What would you like to do: ");
+            System.out.println("What would you like to do: ");
 
             selection = s.nextLine();
 
             while (!integerCheck(selection, 5)) {
                 System.out.println("Error: type in an integer value.");
-                System.out.print("Please enter a value that corresponds to an option: ");
+                System.out.println("Please enter a value that corresponds to an option: ");
                 selection = s.nextLine();
             }
 
@@ -702,12 +705,12 @@ public class CliMain {
         while(running) {
 
             System.out.println();
-            System.out.print("Please enter the name of the light you would like to create: ");
+            System.out.println("Please enter the name of the light you would like to create: ");
             selection = s.nextLine();
             if(selection.equalsIgnoreCase("q")){
                 running=false;
             }
-            System.out.print("Please confirm the name of the light you would like to create: ");
+            System.out.println("Please confirm the name of the light you would like to create: ");
             selection2 = s.nextLine();
             if(selection2.equalsIgnoreCase("q")){
                 running=false;
@@ -717,7 +720,7 @@ public class CliMain {
                 if (selection.equalsIgnoreCase(selection2)) {
 
                     //Dimming
-                    System.out.print("Is this light dimmable (Y/N): "); // TODO
+                    System.out.println("Is this light dimmable (Y/N): "); // TODO
                     sel2 = s.nextLine();
                     while (!sel2.equalsIgnoreCase("y") && !sel2.equalsIgnoreCase("n")) {
                         System.out.println("Error: please enter 'y' or 'n'");
@@ -760,18 +763,18 @@ public class CliMain {
 
                 System.out.println("Choose an light to remove.");
                 currentRoom.printLights();
-                System.out.print("Please enter the name of the item you wish to remove: ");
+                System.out.println("Please enter the name of the item you wish to remove: ");
                 selection = s.nextLine();
 
                 if(selection.equalsIgnoreCase("q")){
                     running=false;
                 }
                 else if (currentRoom.lightMap.containsKey(selection)) {
-                    System.out.print("Would you like to delete the light - " + selection+ " - (Y/N): ");
+                    System.out.println("Would you like to delete the light - " + selection+ " - (Y/N): ");
                     String sel = s.nextLine();
 
                     while (!sel.equalsIgnoreCase("y") && !sel.equalsIgnoreCase("n")){
-                        System.out.print("Error: please enter 'y' or 'n': ");
+                        System.out.println("Error: please enter 'y' or 'n': ");
                         sel = s.nextLine();
                     }
 
@@ -812,18 +815,18 @@ public class CliMain {
                     running=false;
                 }
                 else if (currentRoom.lightMap.containsKey(selection)){
-                    System.out.print("Would you like to adjust the light - " + selection+ " - (Y/N): ");
+                    System.out.println("Would you like to adjust the light - " + selection+ " - (Y/N): ");
                     sel = s.nextLine();
                     while (!sel.equalsIgnoreCase("y") && !sel.equalsIgnoreCase("n")){
-                        System.out.print("Error: please enter 'y' or 'n': ");
+                        System.out.println("Error: please enter 'y' or 'n': ");
                         sel = s.nextLine();
                     }
                     if (sel.equalsIgnoreCase("y")) {
-                        System.out.print("What would you like to dim it to 0.0 - 1.0: ");
+                        System.out.println("What would you like to dim it to 0.0 - 1.0: ");
                         dimS = s.nextLine();
                         while (!doubleCheck(dimS,1.0)) {
                             System.out.println();
-                            System.out.print("Error: type in an  value between 0.0 and 1.0: ");
+                            System.out.println("Error: type in an  value between 0.0 and 1.0: ");
                             dimS = s.nextLine();
                         }
                         dim = Double.parseDouble(dimS);
@@ -869,14 +872,14 @@ public class CliMain {
             System.out.println("1. Adjust Temperature");
             System.out.println("2. Add Temperature Change to Schedule");
             System.out.println("3. Return");
-            System.out.print("What would you like to do: ");
+            System.out.println("What would you like to do: ");
 
 
             selection=s.nextLine();
 
             while (!integerCheck(selection, 3)){
                 System.out.println("Error: type in an integer value.");
-                System.out.print("Please enter a value that corresponds to an option: ");
+                System.out.println("Please enter a value that corresponds to an option: ");
                 selection = s.nextLine();
             }
 
@@ -902,7 +905,7 @@ public class CliMain {
         int sInt;
         while(running){
             System.out.println();
-            System.out.print("Please enter the temperature you would like to set for this room (46-94):");
+            System.out.println("Please enter the temperature you would like to set for this room (46-94):");
 
             selection = s.nextLine();
             if(selection.equalsIgnoreCase("q")){
@@ -911,7 +914,7 @@ public class CliMain {
             while(!(integerCheck(selection,46,94))){
                 System.out.println();
                 System.out.println("Error: type in an integer value (46-94).");
-                System.out.print("Please enter a correct value: ");
+                System.out.println("Please enter a correct value: ");
                 selection = s.nextLine();
                 if(selection.equalsIgnoreCase("q")){
                     running=false;
@@ -952,11 +955,11 @@ public class CliMain {
             System.out.println("3. Turn OFF all appliances");
             System.out.println("4. Set house temperature");
             System.out.println("5. Return");
-            System.out.print("What would you like to do: ");
+            System.out.println("What would you like to do: ");
 
             sel = s.nextLine();
             while(!integerCheck(sel, 5)){
-                System.out.print("Error: type in an integer value 1-5: ");
+                System.out.println("Error: type in an integer value 1-5: ");
                 sel=s.nextLine();
             }
             selI = Integer.parseInt(sel);
@@ -980,7 +983,7 @@ public class CliMain {
         int sInt;
         while(running) {
             System.out.println();
-            System.out.print("Please enter the temperature you would like to set for the house (46-94):");
+            System.out.println("Please enter the temperature you would like to set for the house (46-94):");
             selection = s.nextLine();
             if (selection.equalsIgnoreCase("q")) {
                 running = false;
@@ -988,7 +991,7 @@ public class CliMain {
             while(!(integerCheck(selection,46,94))){
                 System.out.println();
                 System.out.println("Error: type in an integer value (46-94).");
-                System.out.print("Please enter a correct value: ");
+                System.out.println("Please enter a correct value: ");
                 selection = s.nextLine();
                 if(selection.equalsIgnoreCase("q")){
                     running=false;
@@ -1013,11 +1016,11 @@ public class CliMain {
             System.out.println("2. Fire Department");
             System.out.println("3. Ambulance");
             System.out.println("4. Return");
-            System.out.print("Who would you like to contact: ");
+            System.out.println("Who would you like to contact: ");
 
             sel = s.nextLine();
             while (!integerCheck(sel, 4) ) {
-                System.out.print("Error: type in an integer value 1-4: ");
+                System.out.println("Error: type in an integer value 1-4: ");
                 sel = s.nextLine();
             }
             selI = Integer.parseInt(sel);
