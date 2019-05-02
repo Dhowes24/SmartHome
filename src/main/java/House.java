@@ -7,6 +7,7 @@ public class House {
 
     public static HashMap<String, User> userList = new HashMap<>();
     public static HashMap<String, Room> roomList = new HashMap<>();
+    public static MasterSchedule schedule = new MasterSchedule();
 
     //HashMap<String, scheduleItem> scheduleList = new HashMap<>();
 
