@@ -8,7 +8,8 @@ public class RoomTest {
 
    @Test
     public void addApplianceTest(){
-        Room room = new Room("testRoom");
+       MasterSchedule testSchedule = new MasterSchedule();
+        Room room = new Room("testRoom",testSchedule);
         room.addAppliance("TV", false);
         assertTrue(room.applianceMap.containsKey("TV"));
         assertFalse(room.applianceMap.containsKey("NotMyTV"));
@@ -18,7 +19,8 @@ public class RoomTest {
 
     @Test
     public void removeApplianceTest(){
-        Room room = new Room("testRoom");
+        MasterSchedule testSchedule = new MasterSchedule();
+        Room room = new Room("testRoom",testSchedule);
         room.addAppliance("TV", false);
         assertTrue(room.applianceMap.containsKey("TV"));
         room.removeAppliance("TV");
@@ -28,7 +30,8 @@ public class RoomTest {
 
     @Test
     public void changeApplianceStatusTest(){
-        Room room = new Room("testRoom");
+        MasterSchedule testSchedule = new MasterSchedule();
+        Room room = new Room("testRoom",testSchedule);
         room.addAppliance("TV", false);
         room.changeApplianceStatus("TV");
         //TODO once you can get appliance status
@@ -38,7 +41,8 @@ public class RoomTest {
     @Test
     public void addLightTest(){
 
-       Room room = new Room("testRoom");
+        MasterSchedule testSchedule = new MasterSchedule();
+        Room room = new Room("testRoom",testSchedule);
        room.addLight("a", false);
        assertEquals("a", room.lightMap.get("a").getID());
        room.printLights();
@@ -46,19 +50,22 @@ public class RoomTest {
 
     @Test
     public void adjustLightTest(){
-        Room room = new Room("testRoom");
+        MasterSchedule testSchedule = new MasterSchedule();
+        Room room = new Room("testRoom",testSchedule);
 
     }
 
     @Test
     public void adjustTempTest(){
-        Room room = new Room("testRoom");
+        MasterSchedule testSchedule = new MasterSchedule();
+        Room room = new Room("testRoom",testSchedule);
 
     }
 
     @Test
     public void addToScheduleTest(){
-        Room room = new Room("testRoom");
+        MasterSchedule testSchedule = new MasterSchedule();
+        Room room = new Room("testRoom",testSchedule);
 
     }
 

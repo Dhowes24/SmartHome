@@ -47,4 +47,40 @@ public class MasterSchedule {
         }
     }
 
+    public void addScheduleItem(String Day, String itemID, String Time,Double value,Integer type){
+        switch (Day){
+            case "Sunday":
+                Sunday.addObjectToSchedule(itemID,Time,value, type);
+            case "Monday":
+                Monday.addObjectToSchedule(itemID,Time,value, type);
+
+            case "Tuesday":
+                Tuesday.addObjectToSchedule(itemID,Time,value, type);
+
+            case "Wednesday":
+                Wednesday.addObjectToSchedule(itemID,Time,value, type);
+
+            case "Thursday":
+                Thursday.addObjectToSchedule(itemID,Time,value, type);
+
+            case "Friday":
+                Friday.addObjectToSchedule(itemID,Time,value, type);
+
+            case "Saturday":
+                Saturday.addObjectToSchedule(itemID,Time,value, type);
+
+            case "Weekdays":
+                Monday.addObjectToSchedule(itemID,Time,value, type);
+                Tuesday.addObjectToSchedule(itemID,Time,value, type);
+                Wednesday.addObjectToSchedule(itemID,Time,value, type);
+                Thursday.addObjectToSchedule(itemID,Time,value, type);
+                Friday.addObjectToSchedule(itemID,Time,value, type);
+
+            case "Weekends":
+                Sunday.addObjectToSchedule(itemID,Time,value, type);
+                Saturday.addObjectToSchedule(itemID,Time,value, type);
+
+        }
+    }
+
 }

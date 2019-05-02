@@ -42,7 +42,7 @@ public class House {
 
     public static void addRoom(String name){
         if(!roomList.containsKey(name)){
-            Room newRoom = new Room(name);
+            Room newRoom = new Room(name,schedule);
             roomList.put(name, newRoom);
         } else{
             //Return what ever we want to send back as an error

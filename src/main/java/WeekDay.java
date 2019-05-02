@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,14 +19,26 @@ public class WeekDay {
 
     public void addObjectToSchedule(String ID, String time, boolean statusTo, Integer type){
 
-        if(checkIfTimeValid(time)) {
+        if(checkIfTimeValid(time) && type<4 && type>=0) {
             ScheduleItem newScheduleItem =  new ScheduleItem(time, statusTo, type);
+            daySchedule.put(ID, newScheduleItem);
+        }
+    }
+    public void addObjectToSchedule(String ID, String time, Double value, Integer type){
+
+        if(checkIfTimeValid(time) && type<4 && type>=1) {
+            ScheduleItem newScheduleItem =  new ScheduleItem(time,value, type);
             daySchedule.put(ID, newScheduleItem);
         }
     }
 
     public void removeObjectFromSchedule(String ID, String time){
         if(checkIfTimeValid(time)){
+            for (Map.Entry<String, ScheduleItem> e : daySchedule.entrySet()) {
+                if(e.getKey() == ID && e.getValue().Time == time){
+                    daySchedule.remove(e.getKey(),e.getValue());
+                }
+            }
             daySchedule.remove(ID,time);
         }
     }
