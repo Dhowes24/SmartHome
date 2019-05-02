@@ -986,7 +986,13 @@ public class CliMain {
                             }
 
                             dimSelected = Integer.parseInt(dimSel);
+
+                        } else {
+
+                            dimSelected = 1;
                         }
+
+
 
                         currentRoom.addLightToSchedule(objSel, daySelected, timeSelected, statusSelected, dimSelected);
 
