@@ -1177,7 +1177,7 @@ public class CliMain {
             currentRoom.addThermoToSchedule(daySel, timeSelected, Double.valueOf(tempSelected));
 
             System.out.println("This thermostat has been added to the schedule!");
-            System.out.println("Summary: " daySelected + " - " + timeSelected + " - " + tempSelected + "degrees");
+            System.out.println("Summary: " + daySelected + " - " + timeSelected + " - " + tempSelected + "degrees");
             running = false;
         }
     }
