@@ -129,21 +129,37 @@ public class Room {
      * @param status
      */
     public void addApplianceToSchedule(String applianceID, List daysOfWeek, int time, boolean status){
-        // TODO
-    }
 
+    }
     /**
      * add light to schedule by name,
-     * enter a 7-long binary list to designate days you wish the action to go off,
-     * a time of those days you want the action to go off,
+     * enter a day, weekdays, or weekends,
+     * a time of those days you want the action to go off in 24 hour HH:MM format,
      * and what status change you want to happen (False = off, True = on)
+     * if dimmed, set to the dim double
      * @param applianceID
      * @param daysOfWeek
      * @param time
      * @param status
+     * @param dim
      */
-    public void addLightToSchedule(String applianceID, List daysOfWeek, int time, boolean status){
-        // TODO
+    public void addLightToSchedule(String applianceID, List daysOfWeek, String time, boolean status, double dim){
+        //TODO
+    }
+    /**
+     * add Thermostat to schedule by name,
+     * enter a day, weekdays, or weekends,
+     * a time of those days you want the action to go off in 24 hour HH:MM format,
+     * and what status change you want to happen (False = off, True = on)
+     * Set temp with double
+     * @param applianceID
+     * @param daysOfWeek
+     * @param time
+     * @param status
+     * @param temp
+     */
+    public void addThermoToSchedule(String applianceID, List daysOfWeek, String time, boolean status, double temp){
+        //TODO
     }
 
     /**
