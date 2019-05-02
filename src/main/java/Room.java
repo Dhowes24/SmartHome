@@ -60,7 +60,8 @@ public class Room {
      */
     public void removeAppliance(String name) {
         if(containedInApplianceList(name)){
-            applianceMap.remove(name);}
+            applianceMap.remove(name);
+        }
     }
 
     /**
@@ -172,8 +173,7 @@ public class Room {
 
         if (applianceMap == null) {
             return false;
-        }
-        if (applianceMap.containsKey(name)) {
+        } else if (applianceMap.containsKey(name)) {
             return true;
         }
         return false;
