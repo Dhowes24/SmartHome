@@ -1,6 +1,6 @@
 public class ScheduleItem {
     String Time;
-    Boolean StatusTo;
+    Boolean StatusTo = null;
     Double value = null;
     Integer type;
 
@@ -10,7 +10,7 @@ public class ScheduleItem {
         this.type = type;
     }
 
-    public ScheduleItem(String Time, Boolean StatusTo,Double value, Integer type){
+    public ScheduleItem(String Time, Double value, Integer type){
         this.Time = Time;
         this.StatusTo = StatusTo;
         this.value = value;

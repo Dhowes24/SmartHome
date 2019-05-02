@@ -26,6 +26,8 @@ public class WeekDayTest {
         testWeekDay.addObjectToSchedule("ToasterID", "12:45", true,1);
         Assert.assertEquals(testWeekDay.daySchedule.get("ToasterID").Time, "12:45");
         testWeekDay.removeObjectFromSchedule("ToasterID", "12:45");
+        assertFalse(testWeekDay.daySchedule.containsKey("ToasterID"));
+
         //TODO check how to see if that key value is now gone
 
     }

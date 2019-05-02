@@ -1,7 +1,9 @@
 import java.util.HashMap;
+import java.util.UUID;
 
 public class Temperature {
 
+    private String ID;
     private double temperature;
     private HashMap<User, Double> preferences;
 
@@ -12,6 +14,7 @@ public class Temperature {
      */
     public Temperature(double temp){
             if(isAmountValid(temp)){
+                this.ID = UUID.randomUUID().toString();
                 this.temperature = temp;
             }
             else{
@@ -26,6 +29,7 @@ public class Temperature {
     public double getTemp(){return this.temperature;}
 
 
+    public String getID(){return this.ID;}
     /**
      * Changes the current temperature of the room if it is a valid input
      * @param newTemp double - the new desired temperature of the room

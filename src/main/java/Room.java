@@ -12,10 +12,12 @@ public class Room {
     private Temperature thermostat;
     private String roomName;
     private String ID;
+    MasterSchedule schedule;
 
-    public Room(String name){
+    public Room(String name, MasterSchedule schedule){
         this.roomName = name;
         this.ID = UUID.randomUUID().toString();
+        this.schedule =schedule;
 
         lightMap = new HashMap<>();
         applianceMap = new HashMap<>();
@@ -35,6 +37,8 @@ public class Room {
         thermostat = new Temperature(65);
 
     }
+
+    public String getThermostatName() {return thermostat.getID();}
 
     public String getRoomName() {
         return roomName;
@@ -130,7 +134,7 @@ public class Room {
      * @param status
      */
     public void addApplianceToSchedule(String applianceID, String day, String time, boolean status){
-        // TODO
+        schedule.addScheduleItem(day,applianceID,time,status,0);
     }
 
     /**
@@ -139,14 +143,13 @@ public class Room {
      * a time of those days you want the action to go off in 24 hour HH:MM format,
      * and what status change you want to happen (0 = off, 1 = on, 2 = dimmed)
      * if dimmed, set to the dim double
-     * @param applianceID
+     * @param lightID
      * @param day
      * @param time
-     * @param status
      * @param dim
      */
-    public void addLightToSchedule(String applianceID, String day, String time, int status, double dim){
-        //TODO
+    public void addLightToSchedule(String lightID, String day, String time, double dim){
+        schedule.addScheduleItem(day,lightID,time,dim,1);
     }
     /**
      * add Thermostat to schedule by name,
@@ -155,12 +158,12 @@ public class Room {
 
      * and what status change you want to happen (False = off, True = on)
      * Set temp with double
-     * @param daysOfWeek
+     * @param day
      * @param time
      * @param temp
      */
-    public void addThermoToSchedule(String daysOfWeek, String time, double temp){
-        //TODO
+    public void addThermoToSchedule(String thermoID,String day, String time, double temp){
+        schedule.addScheduleItem(day,thermoID,time,temp,2);
 
     }
 
