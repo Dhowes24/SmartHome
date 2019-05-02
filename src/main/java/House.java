@@ -93,14 +93,22 @@ public class House {
         for (String key: roomList.keySet()){
             r = roomList.get(key);
             for(String appliance: r.applianceMap.keySet()){
-                System.out.println("Room: "+ key + "\tAppliance: "+appliance);
+                System.out.println("Room: "+ key + " ---- Appliance: "+appliance);
             }
         }
 
     }
 
     public static void printLights(){
-
+        Room r;
+        System.out.println("Printing Lights's in House");
+        System.out.println("-----------------------------");
+        for (String key: roomList.keySet()){
+            r = roomList.get(key);
+            for(String light: r.lightMap.keySet()){
+                System.out.println("Room: "+ key + " ---- Light: "+light);
+            }
+        }
     }
 
 

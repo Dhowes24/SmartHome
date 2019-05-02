@@ -1,3 +1,4 @@
+import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.util.*;
 import java.lang.String;
@@ -148,13 +149,13 @@ public class CliMain {
             System.out.print("Please enter the name of the room you would like to create: ");
             selection = s.nextLine();
             if (selection.equalsIgnoreCase("q")) {
-                running = false;
+                break;
             }
 
             System.out.print("Please confirm the name of the room you would like to create: ");
             selection2 = s.nextLine();
             if (selection2.equalsIgnoreCase("q")) {
-                running = false;
+                break;
             } else {
 
                 if (selection.equalsIgnoreCase(selection2)) {
@@ -220,12 +221,16 @@ public class CliMain {
             System.out.println("Temperature: " + currentRoom.checkTemp());
 
             if (currentRoom.lightMap.size() > 0) {
-                System.out.println("Lights: ");
+                System.out.println();
+                System.out.println(currentRoom.getRoomName() + "'s Lights: ");
                 currentRoom.printLights();
+                System.out.println();
             }
             if (currentRoom.applianceMap.size() > 0) {
-                System.out.println("Appliances: ");
+                System.out.println();
+                System.out.println(currentRoom.getRoomName() + "'s Appliances: ");
                 currentRoom.printAppliances();
+                System.out.println();
             }
 
             System.out.println("1. Go To Appliance Menu");
@@ -264,23 +269,29 @@ public class CliMain {
         boolean running = true;
         String selection;
 
-        System.out.println();
-        System.out.println("Schedule Adjust:");
-        System.out.println("-----------------");
+
         while (running) {
-            System.out.println("Would you like to 1. add or 2. remove an item from the schedule?");
+            System.out.println();
+            System.out.println("Schedule Adjust:");
+            System.out.println("-----------------");
+            System.out.println("1. Add to Schedule");
+            System.out.println("2. Remove from Schedule");
+            System.out.println("3. Return");
+            System.out.print("What would you like to do: ");
 
             selection = s.nextLine();
 
             if (selection.equalsIgnoreCase("q")) {
-                running = false;
+                break;
             } else if (selection.equals("1")) {
                 addToScheduleAPI();
             } else if (selection.equals("2")) {
                 removeFromScheduleAPI();
-            } else {
-                System.out.println("Please select a proper option");
-                System.out.println();
+            } else if (selection.equals("3")){
+                break;
+            }
+            else {
+                System.out.println("Error: type in an integer value 1-3.");
             }
         }
     }
@@ -297,26 +308,30 @@ public class CliMain {
             System.out.println("1. Lights");
             System.out.println("2. Appliances");
             System.out.println("3. Thermostat");
+            System.out.println("4. Return");
 
             selection = s.nextLine();
 
             if (selection.equalsIgnoreCase("q")) {
-                running = false;
+                break;
             } else if (selection.equals("1")) {
                 addLightToScheduleCLI();
             } else if (selection.equals("2")) {
                 addApplianceToScheduleCLI();
             } else if (selection.equals("3")) {
                 addTempToScheduleCLI();
+            } else if(selection.equals("4")){
+                break;
             } else {
-                System.out.println("Please select a proper option");
-                System.out.println();
+                System.out.println("Error: type in an integer value 1-4");
             }
         }
     }
 
     public static void removeFromScheduleAPI() {
-
+        System.out.println();
+        System.out.println("Currently Unavailable Feature!");
+        System.out.println();
 
     } // TODO: Michael
 
@@ -328,7 +343,7 @@ public class CliMain {
 
         while (running) {
             System.out.println();
-            System.out.println("Appliance Menu - " + currentRoom.getRoomName() + ":");
+            System.out.println("Room: "+ currentRoom.getRoomName() + " --- Appliance Menu" );
             System.out.println("1. Add Appliance");
             System.out.println("2. Remove Appliance");
             System.out.println("3. Change Appliance Status");
@@ -375,12 +390,12 @@ public class CliMain {
             System.out.print("Please enter the name of the appliance you would like to create: ");
             selection = s.nextLine();
             if (selection.equalsIgnoreCase("q")) {
-                running = false;
+                break;
             }
             System.out.print("Please confirm the name of the appliance you would like to create: ");
             selection2 = s.nextLine();
             if (selection2.equalsIgnoreCase("q")) {
-                running = false;
+                break;
             } else {
 
                 if (selection.equalsIgnoreCase(selection2)) {
@@ -423,7 +438,7 @@ public class CliMain {
                 selection = s.nextLine();
 
                 if (selection.equalsIgnoreCase("q")) {
-                    running = false;
+                    break;
                 } else if (currentRoom.applianceMap.containsKey(selection)) {
                     System.out.print("Would you like to delete the appliance - " + selection + " - (Y/N): ");
                     String sel = s.nextLine();
@@ -442,8 +457,9 @@ public class CliMain {
                     System.out.println();
                 }
             }
+        }else{
+            System.out.println("You have no appliances yet!");
         }
-        System.out.println("You have no appliances yet!");
 
     }
 
@@ -464,7 +480,7 @@ public class CliMain {
                 selection = s.nextLine();
 
                 if (selection.equalsIgnoreCase("q")) {
-                    running = false;
+                    break;
                 } else if (currentRoom.applianceMap.containsKey(selection)) {
                     System.out.print("Would you like to adjust the appliance - " + selection + " - (Y/N): ");
                     String sel = s.nextLine();
@@ -483,8 +499,9 @@ public class CliMain {
                     System.out.println();
                 }
             }
+        }else{
+            System.out.println("You have no appliances yet!");
         }
-        System.out.println("You have no appliances yet!");
     }
 
     public static void addApplianceToScheduleCLI() {
@@ -514,7 +531,7 @@ public class CliMain {
                 objSel = s.nextLine();
 
                 if (objSel.equalsIgnoreCase("q")) {
-                    running = false;
+                    break;
                 } else if (currentRoom.applianceMap.containsKey(objSel)) {
 
                     System.out.print(objSel + "Would you like to add this appliance to the schedule? (Y/N): ");
@@ -625,8 +642,9 @@ public class CliMain {
                     System.out.println();
                 }
             }
+        } else{
+            System.out.println("You have no appliances yet!");
         }
-        System.out.println("You have no appliances yet!");
     }
 
     //DONE
@@ -637,7 +655,7 @@ public class CliMain {
 
         while (running) {
             System.out.println();
-            System.out.println("Lights in room - " + currentRoom.getRoomName() + ":");
+            System.out.println("Room: "+ currentRoom.getRoomName() + " --- Light Menu" );
             System.out.println("1. Add Light");
             System.out.println("2. Remove Light");
             System.out.println("3. Adjust Light");
@@ -685,12 +703,12 @@ public class CliMain {
             System.out.println("Please enter the name of the light you would like to create: ");
             selection = s.nextLine();
             if (selection.equalsIgnoreCase("q")) {
-                running = false;
+                break;
             }
-            System.out.println("Please confirm the name of the light you would like to create: ");
+            System.out.print("Please confirm the name of the light you would like to create: ");
             selection2 = s.nextLine();
             if (selection2.equalsIgnoreCase("q")) {
-                running = false;
+                break;
             } else {
 
                 if (selection.equalsIgnoreCase(selection2)) {
@@ -726,7 +744,6 @@ public class CliMain {
         }
     }
 
-    // TODO: Anthony
     public static void removeLightCLI() {
         boolean running = true;
         String selection;
@@ -743,7 +760,7 @@ public class CliMain {
                 selection = s.nextLine();
 
                 if (selection.equalsIgnoreCase("q")) {
-                    running = false;
+                    break;
                 } else if (currentRoom.lightMap.containsKey(selection)) {
                     System.out.println("Would you like to delete the light - " + selection + " - (Y/N): ");
                     String sel = s.nextLine();
@@ -765,9 +782,11 @@ public class CliMain {
                 }
             }
         }
+        else{
+            System.out.println("You have no lights yet!");
+        }
     }
 
-    // TODO: Anthony
     public static void adjustLightCLI() {
         boolean running = true;
         String selection;
@@ -786,7 +805,7 @@ public class CliMain {
                 selection = s.nextLine();
 
                 if (selection.equalsIgnoreCase("q")) {
-                    running = false;
+                    break;
                 } else if (currentRoom.lightMap.containsKey(selection)) {
                     System.out.println("Would you like to adjust the light - " + selection + " - (Y/N): ");
                     sel = s.nextLine();
@@ -813,6 +832,8 @@ public class CliMain {
                     System.out.println();
                 }
             }
+        } else {
+            System.out.println("You have no lights yet!");
         }
     }
 
@@ -840,12 +861,12 @@ public class CliMain {
 
         if (currentRoom.lightMap.size() > 0) {
             while (running) {
-                currentRoom.printAppliances();
+                currentRoom.printLights();
                 System.out.println("Please enter the name of the item you wish to add to the schedule: ");
                 objSel = s.nextLine();
 
                 if (objSel.equalsIgnoreCase("q")) {
-                    running = false;
+                    break;
                 } else if (currentRoom.lightMap.containsKey(objSel)) {
 
                     System.out.print(objSel + "Would you like to add this light to the schedule? (Y/N): ");
@@ -955,8 +976,9 @@ public class CliMain {
                     System.out.println();
                 }
             }
+        }else {
+            System.out.println("You have no lights yet!");
         }
-        System.out.println("You have no lights yet!");
     }
 
     public static void tempCLI() {
@@ -996,32 +1018,38 @@ public class CliMain {
 
     }
 
-    // TODO: Anthony
     public static void adjustTempCLI() {
         boolean running = true;
+        boolean whileloopissue = true;
         String selection;
         int sInt;
         while (running) {
             System.out.println();
-            System.out.println("Please enter the temperature you would like to set for this room (46-94):");
+            System.out.print("Please enter the temperature you would like to set for this room (46-94): ");
 
             selection = s.nextLine();
             if (selection.equalsIgnoreCase("q")) {
+                break;
+            }
+            else {
+                while (!(integerCheck(selection, 46, 94))) {
+                    System.out.println();
+                    System.out.println("Error: type in an integer value (46-94).");
+                    System.out.println("Please enter a correct value: ");
+                    selection = s.nextLine();
+                    if (selection.equalsIgnoreCase("q")) {
+                        whileloopissue=false;
+                    }
+                }
+
+                if(!whileloopissue){
+                    break;
+                }
+
+                sInt = Integer.parseInt(selection);
+                currentRoom.adjustTemp(sInt);
                 running = false;
             }
-            while (!(integerCheck(selection, 46, 94))) {
-                System.out.println();
-                System.out.println("Error: type in an integer value (46-94).");
-                System.out.println("Please enter a correct value: ");
-                selection = s.nextLine();
-                if (selection.equalsIgnoreCase("q")) {
-                    running = false;
-                }
-            }
-
-            sInt = Integer.parseInt(selection);
-            currentRoom.adjustTemp(sInt);
-            running = false;
         }
     }
 
@@ -1060,7 +1088,7 @@ public class CliMain {
 
             while (!integerCheck(daySel, 9)) {
                 System.out.println();
-                System.out.print("Error: type in an integer value 1-7:");
+                System.out.print("Error: type in an integer value 1-9:");
                 daySel = s.nextLine();
             }
 
@@ -1179,7 +1207,7 @@ public class CliMain {
             System.out.println("Please enter the temperature you would like to set for the house (46-94):");
             selection = s.nextLine();
             if (selection.equalsIgnoreCase("q")) {
-                running = false;
+                break;
             }
             while (!(integerCheck(selection, 46, 94))) {
                 System.out.println();
@@ -1187,7 +1215,7 @@ public class CliMain {
                 System.out.println("Please enter a correct value: ");
                 selection = s.nextLine();
                 if (selection.equalsIgnoreCase("q")) {
-                    running = false;
+                    break;
                 }
             }
             sInt = Integer.parseInt(selection);
@@ -1245,8 +1273,8 @@ public class CliMain {
             System.out.println("----------");
             System.out.println("1. Create room");
             System.out.println("2. Navigate to a room");
-            System.out.println("3. User options");
-            System.out.println("4. Scheduling");
+            System.out.println("3. User Options");
+            System.out.println("4. House Manipulation");
             System.out.println("5. Contact Emergency Services");
             System.out.println("6. Return");
             System.out.println();
@@ -1282,8 +1310,12 @@ public class CliMain {
                 System.out.println("Finally, you can get a list of all appliances and lighting in a specific room.");
             } else if (selI == 4) {
                 System.out.println();
-                System.out.println("Scheduling");
+                System.out.println("House Manipulation");
                 System.out.println("----------");
+                System.out.println("This option allows you to easily manipulate all aspects of your house from a single click.");
+                System.out.println("One can turn ON or OFF all of their lights and appliances for the entire house.");
+                System.out.println("On top of that they can manipulate the room temperature for every room.");
+                System.out.println("This feature is ideally used when the user leaves the house and wants it to be energy efficient.");
 
             } else if (selI == 5) {
                 System.out.println();
@@ -1339,8 +1371,7 @@ public class CliMain {
             } else if (selI == 4) {
                 currentHouse.printAppliances();
             } else if (selI == 5) {
-                String roomName = s.nextLine();
-                System.out.println(currentUser.getRoomLightList(roomName));
+                currentHouse.printLights();
             } else if (selI == 6) {
                 running = false;
             }
@@ -1453,7 +1484,9 @@ public class CliMain {
     }
 
     public static void deleteUserCLI() {
-
+        System.out.println();
+        System.out.println("Sorry this feature is currently unavailable!");
+        System.out.println();
     }
 
     public static boolean signIn(String username, Integer pin) throws IOException {
