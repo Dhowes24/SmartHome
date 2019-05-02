@@ -132,20 +132,19 @@ public class Room {
         // TODO
     }
 
-    }
     /**
      * add light to schedule by name,
      * enter a day, weekdays, or weekends,
      * a time of those days you want the action to go off in 24 hour HH:MM format,
-     * and what status change you want to happen (False = off, True = on)
+     * and what status change you want to happen (0 = off, 1 = on, 2 = dimmed)
      * if dimmed, set to the dim double
      * @param applianceID
-     * @param daysOfWeek
+     * @param day
      * @param time
      * @param status
      * @param dim
      */
-    public void addLightToSchedule(String applianceID, List daysOfWeek, String time, boolean status, double dim){
+    public void addLightToSchedule(String applianceID, String day, String time, int status, double dim){
         //TODO
     }
     /**
@@ -155,13 +154,11 @@ public class Room {
 
      * and what status change you want to happen (False = off, True = on)
      * Set temp with double
-     * @param applianceID
      * @param daysOfWeek
      * @param time
-     * @param status
      * @param temp
      */
-    public void addThermoToSchedule(String applianceID, List daysOfWeek, String time, boolean status, double temp){
+    public void addThermoToSchedule(String daysOfWeek, String time, double temp){
         //TODO
 
     }
