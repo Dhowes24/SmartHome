@@ -1135,7 +1135,11 @@ public class CliMain {
                 APMSelected = "PM";
             }
 
+            // TODO
             if (APMSelected.equals("AM")) {
+                if (Integer.parseInt(hourSel) == 12) {
+                    hourSel = "00";
+                }
                 timeSelected = hourSel + ":" + minSel;
             } else {
                 Integer newHour = Integer.parseInt(hourSel) + 12;
@@ -1146,9 +1150,9 @@ public class CliMain {
             System.out.println("Please enter an integer from 0 to 100");
             tempSel = s.nextLine();
 
-            while (!integerCheck(tempSel, 100)) {
+            while (!integerCheck(tempSel, 46, 94)) {
                 System.out.println();
-                System.out.print("Error: type in an integer value 1-7:");
+                System.out.print("Error: type in an integer value 46-94:");
                 tempSel = s.nextLine();
             }
 
