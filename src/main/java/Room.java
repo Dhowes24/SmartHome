@@ -14,7 +14,7 @@ public class Room {
     private String ID;
     MasterSchedule schedule;
 
-    public Room(String name, MasterSchedule schedule){
+    public Room(String name, MasterSchedule schedule, int globalTemp){
         this.roomName = name;
         this.ID = UUID.randomUUID().toString();
         this.schedule =schedule;
@@ -23,8 +23,10 @@ public class Room {
         applianceMap = new HashMap<>();
         // TODO: must get user's preference for starting temp or ask them for a temp when creating a room
         // TODO: must also ask user if thermostat should require pin
-        thermostat = new Temperature(65);
+        thermostat = new Temperature(globalTemp);
     }
+
+
 
     public Room() {
 
