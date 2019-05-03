@@ -837,7 +837,7 @@ public class CliMain {
         }
     }
 
-    public static void addLightToScheduleCLI() { // TODO: Michael
+    public static void addLightToScheduleCLI() {
 
         boolean running = true;
         String objSel;
@@ -1135,7 +1135,6 @@ public class CliMain {
                 APMSelected = "PM";
             }
 
-            // TODO
             if (APMSelected.equals("AM")) {
                 if (Integer.parseInt(hourSel) == 12) {
                     hourSel = "00";
