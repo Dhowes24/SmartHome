@@ -8,6 +8,9 @@ Smart Home Revision
 
 The Smart Home intelligently manages all IoT devices within a home to optimize the user experience, security, and energy efficiency. The system can be programmed to manage smart thermostats or security systems in basic ways. All other devices connected to the system, such as TVs, lights, music systems, etc. can interface with the Smart Home API to be controlled remotely. All residents of a home can connect a smart device. The Smart Home uses these devices to track the location of the residents. When returning home, this could be used to enter the house without a key. When at home, this data could be used to optimize energy use, or automatically switch the destination of a Netflix stream to the nearest TV.
 
+### Waffle Board
+https://waffle.io/Dhowes24/SmartHome
+
 
 ## Sprint One
 * ### Sprint Goal: Control Basic Smart Objects and Basic Room Development
