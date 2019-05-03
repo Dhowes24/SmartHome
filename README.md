@@ -64,4 +64,4 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
   * Preference & CLI Work - Michael, Derek
   
 * ### Sprint Retrospective Week 3:
-  https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/edit
+  * https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/edit?usp=sharing
