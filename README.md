@@ -11,7 +11,7 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
 ### Waffle Board
 https://waffle.io/Dhowes24/SmartHome
 
-### Sprint Retrospective Week 3:
+### Final Sprint Retrospective:
 https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/edit?usp=sharing
 
 ## Sprint One
