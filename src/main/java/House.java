@@ -8,6 +8,7 @@ public class House {
     public static HashMap<String, User> userList = new HashMap<>();
     public static HashMap<String, Room> roomList = new HashMap<>();
     public static MasterSchedule schedule = new MasterSchedule();
+    public static int globaltemp = 65;
 
     public static void printRooms() {
 
@@ -42,7 +43,7 @@ public class House {
 
     public static void addRoom(String name){
         if(!roomList.containsKey(name)){
-            Room newRoom = new Room(name,schedule);
+            Room newRoom = new Room(name,schedule, globaltemp);
             roomList.put(name, newRoom);
         } else{
             //Return what ever we want to send back as an error
@@ -127,6 +128,7 @@ public class House {
             r = roomList.get(key);
             r.adjustTemp(newTemp);
         }
+        globaltemp = newTemp;
         System.out.println();
         System.out.println("The temperature in every room is now set at "+newTemp+" degrees.");
         System.out.println();

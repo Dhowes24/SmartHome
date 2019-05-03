@@ -1,5 +1,6 @@
 import javax.sound.midi.Soundbank;
 import java.io.IOException;
+import java.lang.reflect.Executable;
 import java.util.*;
 import java.lang.String;
 
@@ -194,7 +195,7 @@ public class CliMain {
             System.out.print("Please enter a value that corresponds to a room: ");
 
             selection = s.nextLine();
-            while (!integerCheck(selection, currentHouse.roomList.size() + 1)) {
+            while (!integerCheck(selection, currentHouse.roomList.size()+1 )) {
                 System.out.println("Error: type in an integer value 1-" + currSizeNeeded + ".");
                 System.out.println();
                 System.out.print("Please enter a value that corresponds to a room: ");
@@ -202,7 +203,8 @@ public class CliMain {
             }
             sInt = Integer.parseInt(selection);
             if (sInt == currSizeNeeded) {
-                running = false;
+                running = false;;
+                break;
             } else {
                 currentRoom = currentHouse.accessRoom(currentHouse.getKey(sInt - 1));
                 roomStatusCLI();
@@ -261,7 +263,6 @@ public class CliMain {
                 running = false;
             }
         }
-        navigateRoomsCLI();
     }
 
     public static void scheduleCLI() {
@@ -951,14 +952,14 @@ public class CliMain {
                         }
 
 
-                        System.out.println("What dim level would you like to, please enter 0-100");
-                        System.out.println("If the light cannot dim, anything above 0 will be equal to 100");
-
+                        System.out.println("What would you like to dim it to 0.0 - 1.0: ");
+                        System.out.println("If the light cannot dim, anything above 0 will be equal to 1.");
+                        System.out.print("New change: ");
                         dimSel = s.nextLine();
 
-                        while (!integerCheck(dimSel, 100)) {
+                        while (!doubleCheck(dimSel, 1.0)) {
                             System.out.println();
-                            System.out.print("Error: type in an integer value 0-100:");
+                            System.out.print("Error: type in an integer value 0.0 - 1.0 :");
                             dimSel = s.nextLine();
                         }
 
@@ -1017,7 +1018,6 @@ public class CliMain {
         }
 
     }
-
     public static void adjustTempCLI() {
         boolean running = true;
         boolean whileloopissue = true;
@@ -1052,7 +1052,6 @@ public class CliMain {
             }
         }
     }
-
     public static void addTempToScheduleCLI() {
 
         boolean running = true;
@@ -1146,7 +1145,7 @@ public class CliMain {
             }
 
             System.out.println("What temperature would you like to set this item to?");
-            System.out.println("Please enter an integer from 0 to 100");
+            System.out.println("Please enter an integer from 46-94");
             tempSel = s.nextLine();
 
             while (!integerCheck(tempSel, 46, 94)) {
@@ -1200,7 +1199,6 @@ public class CliMain {
             }
         }
     }
-
     public static void changeHouseTempCLI() {
         boolean running = true;
         String selection;
@@ -1339,8 +1337,6 @@ public class CliMain {
     }
 
 
-    // User CLI
-    //TODO
     public static void userCLI() {
         boolean running = true;
         String sel;
@@ -1380,7 +1376,6 @@ public class CliMain {
             }
         }
     }
-
     public static void addUserCLI() {
         boolean running = true;
         String sel;
@@ -1485,11 +1480,86 @@ public class CliMain {
         }
 
     }
-
     public static void deleteUserCLI() {
-        System.out.println();
-        System.out.println("Sorry this feature is currently unavailable!");
-        System.out.println();
+        Boolean running = true;
+        String username;
+        String pinS;
+        int pin;
+        List<User> userListIn;
+        List<User> userListOut = new ArrayList<>();
+        boolean potentialBreak = false;
+
+        while(running){
+            System.out.println();
+            System.out.println("Please enter the name of the user you wish to delete (Case Sensitive).");
+            System.out.println("Or type 'q' to return.");
+            System.out.print("User name to delete: ");
+            username = s.nextLine();
+            if(username.equalsIgnoreCase("q")){
+                break;
+            }
+            if(username.equalsIgnoreCase(currentUser.getName())){
+                System.out.println();
+                System.out.println("Error: you cannot delete an account that is currently signed in!");
+                System.out.println("Rerouting you back to the user options screen");
+                break;
+            }
+            System.out.println();
+            System.out.println("Please enter the pin of the user you wish to delete: ");
+            System.out.println("Or type 'q' to return.");
+            System.out.print("User's pin: ");
+            pinS = s.nextLine();
+            if(pinS.equalsIgnoreCase("q")){
+                break;
+            }
+            while (!integerCheck(pinS)) {
+                System.out.println();
+                System.out.println("Error: type in an integer value.");
+                System.out.print("Please enter the pin of the user you wish to delete: ");
+                pinS = s.nextLine();
+            }
+            pin = Integer.parseInt(pinS);
+
+
+
+            try{
+                userListIn = JsonUtil.listFromJsonFile("./src/main/files/usersList", User.class);
+                for (int i = 0; i < userListIn.size(); i++) {
+                    if(userListIn.get(i).getName().equalsIgnoreCase(username) && userListIn.get(i).getPin().equals(pin)){
+                        userListIn.remove(i);
+                        userListOut = userListIn;
+                    }
+                }
+
+                if(userListOut.size() == userListIn.size()){
+                    try {
+                        currentHouse.userList.remove(username);
+                        JsonUtil.toJsonFile("./src/main/files/usersList", userListOut);
+                        System.out.println();
+                        System.out.println(username + " was successfully deleted from the user list!");
+
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                } else{
+                    System.out.println();
+                    System.out.println("Error: the user you entered did not exist or the pin is incorrect!");
+                }
+
+            } catch (Exception e){
+                System.out.println(e);
+                running=false;
+                potentialBreak = true;
+                break;
+            }
+            if(potentialBreak){
+                break;
+            }
+
+
+        }
+
+
     }
 
     public static boolean signIn(String username, Integer pin) throws IOException {
