@@ -18,11 +18,23 @@ public class User {
 
     }
 
+    /**
+     * Returns the name of a user
+     * @return String - the name of the user
+     */
     public String getName(){return this.Name;}
+
+    /**
+     * Returns the pin of a user
+     * @return Integer - the pin of the user
+     */
     public Integer getPin(){return this.Pin;}
 
+    /**
+     * Sets the name of the user
+     * @param name - the name to set
+     */
     public void setName(String name){this.Name=name;}
-    public void setPin(Integer pin){this.Pin=pin;}
 
 
 
@@ -30,7 +42,7 @@ public class User {
      * Creates a user and adds them to the house user list
      * Can set preferences permissions in user creation
      * @param Name
-     * @return
+     * @return String - confirmation if the user was properly created
      */
     public String createUser(String Name){
         if(!House.userList.containsKey(Name)) {
@@ -46,8 +58,8 @@ public class User {
 
     /**
      * deletes a user from the house user list
-     * @param Name
-     * @return
+     * @param Name - the name of the user to be deleted
+     * @return String - confirmation of whether the user was deleted or not
      */
     public String deleteUser(String Name){
         if(House.userList.containsKey(Name)){
@@ -61,7 +73,7 @@ public class User {
 
     /**
      * prints the list of all rooms in the house
-     * @return
+     * @return HashMap - the list of rooms
      */
     public HashMap printRoomList(){
         return House.roomList;
@@ -70,8 +82,8 @@ public class User {
 
     /**
      * prints all appliances linked to a certain room
-     * @param roomName
-     * @return
+     * @param roomName - the name of the room being observed
+     * @return HashMap - a map of appliances
      */
     public HashMap getRoomApplianceList(String roomName){
         if(House.roomList.containsKey(roomName)){
@@ -82,8 +94,9 @@ public class User {
     }
 
     /**
-     * prints all lights linked to a certain room
-     * @return
+     * Prints all of the lights linked to a certain room
+     * @param roomName - the name of the room being observed
+     * @return HashMap - a map of lights
      */
     public HashMap getRoomLightList(String roomName){
         if(House.roomList.containsKey(roomName)){

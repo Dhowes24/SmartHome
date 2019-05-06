@@ -14,9 +14,9 @@ public class CliMain {
     private static House currentHouse;
     private static User currentUser;
 
-    // TODO: add 'q' option at all times to quit out of an option you entered into
-
-    //Initial CLI
+    /**
+     * Initial boot of the program, takes in a users username and pin and see if that are successfully able to sign in
+     */
     public static void run() {
         while (running) {
             signedIn = false;
@@ -76,21 +76,19 @@ public class CliMain {
         }
     }
 
+    /**
+     * Displayed after a successful login, explains the importance of 'q'
+     */
     public static void startMenu() {
         System.out.println();
-        System.out.println("Welcome to Smart Home!\n");
+        System.out.println("Welcome to Smart Home!");
+        System.out.println("NOTICE: If at anytime you no longer wish to give input, you may press 'q' or 'Q' to quit out of that option.");
         basicMenu();
-//        System.out.println("Feel free to navigate through the options!");
-//        System.out.println("At any point, enter 'q' to exit an option you have selected. Enter 'c' to continue, or any key to quit.");
-//        String selection = s.nextLine();
-//        if (selection.toLowerCase().equals("c")) {
-//            basicMenu();
-//        } else {
-//            System.exit(0);
-//        }
     }
 
-    //Basic Menu CLI
+    /**
+     * The home menu that has the capability to manipulate every aspect of the Smart Home
+     */
     public static void basicMenu() {
 
         //Run until they sign in
@@ -139,7 +137,10 @@ public class CliMain {
         run();
     }
 
-    //DONE
+
+    /**
+     * Creates a room object with an individual name
+     */
     public static void createRoomCLI() {
         boolean running = true;
         String selection;
@@ -172,7 +173,9 @@ public class CliMain {
         }
     }
 
-    //DONE
+    /**
+     * Allows the user to navigate between rooms in the house
+     */
     public static void navigateRoomsCLI() {
         boolean running = true;
         String selection;
@@ -212,7 +215,9 @@ public class CliMain {
         }
     }
 
-    //DONE
+    /**
+     * Displays the current room status with all of its appliances, lights and its thermostat objects
+     */
     public static void roomStatusCLI() {
         boolean running = true;
         String selection;
@@ -265,6 +270,9 @@ public class CliMain {
         }
     }
 
+    /**
+     * Displays all the potential options that are involved with schedule manipulation
+     */
     public static void scheduleCLI() {
 
         boolean running = true;
@@ -285,9 +293,9 @@ public class CliMain {
             if (selection.equalsIgnoreCase("q")) {
                 break;
             } else if (selection.equals("1")) {
-                addToScheduleAPI();
+                addToScheduleCLI();
             } else if (selection.equals("2")) {
-                removeFromScheduleAPI();
+                removeFromScheduleCLI();
             } else if (selection.equals("3")){
                 break;
             }
@@ -297,7 +305,10 @@ public class CliMain {
         }
     }
 
-    public static void addToScheduleAPI() {
+    /**
+     * Adds an appliance, light or temperatur object to the schedule
+     */
+    public static void addToScheduleCLI() {
 
         boolean running = true;
         String selection;
@@ -329,14 +340,19 @@ public class CliMain {
         }
     }
 
-    public static void removeFromScheduleAPI() {
+    /**
+     * Removes an appliance, light or temperature object from the schedule
+     */
+    public static void removeFromScheduleCLI() {
         System.out.println();
         System.out.println("Currently Unavailable Feature!");
         System.out.println();
 
-    } // TODO: Michael
+    }
 
-    //DONE
+    /**
+     * Displays all the potential options that are involved with light manipulation
+     */
     public static void applianceCLI() {
         boolean running = true;
         String selection;
@@ -375,7 +391,9 @@ public class CliMain {
         }
     }
 
-    //DONE
+    /**
+     * Creates and appliance object for a specific room
+     */
     public static void createApplianceCLI() {
         boolean running = true;
         String selection;
@@ -423,7 +441,9 @@ public class CliMain {
         }
     }
 
-    //DONE
+    /**
+     * Removes an appliance object from a specific room
+     */
     public static void removeApplianceCLI() {
         boolean running = true;
         String selection;
@@ -464,7 +484,9 @@ public class CliMain {
 
     }
 
-    //DONE
+    /**
+     * Changes the status of a given appliance to either ON or OFF
+     */
     public static void adjustApplianceCLI() {
         boolean running = true;
         String selection;
@@ -505,6 +527,9 @@ public class CliMain {
         }
     }
 
+    /**
+     * Adds an appliance object to a schedule
+     */
     public static void addApplianceToScheduleCLI() {
 
         boolean running = true;
@@ -648,7 +673,9 @@ public class CliMain {
         }
     }
 
-    //DONE
+    /**
+     * Displays all the potential options that are involved with light manipulation
+     */
     public static void lightCLI() {
         boolean running = true;
         String selection;
@@ -687,7 +714,9 @@ public class CliMain {
         }
     }
 
-    //DONE
+    /**
+     * Creates a light object for a specific room
+     */
     public static void createLightCLI() {
         boolean running = true;
         String selection;
@@ -745,6 +774,9 @@ public class CliMain {
         }
     }
 
+    /**
+     * Removes a light object from a specific room
+     */
     public static void removeLightCLI() {
         boolean running = true;
         String selection;
@@ -788,6 +820,9 @@ public class CliMain {
         }
     }
 
+    /**
+     * Allows users to turn a light on or off, or if dimmable - the dim of their choice
+     */
     public static void adjustLightCLI() {
         boolean running = true;
         String selection;
@@ -838,6 +873,9 @@ public class CliMain {
         }
     }
 
+    /**
+     * Adds a light object to a schedule
+     */
     public static void addLightToScheduleCLI() {
 
         boolean running = true;
@@ -982,6 +1020,9 @@ public class CliMain {
         }
     }
 
+    /**
+     * Displays all the potential options that are involved with temperature manipulation
+     */
     public static void tempCLI() {
         boolean running = true;
         String selection;
@@ -1018,6 +1059,10 @@ public class CliMain {
         }
 
     }
+
+    /**
+     * Adjusts the temperature of a given room
+     */
     public static void adjustTempCLI() {
         boolean running = true;
         boolean whileloopissue = true;
@@ -1052,6 +1097,10 @@ public class CliMain {
             }
         }
     }
+
+    /**
+     * Adds a thermostat object to a schedule
+     */
     public static void addTempToScheduleCLI() {
 
         boolean running = true;
@@ -1164,6 +1213,9 @@ public class CliMain {
         }
     }
 
+    /**
+     * Displays all the potential options that are involved with manipulating the house
+     */
     public static void houseManipulationCLI() {
         boolean running = true;
         String sel;
@@ -1199,6 +1251,10 @@ public class CliMain {
             }
         }
     }
+
+    /**
+     * Changes the current temperature in every room from a range of 46 - 94
+     */
     public static void changeHouseTempCLI() {
         boolean running = true;
         String selection;
@@ -1226,6 +1282,9 @@ public class CliMain {
 
     }
 
+    /**
+     * Allows the user to contact emergency services
+     */
     public static void contactESCLI() {
         boolean running = true;
         String sel;
@@ -1266,6 +1325,9 @@ public class CliMain {
         }
     }
 
+    /**
+     * A in-detail help option that illustrates the potential for every option in the basic menu
+     */
     public static void helpCLI() {
         boolean running = true;
         while (running) {
@@ -1337,6 +1399,9 @@ public class CliMain {
     }
 
 
+    /**
+     * Displays all the potential options that Users can have
+     */
     public static void userCLI() {
         boolean running = true;
         String sel;
@@ -1376,6 +1441,10 @@ public class CliMain {
             }
         }
     }
+
+    /**
+     * Takes user input and creates an account with a username and pin and updates the user list
+     */
     public static void addUserCLI() {
         boolean running = true;
         String sel;
@@ -1480,6 +1549,11 @@ public class CliMain {
         }
 
     }
+
+    /**
+     * Takes user input and deletes an account from the list if the information is proper
+     * Cannot delete the current user signed on to the system
+     */
     public static void deleteUserCLI() {
         Boolean running = true;
         String username;
@@ -1562,7 +1636,13 @@ public class CliMain {
 
     }
 
-    public static boolean signIn(String username, Integer pin) throws IOException {
+    /**
+     * Checks to see if a user hsa inputted proper information to sign in
+     * @param username - the username the initial user typed in
+     * @param pin - the pin associated with that user name
+     * @return boolean - true if the username exists in the JSON file and the pin is the proper pin associated with that username
+     */
+    public static boolean signIn(String username, Integer pin){
         List<User> userListOut;
         User u;
         boolean ifExists = false;
@@ -1589,6 +1669,9 @@ public class CliMain {
         }
     }
 
+    /**
+     * Takes the current list of users for the house and saves them to a JSON file
+     */
     public static void saveUsers() {
         HashMap<String, User> userMap = currentHouse.getUserList();
         List<User> userList = new ArrayList<>(userMap.values());
@@ -1601,6 +1684,11 @@ public class CliMain {
         }
     }
 
+    /**
+     * Checks to see if a string can be converted into an integer
+     * @param s - the string being observed
+     * @return boolean - true if can be changed to an integer
+     */
     public static boolean integerCheck(String s) {
         try {
             Integer.parseInt(s);
@@ -1610,6 +1698,12 @@ public class CliMain {
         }
     }
 
+    /**
+     * Checks to see if a string can be converted to a integer in a certain range
+     * @param s - the string being observed
+     * @param bounds - the upper limit that the potential integer could be
+     * @return boolean - true if can be changed to an integer and in the range provided
+     */
     public static boolean integerCheck(String s, Integer bounds) {
         try {
             Integer sInt = Integer.parseInt(s);
@@ -1624,6 +1718,13 @@ public class CliMain {
 
     }
 
+    /**
+     * Checks to see if a string can be converted to a double in a certain range
+     * @param s - the string being observed
+     * @param lower - the lower limit that the potential integer can be
+     * @param upper - the upper limit that the potential integer can be
+     * @return boolean - true if can be changed to an integer and in the range provided
+     */
     public static boolean integerCheck(String s, Integer lower, Integer upper) {
         try {
             Integer sInt = Integer.parseInt(s);
@@ -1638,6 +1739,12 @@ public class CliMain {
 
     }
 
+    /**
+     * Checks to see if a string can be converted to a double in a certain range
+     * @param s - the string being observed
+     * @param bounds - the upper limit that the potential double can be
+     * @return boolean - true if can be changed to a double and in the range provided
+     */
     public static boolean doubleCheck(String s, Double bounds) {
         try {
             Double sDouble = Double.parseDouble(s);

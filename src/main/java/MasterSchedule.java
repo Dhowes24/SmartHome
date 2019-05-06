@@ -11,6 +11,13 @@ public class MasterSchedule {
 
     }
 
+    /**
+     * Adds an appliance, light or thermostat to the current schedule
+     * @param Day - the day of the week to be activated or deactivated
+     * @param itemID - the id of the item being activated or deactivated
+     * @param Time - the time of day it needs to activate or deactivated
+     * @param type - the type of item being added
+     */
     public void addScheduleItem(String Day, String itemID, String Time, Boolean StatusTo, Integer type){
         switch (Day){
             case "Sunday":
@@ -47,6 +54,13 @@ public class MasterSchedule {
         }
     }
 
+    /**
+     * Adds an appliance, light or thermostat to the current schedule
+     * @param Day - the day of the week to be activated or deactivated
+     * @param itemID - the id of the item being activated or deactivated
+     * @param Time - the time of day it needs to activate or deactivated
+     * @param type - the type of item being added
+     */
     public void addScheduleItem(String Day, String itemID, String Time,Double value,Integer type){
         switch (Day){
             case "Sunday":

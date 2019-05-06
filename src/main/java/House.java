@@ -10,6 +10,9 @@ public class House {
     public static MasterSchedule schedule = new MasterSchedule();
     public static int globaltemp = 65;
 
+    /**
+     * Prints all the created rooms in the house
+     */
     public static void printRooms() {
 
         Integer count = 0;
@@ -19,7 +22,17 @@ public class House {
         }
     }
 
+    /**
+     * Returns the current user list
+     * @return HashMap - the user list
+     */
     public static HashMap<String, User> getUserList(){return userList;}
+
+    /**
+     * Gets the key for an individual room
+     * @param index - the index of the room being observed
+     * @return String - the key of the room being observed
+     */
     public static String getKey(Integer index) {
 
         Integer count = 0;
@@ -32,32 +45,36 @@ public class House {
         return "not found";
     }
 
-    public static boolean integerCheck(String s){
-        try {
-            Integer.parseInt(s);
-            return true;
-        }catch(NumberFormatException e){
-            return false;
-        }
-    }
-
+    /**
+     * Creates a new room object in the house
+     * @param name - the name for the new room
+     */
     public static void addRoom(String name){
         if(!roomList.containsKey(name)){
             Room newRoom = new Room(name,schedule, globaltemp);
             roomList.put(name, newRoom);
         } else{
-            //Return what ever we want to send back as an error
+            System.out.println("Room already exists!");
         }
     }
 
-    public static void removeRoom(String Name){
-        if(roomList.containsKey(Name)){
-            roomList.remove(Name);
+    /**
+     * Removes a room from the hosue if it exists
+     * @param name - the name of the room to be removed
+     */
+    public static void removeRoom(String name){
+        if(roomList.containsKey(name)){
+            roomList.remove(name);
         } else{
-            //Return what ever we want to send back as an error
+            System.out.println("Room does not exists!");
         }
     }
 
+    /**
+     * Returns the room if it exists
+     * @param roomName - the name of the room trying being accessed
+     * @return Room - the room being accessed
+     */
     public static Room accessRoom(String roomName){
         if(roomList.containsKey(roomName)){
             return roomList.get(roomName);
@@ -65,6 +82,10 @@ public class House {
         return null;
     }
 
+    /**
+     * Adds a new user to the hosue if it does not already exist
+     * @param user - the new user to be added
+     */
     public static void addUser(User user){
 
         if(userList.containsKey(user.Name)){
@@ -77,16 +98,19 @@ public class House {
 
     }
 
+    /**
+     * Adds users to the house once the program stats
+     * @param user - the user to add
+     */
     public static void addUserFromLogin(User user){
-
         if(!userList.containsKey(user.Name)) {
             userList.put(user.Name, user);
         }
-
-
     }
 
-    //TODO
+    /**
+     * Prints all appliances in the house
+     */
     public static void printAppliances(){
         Room r;
         System.out.println("Printing Appliance's in House");
@@ -100,6 +124,9 @@ public class House {
 
     }
 
+    /**
+     * Ptins all the lights in the house
+     */
     public static void printLights(){
         Room r;
         System.out.println("Printing Lights's in House");

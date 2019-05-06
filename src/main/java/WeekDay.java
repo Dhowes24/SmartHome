@@ -17,6 +17,13 @@ public class WeekDay {
 
     }
 
+    /**
+     * Adds an appliance, light or thermostat the schedule
+     * @param ID - the id of the object being observed
+     * @param time - the time of day
+     * @param statusTo - the new status of the object being activated or deactivated
+     * @param type - the type of object
+     */
     public void addObjectToSchedule(String ID, String time, boolean statusTo, Integer type){
 
         if(checkIfTimeValid(time) && type<4 && type>=0) {
@@ -24,6 +31,14 @@ public class WeekDay {
             daySchedule.put(ID, newScheduleItem);
         }
     }
+
+    /**
+     * Adds an appliance, light or thermostat the schedule
+     * @param ID - the id of the object being observed
+     * @param time - the time of day
+     * @param value - the value of the object being activated or deactivated
+     * @param type - the type of objcet
+     */
     public void addObjectToSchedule(String ID, String time, Double value, Integer type){
 
         if(checkIfTimeValid(time) && type<4 && type>=1) {
@@ -32,6 +47,11 @@ public class WeekDay {
         }
     }
 
+    /**
+     * Removes an object from the schedule
+     * @param ID - the id of the object being removed
+     * @param time - the time of day its status is supposed to change
+     */
     public void removeObjectFromSchedule(String ID, String time){
         if(checkIfTimeValid(time)){
             for (Map.Entry<String, ScheduleItem> e : daySchedule.entrySet()) {
@@ -43,6 +63,11 @@ public class WeekDay {
         }
     }
 
+    /**
+     * Checks to see if the time for the schedule item is valid
+     * @param time - the time being observed
+     * @return boolean - true if the time is valid
+     */
     public boolean checkIfTimeValid(String time){
         pattern = Pattern.compile(Time24Hour_Pattern);
         matcher = pattern.matcher(time);

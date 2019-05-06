@@ -17,20 +17,31 @@ public Appliance(String name) {
     this.preferences = new HashMap<>();
 }
 
-//returns the ID of the appliance
-public String getID() {
+    /**
+     * Gets the current if of the appliance
+     * @return string - the id of the current appliance
+     */
+    public String getID() {
     return this.ID;
 }
 
-//returns a boolean representing if that appliance has a user preference
-public boolean getUserPref(User user) {
+    /**
+     * Returns whether the user has specific preferences
+     * @param user - the user being observed
+     * @return - the status fo the user preferences
+     */
+    public boolean getUserPref(User user) {
     if(!this.preferences.containsKey(user)){
         this.preferences.put(user, false);
     }
     return this.preferences.get(user);
 }
 
-public void setToPreference(User user){
+    /**
+     * Chancges the status of the appliance to the current users preference
+     * @param user - the user being obeserved
+     */
+    public void setToPreference(User user){
     if(!this.preferences.containsKey(user)){
         this.preferences.put(user, false);
     }
@@ -38,8 +49,10 @@ public void setToPreference(User user){
 }
 
 
-//changes the status of the appliance from on to off and vice versa using a boolean representation
-public void changeStatus() {
+    /**
+     * Changes the status of the current appliance, if ON turn to OFF and vice versa
+     */
+    public void changeStatus() {
     if (this.status) {
         this.status = false;
     }
@@ -49,14 +62,20 @@ public void changeStatus() {
 
 }
 
-//gets the status of the appliance
-public boolean getStatus() {
+    /**
+     * Gets the current status of the appliance
+     * @return boolean - true if the appliance is ON, false if otherwise
+     */
+    public boolean getStatus() {
     return this.status;
 }
 
-
-//changes the user preference of the appliance
-public void changeUserPref(User user, boolean preference) {
+    /**
+     * Changes the preference for the current appliance
+     * @param user - the user being observed
+     * @param preference - the new preference
+     */
+    public void changeUserPref(User user, boolean preference) {
     if (!this.preferences.containsKey(user)) {
         this.preferences.put(user, preference);
     } else {
