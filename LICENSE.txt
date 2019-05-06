@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) [2019] [SmartHome]
+Copyright (c) [2019] [Team 4 and 5 from Software Engineering Spring 2019 at Ithaca College]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
