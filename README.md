@@ -70,3 +70,6 @@ https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/
   
 * ### Sprint Retrospective Week 3:
   * https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/edit?usp=sharing
+
+## License
+ * MIT
