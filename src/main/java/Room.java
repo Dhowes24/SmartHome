@@ -21,34 +21,31 @@ public class Room {
 
         lightMap = new HashMap<>();
         applianceMap = new HashMap<>();
-        // TODO: must get user's preference for starting temp or ask them for a temp when creating a room
-        // TODO: must also ask user if thermostat should require pin
         thermostat = new Temperature(globalTemp);
     }
-
-
-
     public Room() {
-
         this.ID = UUID.randomUUID().toString();
-
         lightMap = new HashMap<>();
         applianceMap = new HashMap<>();
-        // TODO: must get user's preference for starting temp or ask them for a temp when creating a room
-        // TODO: must also ask user if thermostat should require pin
         thermostat = new Temperature(65);
 
     }
 
+    /**
+     * @return string - the name of the thermostat object
+     */
     public String getThermostatName() {return thermostat.getID();}
 
+    /**
+     * @return string - the name of the room
+     */
     public String getRoomName() {
         return roomName;
     }
 
     /**
      * Add appliance to list for this room by unique name
-     * @param name
+     * @param name - the name of the appliance being added
      */
 
     public void addAppliance(String name, Boolean isRequired){
@@ -62,7 +59,7 @@ public class Room {
 
     /**
      * remove appliance from list for this room by unique name
-     * @param name
+     * @param name - the name of the appliance being removed
      */
     public void removeAppliance(String name) {
         if(containedInApplianceList(name)){
@@ -72,7 +69,7 @@ public class Room {
 
     /**
      * change the boolean status of an appliance from the list by its name
-     * @param name
+     * @param name - the name of the appliance that needs to be changed
      */
     public void changeApplianceStatus(String name){
         if(containedInApplianceList(name)){
@@ -82,7 +79,7 @@ public class Room {
 
     /**
      * add a light to the light with a unique name
-     * @param name
+     * @param name - the name of the light being added
      */
     public void addLight(String name, Boolean isDimable){
         if (!containedInLightList(name)){
@@ -93,7 +90,7 @@ public class Room {
 
     /**
      * remove light from list for this room by unique name
-     * @param name
+     * @param name - the name of the light being removed
      */
     public void removeLight(String name){
         lightMap.remove(name);
@@ -101,7 +98,7 @@ public class Room {
 
     /**
      * change the light value from 0-100 for a specific light by name
-     * @param amount
+     * @param amount - amount that the light should change to
      */
     public void adjustLight(double amount, String name){
         if (containedInLightList(name)){
@@ -111,7 +108,7 @@ public class Room {
 
     /**
      * check temperature of thermostat nearest to room
-     * @return
+     * @return double - the current temperature of a thermostat
      */
     public double checkTemp(){
         return thermostat.getTemp();
@@ -119,7 +116,7 @@ public class Room {
 
     /**
      * adjust thermostat nearest to room
-     * @param amount
+     * @param amount - the new temperature of the thermostat
      */
     public void adjustTemp(int amount){
         thermostat.setTemp(amount);
@@ -130,10 +127,10 @@ public class Room {
      * enter a day, weekdays, or weekends,
      * a time of those days you want the action to go off in 24 hour HH:MM format,
      * and what status change you want to happen (False = off, True = on)
-     * @param applianceID
-     * @param day
-     * @param time
-     * @param status
+     * @param applianceID - the name of the appliance
+     * @param day - the day of the week
+     * @param time - the time of that day
+     * @param status - the status it should change to
      */
     public void addApplianceToSchedule(String applianceID, String day, String time, boolean status){
         schedule.addScheduleItem(day,applianceID,time,status,0);
@@ -145,10 +142,10 @@ public class Room {
      * a time of those days you want the action to go off in 24 hour HH:MM format,
      * and what status change you want to happen (0 = off, 1 = on, 2 = dimmed)
      * if dimmed, set to the dim double
-     * @param lightID
-     * @param day
-     * @param time
-     * @param dim
+     * @param lightID - the name of the light
+     * @param day - the day of the week
+     * @param time - the time of that day
+     * @param dim - the new intensity it should change to
      */
     public void addLightToSchedule(String lightID, String day, String time, double dim){
         schedule.addScheduleItem(day,lightID,time,dim,1);
@@ -157,12 +154,11 @@ public class Room {
      * add Thermostat to schedule by name,
      * enter a day, weekdays, or weekends,
      * a time of those days you want the action to go off in 24 hour HH:MM format,
-
      * and what status change you want to happen (False = off, True = on)
      * Set temp with double
-     * @param day
-     * @param time
-     * @param temp
+     * @param day - the day of the week
+     * @param time - the time fo that day
+     * @param temp - the new temperature it should change to
      */
     public void addThermoToSchedule(String thermoID,String day, String time, double temp){
         schedule.addScheduleItem(day,thermoID,time,temp,2);
@@ -171,8 +167,8 @@ public class Room {
 
     /**
      * checks appliance list for instances of a given name
-     * @param name
-     * @return
+     * @param name - the name of the appliance
+     * @return boolean - true if the appliance exists
      */
     public boolean containedInApplianceList(String name){
 
@@ -186,8 +182,8 @@ public class Room {
 
     /**
      * checks light list for instances of a given name
-     * @param name
-     * @return
+     * @param name - the name of the light
+     * @return - true if the light exists
      */
     public boolean containedInLightList(String name){
 
@@ -202,12 +198,18 @@ public class Room {
         }
     }
 
+    /**
+     * Prints the lights of a current room
+     */
     public void printLights() {
         for (Light light : lightMap.values()) {
             System.out.println(light.getID() + ": " + light.getCurrIntensity());
         }
     }
 
+    /**
+     * Prints the appliances of a current room
+     */
     public void printAppliances() {
         for (Appliance app : applianceMap.values()) {
             if (app.getStatus()) {

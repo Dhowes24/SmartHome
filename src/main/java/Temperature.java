@@ -24,12 +24,18 @@ public class Temperature {
     }
 
     /**
+     * Gets the current temperate of a thermostat object
      * @return double - the current temperature
      */
     public double getTemp(){return this.temperature;}
 
 
+    /**
+     * Gets the ID of a thermostat object
+     * @return String - the thermostat's ID
+     */
     public String getID(){return this.ID;}
+
     /**
      * Changes the current temperature of the room if it is a valid input
      * @param newTemp double - the new desired temperature of the room
@@ -42,7 +48,7 @@ public class Temperature {
 
     /**
      * Checks to see if the amount entered is a valid amount (Between 45 and 95 not inclusive)
-     * @param amount double - the amount in question
+     * @param amount - the amount in question
      * @return boolean - whether or not the value fulfills the requirements
      */
     public boolean isAmountValid(double amount){
@@ -56,8 +62,8 @@ public class Temperature {
 
     /**
      * Sets the preference of a user to another number
-     * @param user
-     * @param amount
+     * @param user - the user being observed
+     * @param amount - the new preference amount for that user
      */
     public void setTempPreference(User user, double amount){
         if(this.preferences.containsKey(user) && isAmountValid(amount)){
@@ -70,7 +76,7 @@ public class Temperature {
 
     /**
      * Set current temperature to preference
-     * @param user
+     * @param user - the user being observed
      */
     public void setToPreference(User user){
         if(!this.preferences.containsKey(user)){
@@ -82,8 +88,8 @@ public class Temperature {
 
     /**
      * get preferences for specific user
-     * @param user
-     * @return
+     * @param user - the user being observed
+     * @return double - the light preference for that user
      */
     public double getPreference (User user){
         if(!this.preferences.containsKey(user)){

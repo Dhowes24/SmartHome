@@ -9,6 +9,7 @@ public class Light {
     private HashMap<User, Double> preferences;
 
 
+
     public Light(String name, double defaultAmountt, boolean isDimmable) {
         this.ID = name;
         this.currIntensity = 0.0;
@@ -110,7 +111,6 @@ public class Light {
 
     /**
      * Checks to see if an currIntensity passed in by the user is valid (Between 0 and 1 inclusive)
-     *
      * @param amount double - the currIntensity being checked
      * @return boolean - whether it is a valid currIntensity or not
      */
