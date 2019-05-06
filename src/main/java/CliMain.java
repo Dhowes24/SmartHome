@@ -1272,11 +1272,11 @@ public class CliMain {
             System.out.println();
             System.out.println("Help Menu:");
             System.out.println("----------");
-            System.out.println("1. Create room");
-            System.out.println("2. Navigate to a room");
-            System.out.println("3. User Options");
-            System.out.println("4. House Manipulation");
-            System.out.println("5. Contact Emergency Services");
+            System.out.println("1. Learn about Creating a room");
+            System.out.println("2. Learn about Navigate between rooms");
+            System.out.println("3. Learn about User Options");
+            System.out.println("4. Learn about House Manipulation");
+            System.out.println("5. Learn about Contactingt Emergency Services");
             System.out.println("6. Return");
             System.out.println();
             System.out.print("With what would you like help with: ");
