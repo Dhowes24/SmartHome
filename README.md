@@ -3,11 +3,16 @@ Software Development Project
 
 [![CircleCI](https://circleci.com/gh/Dhowes24/SmartHome/tree/master.svg?style=svg)](https://circleci.com/gh/Dhowes24/SmartHome/tree/master)
 
-
 Smart Home Revision
 
 The Smart Home intelligently manages all IoT devices within a home to optimize the user experience, security, and energy efficiency. The system can be programmed to manage smart thermostats or security systems in basic ways. All other devices connected to the system, such as TVs, lights, music systems, etc. can interface with the Smart Home API to be controlled remotely. All residents of a home can connect a smart device. The Smart Home uses these devices to track the location of the residents. When returning home, this could be used to enter the house without a key. When at home, this data could be used to optimize energy use, or automatically switch the destination of a Netflix stream to the nearest TV.
 
+### Product Goal: A piece of software that manages and personalizes smart home features for users in a living space.
+  * File I/O - Brien, Derek
+  * Scheduling Real Time - Derek
+  * Smart Activations - Anthony, Brien
+  * Preference & CLI Work - Michael, Derek
+  
 ### Waffle Board
 https://waffle.io/Dhowes24/SmartHome
 
@@ -62,11 +67,6 @@ https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/
 ## Sprint Three
 ### Dividing up the Current Sprint:
 * ### Sprint Goal: Dealing with file input / output and saving users of the house when the program ends. Also allowing for schedule management to deal with real time occurences as well as user tracking and smart activations.
-* ### Product Goal: A piece of software that manages and personalizes smart home features for users in a living space.
-  * File I/O - Brien, Derek
-  * Scheduling Real Time - Derek
-  * Smart Activations - Anthony, Brien
-  * Preference & CLI Work - Michael, Derek
   
 * ### Sprint Retrospective Week 3:
   * https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/edit?usp=sharing
