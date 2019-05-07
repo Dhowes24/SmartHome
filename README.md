@@ -12,9 +12,16 @@ The Smart Home intelligently manages all IoT devices within a home to optimize t
 ### Waffle Board
 https://waffle.io/Dhowes24/SmartHome
 
-### Final Sprint Retrospective:
+## Final Deliverables
+### Sprint Retrospective:
 https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/edit?usp=sharing
 
+### UML Diagrams
+* State Diagram
+  *
+* Class Diagram
+  *
+  
 ## Sprint One
 * ### Sprint Goal: Control Basic Smart Objects and Basic Room Development
   * Lighting - Michael & Anthony
@@ -75,7 +82,7 @@ https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/
   * 
   
 * ### Class Digaram
-  * 
+  * https://drive.google.com/file/d/13rDWiJDNy53s-f9qqASE-0JQYSLSHQTc/view?usp=sharing
   
 * ### Sprint Retrospective Week 3:
   * https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/edit?usp=sharing
