@@ -347,7 +347,6 @@ public class CliMain {
         System.out.println();
         System.out.println("Currently Unavailable Feature!");
         System.out.println();
-
     }
 
     /**
@@ -789,17 +788,17 @@ public class CliMain {
 
                 System.out.println("Choose an light to remove.");
                 currentRoom.printLights();
-                System.out.println("Please enter the name of the item you wish to remove: ");
+                System.out.print("Please enter the name of the item you wish to remove: ");
                 selection = s.nextLine();
 
                 if (selection.equalsIgnoreCase("q")) {
                     break;
                 } else if (currentRoom.lightMap.containsKey(selection)) {
-                    System.out.println("Would you like to delete the light - " + selection + " - (Y/N): ");
+                    System.out.print("Would you like to delete the light - " + selection + " - (Y/N): ");
                     String sel = s.nextLine();
 
                     while (!sel.equalsIgnoreCase("y") && !sel.equalsIgnoreCase("n")) {
-                        System.out.println("Error: please enter 'y' or 'n': ");
+                        System.out.print("Error: please enter 'y' or 'n': ");
                         sel = s.nextLine();
                     }
 
@@ -838,15 +837,16 @@ public class CliMain {
                 System.out.println();
                 System.out.println("Choose an light to adjust.");
                 currentRoom.printLights();
+                System.out.print("Please enter the name of the item you wish to adjust: ");
                 selection = s.nextLine();
 
                 if (selection.equalsIgnoreCase("q")) {
                     break;
                 } else if (currentRoom.lightMap.containsKey(selection)) {
-                    System.out.println("Would you like to adjust the light - " + selection + " - (Y/N): ");
+                    System.out.print("Would you like to adjust the light - " + selection + " - (Y/N): ");
                     sel = s.nextLine();
                     while (!sel.equalsIgnoreCase("y") && !sel.equalsIgnoreCase("n")) {
-                        System.out.println("Error: please enter 'y' or 'n': ");
+                        System.out.print("Error: please enter 'y' or 'n': ");
                         sel = s.nextLine();
                     }
                     if (sel.equalsIgnoreCase("y")) {
@@ -854,12 +854,12 @@ public class CliMain {
                         dimS = s.nextLine();
                         while (!doubleCheck(dimS, 1.0)) {
                             System.out.println();
-                            System.out.println("Error: type in an  value between 0.0 and 1.0: ");
+                            System.out.print("Error: type in an  value between 0.0 and 1.0: ");
                             dimS = s.nextLine();
                         }
                         dim = Double.parseDouble(dimS);
                         currentRoom.lightMap.get(selection).dim(dim);
-                        System.out.println("The light " + selection + " has been dimmed to" + dim);
+                        System.out.println("The light " + selection + " has been dimmed to: " + dim);
                         System.out.println(" ");
                         running = false;
                     }
@@ -1761,7 +1761,6 @@ public class CliMain {
 
     public static void main(String[] args) {
         run();
-
     }
 
 

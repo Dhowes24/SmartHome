@@ -3,8 +3,7 @@ import java.util.HashMap;
 public class User {
     String Name;
     Integer pin=0;
-    //Preferences preferences;
-    //Permissions permissions;
+
 
     public User(){}
     public User(String name){

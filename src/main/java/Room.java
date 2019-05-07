@@ -85,7 +85,6 @@ public class Room {
         if (!containedInLightList(name)){
             lightMap.put(name, new Light(name, isDimable));
         }
-        // TODO: throw exception or somehow handle receiving a new name for the light
     }
 
     /**
