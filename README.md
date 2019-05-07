@@ -68,6 +68,15 @@ https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/
   * Smart Activations - Anthony, Brien
   * Preference & CLI Work - Michael, Derek
   
+* ### Narratives and Scenarios
+  * 
+
+* ### Use Case
+  * 
+  
+* ### Class Digaram
+  * 
+  
 * ### Sprint Retrospective Week 3:
   * https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/edit?usp=sharing
 
