@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class User {
     String Name;
-    Integer Pin=0;
+    Integer pin=0;
     //Preferences preferences;
     //Permissions permissions;
 
@@ -14,7 +14,7 @@ public class User {
         //Preferences preferences = new Preferences();
         //Permissions permissions = new Permissions();
         this.Name = Name;
-        this.Pin = pin;
+        this.pin = pin;
 
     }
 
@@ -28,7 +28,7 @@ public class User {
      * Returns the pin of a user
      * @return Integer - the pin of the user
      */
-    public Integer getPin(){return this.Pin;}
+    public Integer getPin(){return this.pin;}
 
     /**
      * Sets the name of the user
