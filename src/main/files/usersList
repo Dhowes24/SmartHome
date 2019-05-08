@@ -1,16 +1,16 @@
 [ {
-  "name" : "test3",
-  "pin" : 3
+  "pin" : 3,
+  "name" : "test3"
 }, {
-  "name" : "Anthony",
-  "pin" : 0
+  "pin" : 0,
+  "name" : "Anthony"
 }, {
-  "name" : "newguy",
-  "pin" : 1
+  "pin" : 1,
+  "name" : "newguy"
 }, {
-  "name" : "brien",
-  "pin" : 1111
+  "pin" : 1111,
+  "name" : "brien"
 }, {
-  "name" : "Derek",
-  "pin" : 2222
+  "pin" : 2222,
+  "name" : "Derek"
 } ]
