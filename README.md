@@ -74,12 +74,9 @@ https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/
   * Scheduling Real Time - Derek
   * Smart Activations - Anthony, Brien
   * Preference & CLI Work - Michael, Derek
-  
-* ### Narratives and Scenarios
-  * 
 
 * ### Use Case
-  * 
+  * https://drive.google.com/file/d/1op87NRn_Rw68jSNu7SRfbz0HaKpECftq/view?usp=sharing
   
 * ### Class Digaram
   * https://drive.google.com/file/d/13rDWiJDNy53s-f9qqASE-0JQYSLSHQTc/view?usp=sharing
