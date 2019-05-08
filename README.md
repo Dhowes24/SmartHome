@@ -18,9 +18,9 @@ https://docs.google.com/document/d/1smcf2w6IkbXlZFrOahhLRxSDfGsdSqb8cVIH-gn5Hf8/
 
 ### UML Diagrams
 * State Diagram
-  *
+  * 
 * Class Diagram
-  *
+  * https://drive.google.com/file/d/13rDWiJDNy53s-f9qqASE-0JQYSLSHQTc/view?usp=sharing
   
 ## Sprint One
 * ### Sprint Goal: Control Basic Smart Objects and Basic Room Development
