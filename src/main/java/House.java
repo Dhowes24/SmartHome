@@ -140,11 +140,6 @@ public class House {
     }
 
 
-
-    public void printScheduleList(){
-
-    }
-
     /**
      * Iterates through every room and changes that rooms temperature
      * @param newTemp - the new temperature of the rooms

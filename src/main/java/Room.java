@@ -52,7 +52,6 @@ public class Room {
         if(!containedInApplianceList(name)){
             this.applianceMap.put(name, new Appliance(name));
         }
-        // TODO: throw exception or somehow handle receiving a new name for the appliance
     }
 
 
@@ -85,7 +84,6 @@ public class Room {
         if (!containedInLightList(name)){
             lightMap.put(name, new Light(name, isDimable));
         }
-        // TODO: throw exception or somehow handle receiving a new name for the light
     }
 
     /**

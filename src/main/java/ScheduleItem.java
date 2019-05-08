@@ -4,6 +4,13 @@ public class ScheduleItem {
     Double value = null;
     Integer type;
 
+
+    /**
+     * Creates an item to use in the schedule
+     * @param Time
+     * @param StatusTo
+     * @param type
+     */
     public ScheduleItem(String Time, Boolean StatusTo, Integer type){
         this.Time = Time;
         this.StatusTo = StatusTo;

@@ -9,7 +9,12 @@ public class Light {
     private HashMap<User, Double> preferences;
 
 
-
+    /**
+     * Constructs a light for the current room
+     * @param name
+     * @param defaultAmountt
+     * @param isDimmable
+     */
     public Light(String name, double defaultAmountt, boolean isDimmable) {
         this.ID = name;
         this.currIntensity = 0.0;

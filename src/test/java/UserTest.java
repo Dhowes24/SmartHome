@@ -44,7 +44,6 @@ public class UserTest {
 
         masterUser.printRoomList();
 
-        //TODO decide how to test this
 
     }
 
@@ -61,7 +60,6 @@ public class UserTest {
 
         masterUser.getRoomApplianceList("testRoom1");
 
-        //TODO decide how to test this
 
 
     }
@@ -79,7 +77,6 @@ public class UserTest {
 
         masterUser.getRoomLightList("testRoom1");
 
-        //TODO decide how to test this
 
 
     }
